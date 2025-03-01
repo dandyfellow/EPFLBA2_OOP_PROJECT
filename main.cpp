@@ -1,6 +1,6 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Hello, Makefile!" << std::endl;
+    std::cout << "Hello, nique ta merile!" << std::endl;
     return 0;
 }

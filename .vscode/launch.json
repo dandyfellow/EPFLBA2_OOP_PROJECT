@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/costeadam/Projet BA2 IT/IT_ProjectTest",
+      "program": "/Users/costeadam/Projet BA2 IT/IT_ProjectTest/build/Debug/outDebug"
+    }
+  ]
+}
