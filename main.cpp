@@ -1,6 +1,6 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Hello, nique ta merile!" << std::endl;
+    std::cout << "Hello, que ta merile!" << std::endl;
     return 0;
 }
