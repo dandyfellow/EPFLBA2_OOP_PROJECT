@@ -9,9 +9,6 @@
 /*
 CHOSES A FAIRE :
 
-TOUTES LES STRUCT N'ONT QUE DES xATTRUBUTS, SI ON VEUT DES METHODES ON FAIT DES CLASSES
-Mettre des testeurs, genre r > 0, etc.
-
 */
 
 using namespace std;
@@ -42,7 +39,6 @@ public:
         return reflechis;
      }
 
-
     //getters and setters
     double get_x() const {return x;}
     double get_y() const {return y;}
@@ -58,9 +54,7 @@ private:
     double y=0.;
     double angle=0.; //en radians
     double norme=0.;
-    //Vecteur operator+(const Vecteur& v) const {return {x+v.x, y+v.y};} //surcharge de l'opérateur + on garde l'idée
-    //surcharge de constructeur
-    
+    //Vecteur operator+(const Vecteur& v) const {return {x+v.x, y+v.y};} //surcharge de l'opérateur + on garde l'idée 
 };
 
 class Cercle {
@@ -82,9 +76,9 @@ private:
     S2d centre;
     double rayon;
 };
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //                          INDEPENDENT FUNCTIONS
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
  bool inclusion(const Cercle &c1, const Cercle &c2){
     Vecteur v1(c2.get_centre(), c1.get_centre());
@@ -92,8 +86,15 @@ private:
     return (distance < (c1.get_rayon() - c2.get_rayon() - epsil_zero * epsil)); // <<<<< A REVOIRe{
  }
 
- bool intrusion (const Cercle &c1, const Cercle &c2){
+ bool intrusion(const Cercle &c1, const Cercle &c2){
     Vecteur v1(c2.get_centre(), c1.get_centre());
     double distance = v1.get_norme();
     return (distance < (c1.get_rayon() + c2.get_rayon() + epsil_zero*epsil));
+ }
+
+ void epsilTrue(){
+     epsil = true;
+ }
+ void epsilFalse(){
+     epsil = false;
  }
