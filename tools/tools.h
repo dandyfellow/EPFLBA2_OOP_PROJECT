@@ -2,7 +2,6 @@
 #define TOOLS_H
 
 #include <cmath>
-
 constexpr double epsil_zero = 0.5;
 
 struct S2d {

@@ -6,4 +6,4 @@ using namespace std;
 
 Cercle arene(0.,0.,r_max);
 
-
+class Mobile{};
