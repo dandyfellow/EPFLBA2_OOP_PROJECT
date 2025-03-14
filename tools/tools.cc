@@ -1,11 +1,10 @@
 #include <iostream>
 #include <cmath>
+#include "tools.h"
 /*
-
 #include 'chaine.h'
 #include 'mobile.h' 
 #include 'jeu.h'
-
 */
 
 using namespace std;
@@ -34,7 +33,8 @@ struct Vecteur { //public ou privé?? class ou struct
 class Cercle {
     public:
     Cercle(S2d centre, double rayon) : centre(centre), rayon(rayon) {}
-    bool inclusion(const  Cercle& c1){
+
+    bool inclusion(const Cercle& c1){
         Vecteur v1(c1.centre, this->centre);
         double distance = v1.norme; 
         if (distance < (this->rayon - c1.rayon - epsil_zero)){
@@ -43,6 +43,7 @@ class Cercle {
             return false;
         }
     }
+
     bool intersection(const Cercle& c1){
         Vecteur v1(c1.centre, this -> centre);
         double distance = v1.norme;
@@ -60,7 +61,7 @@ class Cercle {
     
 };
 
- Vecteur reflechis(Vecteur incident, S2d point){
+ Vecteur reflechis(const Vecteur& incident, const S2d& point){
     S2d point_zero_zero; //Creer le vectueur centre du cercle -> Point(0,0)
     Vecteur v_centre(point_zero_zero, point); //Creer le vecteur entre le centre du cercle et 
     Vecteur reflechis(point, (M_PI + 2 * v_centre.angle - incident.angle), incident.norme);

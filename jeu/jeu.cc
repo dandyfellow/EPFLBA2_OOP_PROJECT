@@ -1,3 +1,9 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
 void lecture() {
   // Lecture du fichier
   ifstream fichier("jeu/jeu.txt");
@@ -7,6 +13,6 @@ void lecture() {
       cout << ligne << endl;
     }
   } else {
-    cerr << "Impossible d'ouvrir le fichier !" << endl;
+    cout << "Impossible d'ouvrir le fichier !" << endl;
   }
 }
