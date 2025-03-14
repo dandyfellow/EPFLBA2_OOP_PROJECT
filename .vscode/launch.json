@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/costeadam/Projet BA2 IT/IT_ProjectTest",
-      "program": "/Users/costeadam/Projet BA2 IT/IT_ProjectTest/build/Debug/outDebug"
+      "cwd": "/Users/costeadam/PROJET BOULIC BA2/IT_ProjectTest",
+      "program": "/Users/costeadam/PROJET BOULIC BA2/IT_ProjectTest/build/Debug/outDebug"
     }
   ]
 }
