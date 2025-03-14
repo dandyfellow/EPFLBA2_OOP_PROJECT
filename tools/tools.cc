@@ -9,9 +9,6 @@
 
 using namespace std;
 constexpr double epsil_zero(0.5);
-b
-
-
 
 struct S2d {double x=0.; double y=0.;};
 
@@ -46,22 +43,23 @@ Vecteur reflechis(const Vecteur& incident, const S2d& point){
     return reflechis;
  }
 
-bool inclusion(const Cercle& c1, const Cercle& c2, bool epsil) {
-            Vecteur v1(c2.centre, c1.centre);
-            double distance = v1.norme;
-            if (epsil) {
-                return distance < (c1.rayon - c2.rayon - epsil);
-            } else {
-                return distance < (c1.rayon - c2.rayon);
-            }
-        }
-    
- bool intersection(const Cercle& c1, const Cercle& c2, bool epsil) {
-            Vecteur v1(c2.centre, c1.centre);
-            double distance = v1.norme;
-            if (epsil) {
-                return distance < (c1.rayon + c2.rayon + epsil);
-            } else {
-                return distance < (c1.rayon + c2.rayon);
-            }
-        }
+ bool inclusion(const Cercle &c1, const Cercle &c2, bool epsil){
+     Vecteur v1(c2.centre, c1.centre);
+     double distance = v1.norme;
+     if (epsil)
+     {
+         return distance < (c1.rayon - c2.rayon - epsil);
+     }else{
+         return distance < (c1.rayon - c2.rayon);
+     }
+ }
+
+ bool intersection(const Cercle &c1, const Cercle &c2, bool epsil){
+     Vecteur v1(c2.centre, c1.centre);
+     double distance = v1.norme;
+     if (epsil){
+         return distance < (c1.rayon + c2.rayon + epsil);
+     }else{
+         return distance < (c1.rayon + c2.rayon);
+     }
+ }

@@ -23,10 +23,10 @@ int main() {
      Cercle c2(p2, 2);  // Circle at (3, 4) with radius 2
  
      // Test inclusion
-     std::cout << "Does C2 include C1? " << (c1.inclusion(c2) ? "Yes" : "No") << std::endl;
+     std::cout << "Does C2 include C1? " << inclusion(c2) ? "Yes" : "No") << std::endl;
  
      // Test intersection
-     std::cout << "Do C1 and C2 intersect? " << (c1.intersection(c2) ? "Yes" : "No") << std::endl;
+     std::cout << "Do C1 and C2 intersect? " << (intersection(c2) ? "Yes" : "No") << std::endl;
  
      // Reflect a vector (incident vector with respect to a point)
      S2d point_of_reflection = {2, 2};

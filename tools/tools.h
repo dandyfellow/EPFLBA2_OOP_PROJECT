@@ -30,7 +30,13 @@ struct Vecteur {
         y = norme * sin(angle);
     }
 };
-
+struct Cercle {
+    Cercle(S2d centre, double rayon) : centre(centre), rayon(rayon) {}
+    S2d centre;
+    double rayon;
+};
+bool intersection(const Cercle& c1, const Cercle& c2, bool epsil);
+bool inclusion(const Cercle& c1, const Cercle& c2, bool epsil);
 Vecteur reflechis(Vecteur incident, S2d point);
 
 #endif 

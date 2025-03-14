@@ -3,16 +3,21 @@
 
 using namespace std;
 
+void lecture()
+{
 
-void lecture() {
   // Lecture du fichier
   ifstream fichier("jeu/jeu.txt");
-  if (fichier) {
+  if (fichier)
+  {
     string ligne;
-    while (getline(fichier, ligne)) {
+    while (getline(fichier, ligne))
+    {
       cout << ligne << endl;
     }
-  } else {
+  }
+  else
+  {
     cout << "Impossible d'ouvrir le fichier !" << endl;
   }
 }
