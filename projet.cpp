@@ -1,6 +1,7 @@
 #include <iostream>
+#include <cmath>
 
 int main() {
-    std::cout << "Hello, que ta merile!" << std::endl;
+    std::cout << M_PI << std::endl;
     return 0;
 }
