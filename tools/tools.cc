@@ -9,11 +9,13 @@
 
 using namespace std;
 constexpr double epsil_zero(0.5);
+b
+
 
 
 struct S2d {double x=0.; double y=0.;};
 
-struct Vecteur { //public ou privé?? class ou struct
+struct Vecteur { //public ou privé?? class ou struct    
     double x=0.;
     double y=0.;
     double angle=0.; //en radians
@@ -30,41 +32,36 @@ struct Vecteur { //public ou privé?? class ou struct
     //surcharge de constructeur
 };
 
-class Cercle {
-    public:
+struct Cercle {
     Cercle(S2d centre, double rayon) : centre(centre), rayon(rayon) {}
-
-    bool inclusion(const Cercle& c1){
-        Vecteur v1(c1.centre, this->centre);
-        double distance = v1.norme; 
-        if (distance < (this->rayon - c1.rayon - epsil_zero)){
-            return true;
-        }else{ 
-            return false;
-        }
-    }
-
-    bool intersection(const Cercle& c1){
-        Vecteur v1(c1.centre, this -> centre);
-        double distance = v1.norme;
-        if(distance < (this->rayon - c1.rayon + epsil_zero)){
-            return true;
-         }else{
-            return false;
-         }
-    }
-    
-    private:
-
     S2d centre;
     double rayon;
-    
 };
 
- Vecteur reflechis(const Vecteur& incident, const S2d& point){
+
+Vecteur reflechis(const Vecteur& incident, const S2d& point){
     S2d point_zero_zero; //Creer le vectueur centre du cercle -> Point(0,0)
     Vecteur v_centre(point_zero_zero, point); //Creer le vecteur entre le centre du cercle et 
     Vecteur reflechis(point, (M_PI + 2 * v_centre.angle - incident.angle), incident.norme);
     return reflechis;
  }
 
+bool inclusion(const Cercle& c1, const Cercle& c2, bool epsil) {
+            Vecteur v1(c2.centre, c1.centre);
+            double distance = v1.norme;
+            if (epsil) {
+                return distance < (c1.rayon - c2.rayon - epsil);
+            } else {
+                return distance < (c1.rayon - c2.rayon);
+            }
+        }
+    
+ bool intersection(const Cercle& c1, const Cercle& c2, bool epsil) {
+            Vecteur v1(c2.centre, c1.centre);
+            double distance = v1.norme;
+            if (epsil) {
+                return distance < (c1.rayon + c2.rayon + epsil);
+            } else {
+                return distance < (c1.rayon + c2.rayon);
+            }
+        }
