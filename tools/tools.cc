@@ -77,13 +77,13 @@ private:
     double rayon;
 };
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//                          INDEPENDENT FUNCTIONS
+//    |    |    |    |    |    |     |    | [!][!][!] INDEPENDENT FUNCTIONS [!][!][!]   |    |    |    |    |    |     |    |    |    |    |    |    |    |     |    |
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
  bool inclusion(const Cercle &c1, const Cercle &c2){
     Vecteur v1(c2.get_centre(), c1.get_centre());
     double distance = v1.get_norme();
-    return (distance < (c1.get_rayon() - c2.get_rayon() - epsil_zero * epsil)); // <<<<< A REVOIRe{
+    return (distance < (c1.get_rayon() - c2.get_rayon() - epsil_zero * epsil));
  }
 
  bool intrusion(const Cercle &c1, const Cercle &c2){
