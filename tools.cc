@@ -1,18 +1,23 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
+#include <cstdlib>
 
 #include "tools.h"
 
+
 using namespace std;
+
 constexpr double epsil_zero(0.5);
 static bool epsil;
 
-Vecteur::Vecteur(const S2d &p1 = {0, 0}, const S2d &p2 = {0, 0}) : x(p2.x - p1.x), y(p2.y - p1.y)
+//struct S2d {double x=0.; double y=0.;}; // J'AI RAJOUTER CA JSP PK CA MARCHAIT PAS SANS
+
+Vecteur::Vecteur(const S2d &p1, const S2d &p2) : x(p2.x - p1.x), y(p2.y - p1.y)
 {
     angle = atan2(y, x);
     norme = sqrt(x * x + y * y);
 }
-Vecteur::Vecteur(const S2d &p, const double &angle, const double &norme) : angle(angle), norme(norme), x(p.x), y(p.y)
+Vecteur::Vecteur(const S2d &p, const double &angle, const double &norme) : x(p.x), y(p.y), angle(angle), norme(norme) 
 {
     if (norme < 0)
     {
@@ -23,7 +28,7 @@ Vecteur::Vecteur(const S2d &p, const double &angle, const double &norme) : angle
 // pour former le vecteur AB, il faut faire vecteur(A,B) et pas vecteur(B,A)
 // pour former le vecteur de norme et d'angle, il faut faire vecteur(A,angle,norme)
 
-Vecteur Vecteur ::reflechis(const S2d &point)
+Vecteur Vecteur::reflechis(const S2d &point)
 {
     S2d point_zero_zero;                      // Creer le vectueur centre du cercle -> Point(0,0)
     Vecteur v_centre(point_zero_zero, point); // Creer le vecteur entre le centre du cercle et

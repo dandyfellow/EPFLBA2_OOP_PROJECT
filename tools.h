@@ -2,9 +2,11 @@
 #define TOOLS_H
 
 #include <iostream>
-#include <cmath>
+#include <cmath> //necessaire?
+#include <cstdlib>
 
-constexpr double epsil_zero(0.5);
+
+//constexpr double epsil_zero(0.5);
 
 struct S2d {double x=0.; double y=0.;};
 

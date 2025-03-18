@@ -20,38 +20,37 @@ EXEC = main
 # Directories
 BUILD_DIR = build
 
-all: check_build $(EXEC)
+all: $(BUILD_DIR) $(EXEC)
 
-check_build:
-	@if [ ! -d "$(BUILD_DIR)" ]; then \
-		echo "Erreur: Le dossier $(BUILD_DIR) n'existe pas. Créez-le avec 'mkdir $(BUILD_DIR)'"; \
-		exit 1; \
-	fi
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)
+
 $(BUILD_DIR)/chaine.o: chaine.cc chaine.h tools.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/jeu.o: $(MODULE_DIR)/jeu/jeu.cc $(MODULE_DIR)/keu/jeu.h $(MODULE_DIR)/tools/tools.h $(MODULE_DIR)/chaine/chaine.h $(MODULE_DIR)/message/message.h $(MODULE_DIR)/mobile/mobile.h
+$(BUILD_DIR)/jeu.o: jeu.cc jeu.h tools.h chaine.h message.h mobile.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/message.o: $(MODULE_DIR)/message/message.cc $(MODULE_DIR)/message/message.h
+$(BUILD_DIR)/message.o: message.cc message.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/mobile.o: $(MODULE_DIR)/mobile/mobile.cc $(MODULE_DIR)/mobile/mobile.h $(MODULE_DIR)/message/message.h
+$(BUILD_DIR)/mobile.o: mobile.cc mobile.h message.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/tools.o: $(MODULE_DIR)/tools/tools.cc $(MODULE_DIR)/tools/tools.h
+$(BUILD_DIR)/tools.o: tools.cc tools.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/main.o: main.cc $(MODULE_DIR)/jeu/jeu.h
+$(BUILD_DIR)/main.o: main.cc jeu.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-main: $(MODULE_DIR) $(OBJ)
+$(EXEC): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
 clean: 
-	@echo "*** EFFACE MODULES OBJET ET EXECUTABLE ***"
-#inutile @/bin/rm -f *.o *.x *.cc~ *.h~
-	@rm -rf $(BUILD_DIR) $(EXEC)
+	@echo "*** EFFACE OBJET ET EXECUTABLE ***"
+#@rm -rf $(BUILD_DIR) $(EXEC)
+	@$(BUILD_DIR)/bin/rm -f *.o *.x *.cc~ *.h~
+	
 
 #forcer la recompilation complete
 rebuild: clean all 
