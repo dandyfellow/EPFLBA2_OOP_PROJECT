@@ -1,6 +1,12 @@
 #include <iostream>
 #include <fstream>
 
+#include "chaine.h"
+#include "mobile.h"
+#include "message.h"
+#include "tools.h"
+#include "jeu.h"  
+
 using namespace std;
 
 void lecture()

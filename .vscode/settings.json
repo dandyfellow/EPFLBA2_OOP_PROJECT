@@ -59,5 +59,6 @@
   "files.associations": {
     "iosfwd": "cpp",
     "ostream": "cpp"
-  }
+  },
+  "makefile.configureOnOpen": true
 }

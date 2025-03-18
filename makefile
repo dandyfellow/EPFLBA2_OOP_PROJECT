@@ -1,54 +1,57 @@
-#structure
-#target: dependencies
-#    command
-
-main: main.o tools.o# main.o is a dependency of main. Main is the target.
-	g++ -o main main.o tools.o
-# g++ -o main main.o is the command to create the target main from the dependency main.o
-
-#We can declare variables to make the makefile more readable
+#Compiler and flags 			We can declare variables to make the makefile more readable
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17 -g#compiler flags for warnings and standard selection
-SRCS = main.cpp utils.cpp #list of all source files
-OBJ = main.o utils.o #list of all object files
-EXEC = main #name of the final executable
+CXXFLAGS = -Wall -Wextra -std=c++17 -g 
+SRCS = main.cc \
+	chaine.cc \
+	jeu.cc \
+	message.cc \
+	mobile.cc \
+	tools.cc
 
-#compiling
-%.o: %.cpp
+OBJ = $(BUILD_DIR)/main.o \
+	$(BUILD_DIR)/chaine.o \
+	$(BUILD_DIR)/jeu.o \
+	$(BUILD_DIR)/message.o \
+	$(BUILD_DIR)/mobile.o \
+	$(BUILD_DIR)/tools.o 
+
+EXEC = main
+
+# Directories
+BUILD_DIR = build
+
+all: check_build $(EXEC)
+
+check_build:
+	@if [ ! -d "$(BUILD_DIR)" ]; then \
+		echo "Erreur: Le dossier $(BUILD_DIR) n'existe pas. Créez-le avec 'mkdir $(BUILD_DIR)'"; \
+		exit 1; \
+	fi
+$(BUILD_DIR)/chaine.o: chaine.cc chaine.h tools.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+$(BUILD_DIR)/jeu.o: $(MODULE_DIR)/jeu/jeu.cc $(MODULE_DIR)/keu/jeu.h $(MODULE_DIR)/tools/tools.h $(MODULE_DIR)/chaine/chaine.h $(MODULE_DIR)/message/message.h $(MODULE_DIR)/mobile/mobile.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-//nouveau makefile
+$(BUILD_DIR)/message.o: $(MODULE_DIR)/message/message.cc $(MODULE_DIR)/message/message.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
- # Définir le compilateur et les options de compilation
-CC = g++                 # Nom du compilateur (tu peux le changer si tu veux utiliser un autre compilateur)
-CFLAGS = -Wall           # Options de compilation (ici, affichage des avertissements)
+$(BUILD_DIR)/mobile.o: $(MODULE_DIR)/mobile/mobile.cc $(MODULE_DIR)/mobile/mobile.h $(MODULE_DIR)/message/message.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Répertoires
-SRC_DIR = src            # Répertoire contenant les fichiers source .cpp
-OBJ_DIR = obj            # Répertoire où seront stockés les fichiers objets .o
-BIN_DIR = bin            # Répertoire où sera stocké l'exécutable final
+$(BUILD_DIR)/tools.o: $(MODULE_DIR)/tools/tools.cc $(MODULE_DIR)/tools/tools.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Nom de l'exécutable
-EXEC = $(BIN_DIR)/mon_programme  # Remplace "mon_programme" par le nom de ton exécutable
+$(BUILD_DIR)/main.o: main.cc $(MODULE_DIR)/jeu/jeu.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Fichiers source (ici, tous les fichiers .cpp dans src)
-SOURCES = $(wildcard $(SRC_DIR)/*.cpp)  # Trouve tous les fichiers .cpp dans le répertoire src
+main: $(MODULE_DIR) $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
-# Fichiers objets (correspondants aux fichiers source)
-OBJECTS = $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)  # Remplace les .cpp par .o dans le répertoire obj
+clean: 
+	@echo "*** EFFACE MODULES OBJET ET EXECUTABLE ***"
+#inutile @/bin/rm -f *.o *.x *.cc~ *.h~
+	@rm -rf $(BUILD_DIR) $(EXEC)
 
-# Cible par défaut (tout construire)
-all: $(EXEC)
-
-# Règle pour l'exécutable
-$(EXEC): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(EXEC)  # Lier les fichiers objets pour créer l'exécutable
-
-# Règle pour compiler les fichiers .cpp en fichiers .o
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@  # Compiler chaque fichier .cpp en .o dans le répertoire obj
-
-# Cible pour nettoyer les fichiers générés
-clean:
-	rm -f $(OBJ_DIR)/*.o $(EXEC)  # Supprimer les fichiers objets et l'exécutable
+#forcer la recompilation complete
+rebuild: clean all 

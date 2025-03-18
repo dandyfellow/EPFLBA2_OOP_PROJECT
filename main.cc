@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cmath>
-#include "tools/tools.h"
+
+#include "jeu.h" //definitif
+#include "tools.h" //ENLEVER QUADN PLUS NECESSAIRE
+
 
 int main() {
   

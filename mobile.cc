@@ -1,6 +1,9 @@
 #include <iostream> 
-#include "tools/tools.h"
+
+#include "tools.h"
 #include "constantes.h"
+#include "message.h"
+#include "mobile.h"
 
 using namespace std;
 
