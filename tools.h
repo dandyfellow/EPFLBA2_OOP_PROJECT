@@ -2,20 +2,20 @@
 #define TOOLS_H
 
 #include <iostream>
-#include <cmath> //necessaire?
 #include <cstdlib>
 
+struct S2d {
+    double x = 0.;
+    double y = 0.;
+};
 
-//constexpr double epsil_zero(0.5);
-
-struct S2d {double x=0.; double y=0.;};
-
-class Vecteur { //Vecteur, x, y, angle, norme, avec deux constructeurs 
+class Vecteur {
 public:
-    Vecteur(const S2d& p1={0,0}, const S2d& p2={0,0});
+    Vecteur(const S2d& p1 = {0, 0}, const S2d& p2 = {0, 0});
     Vecteur(const S2d& p, const double& angle, const double& norme);
     Vecteur reflechis(const S2d& point);
-    //getters and setters
+
+    // Getters and setters
     double get_x() const;
     double get_y() const;
     double get_angle() const;
@@ -26,30 +26,31 @@ public:
     void set_norme(double norme);
 
 private:
-    double x=0.;
-    double y=0.;
-    double angle=0.; //en radians
-    double norme=0.;
+    double x = 0.;
+    double y = 0.;
+    double angle = 0.; // en radians
+    double norme = 0.;
 };
 
 class Cercle {
 public:
     Cercle(S2d centre, double rayon);
-    //getters and setters
+
+    // Getters and setters
     S2d get_centre() const;
     double get_rayon() const;
     void set_centre(S2d centre);
     void set_rayon(double rayon);
+
 private:
     S2d centre;
     double rayon;
 };
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//                          INDEPENDENT FUNCTIONS
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- bool inclusion(const Cercle &c1, const Cercle &c2);
- bool intrusion(const Cercle &c1, const Cercle &c2);
- void epsilTrue();
- void epsilFalse();
 
- #endif // TOOLS_H
+// Independent functions
+bool inclusion(const Cercle &c1, const Cercle &c2);
+bool intrusion(const Cercle &c1, const Cercle &c2);
+void epsilTrue();
+void epsilFalse();
+
+#endif // TOOLS_H
