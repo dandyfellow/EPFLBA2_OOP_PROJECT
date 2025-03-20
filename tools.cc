@@ -1,15 +1,17 @@
+using namespace std;
+
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
+
 #include "tools.h"
 
-using namespace std;
+
 
 constexpr double epsil_zero = 0.5;
 static bool epsil = false;
 
-Vecteur::Vecteur(const S2d &p1, const S2d &p2)
-    : x(p2.x - p1.x), y(p2.y - p1.y)
+Vecteur::Vecteur(const S2d &p1, const S2d &p2) : x(p2.x - p1.x), y(p2.y - p1.y)
 {
     angle = atan2(y, x);
     norme = sqrt(x * x + y * y);
@@ -56,8 +58,8 @@ Cercle::Cercle(S2d centre, double rayon)
 // Getters and setters
 S2d Cercle::get_centre() const { return centre; }
 double Cercle::get_rayon() const { return rayon; }
-void Cercle::set_centre(S2d new_centre) { this->centre = new_centre; }
-void Cercle::set_rayon(double new_rayon) { this->rayon = new_rayon; }
+void Cercle::set_centre(S2d centre) { this->centre = centre; }
+void Cercle::set_rayon(double rayon) { this->rayon = rayon; }
 
 bool inclusion(const Cercle &c1, const Cercle &c2)
 {
@@ -81,34 +83,4 @@ void epsilTrue()
 void epsilFalse()
 {
     epsil = false;
-}
-
-int main() {
-    // Test Vecteur class
-    S2d p1 = {0, 0};
-    S2d p2 = {3, 4};
-    Vecteur v1(p1, p2);
-
-    assert(fabs(v1.get_x() - 3.0) < 1e-9);
-    assert(fabs(v1.get_y() - 4.0) < 1e-9);
-    assert(fabs(v1.get_norme() - 5.0) < 1e-9);
-
-    // Test Cercle class
-    Cercle c1(p1, 5);
-    Cercle c2(p2, 2);
-
-    assert(fabs(c1.get_rayon() - 5.0) < 1e-9);
-    assert(fabs(c2.get_rayon() - 2.0) < 1e-9);
-
-    // Test inclusion and intrusion
-    epsilTrue();
-    assert(inclusion(c1, c2) == false);
-    assert(intrusion(c1, c2) == true);
-
-    epsilFalse();
-    assert(inclusion(c1, c2) == false);
-    assert(intrusion(c1, c2) == true);
-
-    cout << "All tests passed!" << endl;
-    return 0;
 }

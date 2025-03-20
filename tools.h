@@ -1,6 +1,7 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
+#include <cmath>
 #include <iostream>
 #include <cstdlib>
 

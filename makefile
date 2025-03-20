@@ -8,49 +8,54 @@ SRCS = main.cc \
 	mobile.cc \
 	tools.cc
 
-OBJ = $(BUILD_DIR)/main.o \
-	$(BUILD_DIR)/chaine.o \
-	$(BUILD_DIR)/jeu.o \
-	$(BUILD_DIR)/message.o \
-	$(BUILD_DIR)/mobile.o \
-	$(BUILD_DIR)/tools.o 
+OBJ = main.o \
+	chaine.o \
+	jeu.o \
+	message.o \
+	mobile.o \
+	tools.o 
 
 EXEC = main
 
 # Directories
-BUILD_DIR = build
 
-all: $(BUILD_DIR) $(EXEC)
 
-$(BUILD_DIR):
-	@mkdir -p $(BUILD_DIR)
+all: $(EXEC) 
 
-$(BUILD_DIR)/chaine.o: chaine.cc chaine.h tools.h
+chaine.o: chaine.cc chaine.h tools.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/jeu.o: jeu.cc jeu.h tools.h chaine.h message.h mobile.h
+jeu.o: jeu.cc jeu.h tools.h chaine.h message.h mobile.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/message.o: message.cc message.h
+message.o: message.cc message.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/mobile.o: mobile.cc mobile.h message.h
+mobile.o: mobile.cc mobile.h message.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/tools.o: tools.cc tools.h
+tools.o: tools.cc tools.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD_DIR)/main.o: main.cc jeu.h
+main.o: main.cc jeu.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(EXEC): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
+# Detect Windows OS
+IS_WINDOWS := $(OS)
+
 clean: 
 	@echo "*** EFFACE OBJET ET EXECUTABLE ***"
-#@rm -rf $(BUILD_DIR) $(EXEC)
-	@$(BUILD_DIR)/bin/rm -f *.o *.x *.cc~ *.h~
-	
+ifeq ($(IS_WINDOWS),Windows_NT)  # Windows
+	@if exist $(EXEC) del /q $(EXEC)  
+	@del /q /f *.o *.x *.cc~ *.h~ 2>nul
+else  # Linux/macOS
+	@rm -f $(EXEC)
+	@rm -f *.o *.x *.cc~ *.h~
+endif
+
 
 #forcer la recompilation complete
 rebuild: clean all 
