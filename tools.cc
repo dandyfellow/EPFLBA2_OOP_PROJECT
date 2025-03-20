@@ -1,5 +1,7 @@
 using namespace std;
 
+#define _USE_MATH_DEFINES
+
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
@@ -29,7 +31,7 @@ Vecteur::Vecteur(const S2d &p, const double &angle, const double &norme)
 
 Vecteur Vecteur::reflechis(const S2d &point)
 {
-    S2d point_zero_zero;
+    S2d point_zero_zero; 
     Vecteur v_centre(point_zero_zero, point);
     Vecteur reflechis(point, (M_PI + 2 * v_centre.get_angle() - this->get_angle()), this->get_norme());
     return reflechis;
