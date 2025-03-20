@@ -1,6 +1,6 @@
 using namespace std;
 
-#define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES //pour cmath constantes
 
 #include <cmath>
 #include <iostream>
@@ -13,13 +13,13 @@ using namespace std;
 constexpr double epsil_zero = 0.5;
 static bool epsil = false;
 
-Vecteur::Vecteur(const S2d &p1, const S2d &p2) : x(p2.x - p1.x), y(p2.y - p1.y)
+Vecteur::Vecteur(const S2d& p1, const S2d& p2) : x(p2.x - p1.x), y(p2.y - p1.y)
 {
     angle = atan2(y, x);
     norme = sqrt(x * x + y * y);
 }
 
-Vecteur::Vecteur(const S2d &p, const double &angle, const double &norme)
+Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
     : x(p.x), y(p.y), angle(angle), norme(norme)
 {
     if (norme < 0)
@@ -33,7 +33,11 @@ Vecteur Vecteur::reflechis(const S2d &point)
 {
     S2d point_zero_zero; 
     Vecteur v_centre(point_zero_zero, point);
-    Vecteur reflechis(point, (M_PI + 2 * v_centre.get_angle() - this->get_angle()), this->get_norme());
+    double angle = M_PI + 2 * v_centre.get_angle() - this->get_angle();
+    if (angle < -M_PI or angle > M_PI){ //normaliser la norme entre -pi et pi
+        angle = fmod(angle, M_PI);
+    }
+    Vecteur reflechis(point, this->get_norme(), angle);
     return reflechis;
 }
 
