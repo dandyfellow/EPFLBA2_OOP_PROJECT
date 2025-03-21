@@ -25,7 +25,7 @@ public:
     void set_y(double y);
     void set_angle(double angle);
     void set_norme(double norme);
-
+    
 private:
     double x = 0.;
     double y = 0.;
@@ -43,15 +43,19 @@ public:
     void set_centre(S2d centre);
     void set_rayon(double rayon);
 
+    static bool epsil;
+    static void epsilTrue();
+    static void epsilFalse();
+    static bool get_epsil();
+
+    static bool inclusion(const Cercle &c1, const Cercle &c2);
+    static bool intrusion(const Cercle &c1, const Cercle &c2);
+
 private:
     S2d centre = {0, 0};
     double rayon = 0.;
 };
 
 // Independent functions
-bool inclusion(const Cercle &c1, const Cercle &c2);
-bool intrusion(const Cercle &c1, const Cercle &c2);
-void epsilTrue();
-void epsilFalse();
 
 #endif // TOOLS_H

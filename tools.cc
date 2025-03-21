@@ -11,7 +11,7 @@ using namespace std;
 
 
 constexpr double epsil_zero = 0.5;
-static bool epsil = false;
+
 
 Vecteur::Vecteur(const S2d& p1, const S2d& p2) : x(p2.x - p1.x), y(p2.y - p1.y)
 {
@@ -39,6 +39,8 @@ Vecteur Vecteur::reflechis(const S2d &point)
     }
     Vecteur reflechis(point, this->get_norme(), angle);
     return reflechis;
+    //la fonction reflechis marche pour les cas logiques, CAD pour les cas qui se produiront.
+    //Si le vecteur va dans le sens opposé du point de reflexion, alors les résultats sont bidons.
 }
 
 // Getters and setters
@@ -56,7 +58,7 @@ Cercle::Cercle(S2d centre, double rayon)
 {
     if (rayon < 0)
     {
-        cerr << "rayon negatif, tools.cc " << __LINE__ << endl;
+        cerr << "rayon negatif, tools.cc, l" << __LINE__ << endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -65,28 +67,32 @@ Cercle::Cercle(S2d centre, double rayon)
 S2d Cercle::get_centre() const { return centre; }
 double Cercle::get_rayon() const { return rayon; }
 void Cercle::set_centre(S2d centre) { this->centre = centre; }
-void Cercle::set_rayon(double rayon) { this->rayon = rayon; }
+void Cercle::set_rayon(double rayon) { 
+    if (rayon < 0)
+    {
+        cerr << "rayon negatif, tools.cc, l" << __LINE__ << endl;
+        exit(EXIT_FAILURE);
+    }
+    this->rayon = rayon; 
+}
+void Cercle::epsilTrue() { epsil = true; }
+void Cercle::epsilFalse() { epsil = false; }// no static needed in .cc file
+bool Cercle::get_epsil() { return epsil; } // techniquement inutile
+//on peut juste acceder direct par Cercle::epsil
 
-bool inclusion(const Cercle &c1, const Cercle &c2)
+bool Cercle::inclusion(const Cercle &c1, const Cercle &c2)
 {
     Vecteur v1(c2.get_centre(), c1.get_centre());
     double distance = v1.get_norme();
     return (distance < (c1.get_rayon() - c2.get_rayon() - epsil_zero * epsil));
 }
 
-bool intrusion(const Cercle &c1, const Cercle &c2)
+bool Cercle::intrusion(const Cercle &c1, const Cercle &c2)
 {
     Vecteur v1(c2.get_centre(), c1.get_centre());
     double distance = v1.get_norme();
     return (distance < (c1.get_rayon() + c2.get_rayon() + epsil_zero * epsil));
 }
+bool Cercle::epsil = false;  //Define the static variable
 
-void epsilTrue()
-{
-    epsil = true;
-}
 
-void epsilFalse()
-{
-    epsil = false;
-}
