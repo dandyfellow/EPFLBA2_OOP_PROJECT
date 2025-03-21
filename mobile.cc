@@ -11,7 +11,7 @@ class Arene {
     public:
         Arene(double r) : r_max(r), centre(), arene({0,0},0 , r) {}  //constexpr en parametre 
                                             //j'ai changé l'argument en metant 0,0 pour le centre et 0 pour l'angle
-        Vecteur get_vecteur() const { return arene; }
+        Vecteur get_vecteur() const {return arene;}
         
         bool in_cercle(S2d position, double rayon) const {
             Vecteur mobile(position);
@@ -27,21 +27,23 @@ class Arene {
 class Mobile{
     public:
      void mise_a_jour(Arene arene){
-       // position.x+= vitesseX;
-       // position.y+= vitesseY;
-        if (arene.in_cercle(position, rayon)){return;}
-        else{
-       //     position.x-=vitesseX;
-       //     position.y-=vitesseY;
-            Vecteur mobile(position);
-       //     vecteur actuel =mobile.reflechis(); 
+        position.x += vitesse.get_norme() * cos(alpha);
+        position.y += vitesse.get_norme() * sin(alpha);
+        if (arene.in_cercle(position, rayon)){
+            return;
+        }else{
+            position.x -= vitesse.get_norme() * cos(alpha);
+            position.y -= vitesse.get_norme() * sin(alpha);
+            vitesse = vitesse.reflechis(position);
+             //alpha = nouvel angle de deplacement du vecteur reflechis = - alpha 
         }       
      };
 
 
     protected:
     S2d position;
-    // orientation alpha du deplacement 
+    Vecteur vitesse;
+    double alpha; // orientation alpha du deplacement 
     double rayon;
 
 
