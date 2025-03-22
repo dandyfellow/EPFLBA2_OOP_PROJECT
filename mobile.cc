@@ -23,7 +23,8 @@ class Arene {
         Vecteur arene;  
         double r_max;  
     };
-    
+  
+/* J'ai tout mis en commentaire pasque sinons ca marche pas avec mobile.h et jeu.cc
 class Mobile{
     public:
      void mise_a_jour(Arene arene){
@@ -46,6 +47,7 @@ class Mobile{
 
 
 };
+*/
+//class Faiseur : public Mobile {}; j'ai mis dans mobile.h sinons ca marche pas pour jeu.cc
+//class Particule : public Mobile{};
 
-class Faiseur : public Mobile {};
-class Particule : public Mobile{};

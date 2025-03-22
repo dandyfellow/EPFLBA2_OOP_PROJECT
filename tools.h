@@ -50,7 +50,6 @@ public:
 
     static bool inclusion(const Cercle &c1, const Cercle &c2);
     static bool intrusion(const Cercle &c1, const Cercle &c2);
-
 private:
     S2d centre = {0, 0};
     double rayon = 0.;

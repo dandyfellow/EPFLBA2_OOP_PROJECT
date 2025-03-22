@@ -1,21 +1,21 @@
 #Compiler and flags 			We can declare variables to make the makefile more readable
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17 -g 
-SRCS = main.cc \
+SRCS = projet.cc \
 	chaine.cc \
 	jeu.cc \
 	message.cc \
 	mobile.cc \
 	tools.cc
 
-OBJ = main.o \
+OBJ = projet.o \
 	chaine.o \
 	jeu.o \
 	message.o \
 	mobile.o \
 	tools.o 
 
-EXEC = main
+EXEC = projet
 
 # Directories
 
@@ -37,7 +37,7 @@ mobile.o: mobile.cc mobile.h message.h
 tools.o: tools.cc tools.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-main.o: main.cc jeu.h
+projet.o: projet.cc jeu.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(EXEC): $(OBJ)

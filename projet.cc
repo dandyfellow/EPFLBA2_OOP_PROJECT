@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
+#include <fstream>
 
 #include "jeu.h" //definitif
 #include "tools.h" //ENLEVER QUAND PLUS NECESSAIRE
@@ -9,8 +11,30 @@
 using namespace std;
 
 
-int main() {
-  
+int main(int argc, char * argv[]) {
+    if(argc != 2) {
+        cerr << "Usage correct: ./projet nom_du_ficher.txt" << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    string nom_fichier = argv[1];
+	cout << "fichier: " << nom_fichier << endl;
+    Jeu jeu;
+
+    if(!jeu.lecture(nom_fichier)) {
+        //pas besoin de mettre de message d'erreur, les erreurs sont déjà gérées dans la fonction lecture
+        exit(EXIT_FAILURE);
+    }
+
+    jeu.success();
+    exit(EXIT_SUCCESS);
+
+
+//---------------------------------------------------------------------------------------------------------------------
+//          SEPARATION ENTRE LES TESTS ET LE CODE FINAL	
+//---------------------------------------------------------------------------------------------------------------------
+    
+  /*
     cout << "Hello, World!" << std::endl;
     //testing
     S2d p1;
@@ -102,5 +126,6 @@ int main() {
     cout << Cercle::intrusion(c1, c3) << endl;
     cout << Cercle::intrusion(c1, c1) << endl;
 
+*/
     return 0;
 }

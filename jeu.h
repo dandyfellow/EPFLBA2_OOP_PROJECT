@@ -6,4 +6,16 @@
 #include "message.h"
 #include "tools.h"
 
+#include <string> 
+
+
+class Jeu {
+public:
+    bool lecture(std::string nom_fichier);
+    void success();
+};
+
+
+
+
 #endif
