@@ -45,6 +45,8 @@ class Mobile{
         }       
      };
      // methode de lecture fichier 
+     double get_positionx(){return position.x;};
+     double get_positiony(){return position.y;};
 
     protected:
     S2d position;
@@ -68,9 +70,9 @@ class Particule : public Mobile{
                 delete this;
             }else{
                 Vecteur nouvelle_vitesse1(position, (vitesse.get_norme()*coef_split), alpha+delta_split);
-                Particule* nouvelle_particule1 = new Particule(position, nouvelle_vitesse1, alpha+delta_split);
+                Particule* particule1 = new Particule(position, nouvelle_vitesse1, alpha+delta_split);
                 Vecteur nouvelle_vitesse2(position, (vitesse.get_norme()*coef_split), alpha-delta_split);
-                Particule* nouvelle_particule2 = new Particule(position, nouvelle_vitesse2, alpha-delta_split);
+                Particule* particule2 = new Particule(position, nouvelle_vitesse2, alpha-delta_split);
                 delete this;
             }
         }
@@ -92,22 +94,17 @@ Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon
         liste_faiseurs.push_back(this);
     };
     void mise_a_jour(const Arene &arene){
-        Mobile:mise_a_jour(arene);
+        Mobile::mise_a_jour(arene);
         for (const auto& autre : liste_faiseurs){
             if (autre != this && collisions(autre)){
                 return; 
             }
         } 
-        for(int i = nbs_elements; i > 0; --i){
+        for(int i = nbs_elements - 1; i > 0; --i){
             elements[i]=elements[i-1];
         } 
-        elements[0]={position.x,position.y};
+        elements[0]={(position.x),(position.y)};
     }
-private:
-    int nbs_elements;
-    vector<S2d> elements;
-    static vector<Faiseur*> liste_faiseurs;
-
     bool collisions(const Faiseur *autre){
         for (const auto &e1 : elements){
             Cercle c1(e1, rayon);
@@ -120,6 +117,54 @@ private:
         }
         return false;
     }
-};
-vector<Faiseur*> Faiseur::liste_faiseurs = {};
+private:
+    int nbs_elements;
+    vector<S2d> elements;
+    static vector<Faiseur*> liste_faiseurs;
 
+};
+vector<Faiseur*> Faiseur::liste_faiseurs;
+
+
+int main() {
+    // Créer une arène avec un rayon de 10 unités
+    Arene arene(10.0);
+
+    // Créer deux Faiseurs qui se touchent après deux mises à jour
+    S2d positionFaiseur1 = {0.0, 0.0};
+    Vecteur vitesseFaiseur1(positionFaiseur1, 1.0, 0.0); // Vitesse dirigée vers la droite
+    Faiseur faiseur1(positionFaiseur1, vitesseFaiseur1, 0.0, 1.0, 5);
+
+    S2d positionFaiseur2 = {2.0, 0.0};
+    Vecteur vitesseFaiseur2(positionFaiseur2, 1.0, M_PI); // Vitesse dirigée vers la gauche
+    Faiseur faiseur2(positionFaiseur2, vitesseFaiseur2, M_PI, 1.0, 5);
+
+    // Mettre à jour les positions des Faiseurs
+    faiseur1.mise_a_jour(arene);
+    faiseur2.mise_a_jour(arene);
+    faiseur1.mise_a_jour(arene);
+    faiseur2.mise_a_jour(arene);
+
+    // Vérifier s'ils se touchent
+    if (faiseur1.collisions(&faiseur2)) {
+        std::cout << "Les Faiseurs se touchent après deux mises à jour." << std::endl;
+    } else {
+        std::cout << "Les Faiseurs ne se touchent pas." << std::endl;
+    }
+
+    // Créer une Particule qui rebondit
+    S2d positionParticule = {5.0, 0.0};
+    Vecteur vitesseParticule(positionParticule, 2.0, M_PI / 4); // Vitesse dirigée en diagonale
+    Particule particule(positionParticule, vitesseParticule, M_PI / 4);
+
+    // Mettre à jour la position de la Particule
+    particule.mise_a_jour(arene);
+    particule.mise_a_jour(arene);
+
+    // Afficher la position finale de la Particule
+    std::cout << "Position finale de la Particule : ("
+              << particule.get_positionx() << ", "
+              << particule.get_positiony() << ")" << std::endl;
+
+    return 0;
+}

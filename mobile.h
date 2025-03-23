@@ -5,7 +5,7 @@
 //#include "constantes.h"
 #include "message.h"
 
-
+/*
 class Mobile{};
 class Faiseur : public Mobile {};
 class Particule : public Mobile {};
