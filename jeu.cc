@@ -8,37 +8,13 @@
 #include "message.h"
 #include "tools.h"
 #include "jeu.h"  
+#include "constantes.h"
 
 using namespace std;
 
 enum Etat {SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAINE, CHAINE_MODE, FIN};
 enum Chaine_mode {CONSTRUCTION, GUIDAGE};
-static vector<Faiseur>   tFaiseur;
-static vector<Particule> tParticule;
-static vector<Chaine>    tChaine;
 
-static unsigned int score = 0;
-static unsigned int nb_particule = 0;
-static unsigned int nb_faiseur = 0;
-static unsigned int nb_chaine = 0;
-
-static Etat etat = SCORE;
-static Chaine_mode mode;
-
-//PROTOTYPES -----------------------------------------------------------------
-bool imprimer_data(istringstream& data);
-void reset();
-bool decodage_ligne(istringstream& data);
-bool decodage_score(istringstream& data);
-bool decodage_nb_particule(istringstream& data);
-bool decodage_particule(istringstream& data);
-bool decodage_nb_faiseur(istringstream& data);
-bool decodage_faiseur(istringstream& data);
-bool decodage_nb_chaine(istringstream& data);
-bool decodage_chaine(istringstream& data);
-bool decodage_chaine_mode(istringstream& data);
-
-//END OF PROTOTYPES -----------------------------------------------------------
 
 void reset(){
 	score = 0;
@@ -53,7 +29,7 @@ bool imprimer_data(istringstream& data)
 	string mot;
 	while(data >> mot) {
 		cout << mot << txt;
-	}
+	} //THIS IS FOR TESTING
 	cout << endl;
 	return true;
 }
@@ -90,7 +66,7 @@ bool Jeu::lecture(string nom_fichier){
 
 
 //			/*
-bool decodage_ligne(istringstream& data) {
+bool Jeu::decodage_ligne(istringstream& data) {
 	switch(etat) 
 	{
 	case SCORE: // lecture du nombre de livreurs
@@ -133,8 +109,12 @@ bool decodage_ligne(istringstream& data) {
 }
 //			*/
 
-bool decodage_score(istringstream& data){
+bool Jeu::decodage_score(istringstream& data){
 	if(data >> score){
+		if(score <= 0 or score > score_max) {
+			message::score_outside(score);
+			return false;
+		}
 		cout << "score: " << score << endl; //remove later, just for testing
 		return true;
 	}
@@ -142,52 +122,37 @@ bool decodage_score(istringstream& data){
 }
 
 bool decodage_nb_particule(istringstream& data) {
-	if(data >> nb_particule){
-		if(nb_particule == 0) {etat = NB_FAISEUR;}
+	if(data >> nb_particule_init){
+		if(nb_particule_init < 0 or nb_particule_init > nb_particule_max) {
+			message::nb_particule_outside(nb_particule_init);
+			return false;
+		}
+		if(nb_particule_init == 0) {etat = NB_FAISEUR;}
 		else {etat = PARTICULE;}
-		cout << "nb particules: " << nb_particule << endl; //remove later, just for testing
+		cout << "nb particules: " << nb_particule_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;
 }
 bool decodage_particule(istringstream& data) {
-	for(unsigned int i(0); i < nb_particule; i++){
-		Particule p;
-		if(p.lecture(data) == false) {return false;}
-		else {
-			tParticule.push_back(p);
-		}
-		/*
-		double x;
-		double y;
-		double angle;
-		double deplacement;
-		double compteur;
-		data >> x;
-		data >> y;
-		data >> angle;
-		data >> deplacement;
-		data >> compteur;
-		//creer une fonction lecture pour chaque type de mobile?
-		//p(x, y, angle, deplacement, compteur);
-		tParticule.push_back(p);
-		*/
+	for(unsigned int i(0); i < nb_particule_init; i++){
+		if(lecture_c(data) == false){return false;}
 	}
 	etat = NB_FAISEUR;
 	return true;
 }
 bool decodage_nb_faiseur(istringstream& data) {
-	if(data >> nb_faiseur){
-		if(nb_faiseur == 0) {etat = NB_CHAINE;}
+	if(data >> nb_faiseur_init){
+		if(nb_faiseur_init == 0) {etat = NB_CHAINE;}
 		else {etat = FAISEUR;}
-		cout << "nb faiseur: " << nb_faiseur << endl; //remove later, just for testing
+		cout << "nb faiseur: " << nb_faiseur_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;
 }
 
 bool decodage_faiseur(istringstream& data) {
-	for(unsigned int i(0); i < nb_faiseur; i++){
+	for(unsigned int i(0); i < nb_faiseur_init; i++){
 		Faiseur f;
 		if(f.lecture(data) == false) {return false;}
 		else {
@@ -198,16 +163,16 @@ bool decodage_faiseur(istringstream& data) {
 	return true;
 }
 bool decodage_nb_chaine(istringstream& data) {
-	if(data >> nb_chaine){
-		if(nb_chaine == 0) {etat = CHAINE_MODE;}
+	if(data >> nb_chaine_init){
+		if(nb_chaine_init == 0) {etat = CHAINE_MODE;}
 		else {etat = CHAINE;}
-		cout << "nb chaine: " << nb_chaine << endl; //remove later, just for testing
+		cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;
 }
 bool decodage_chaine(istringstream& data) {
-	for(unsigned int i(0); i < nb_chaine; i++){
+	for(unsigned int i(0); i < nb_chaine_init; i++){
 		Chaine c;
 		if(c.lecture(data) == false) {return false;}
 		else {

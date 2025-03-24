@@ -61,7 +61,11 @@
     "ostream": "cpp",
     "cmath": "cpp",
     "cwchar": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "array": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "vector": "cpp"
   },
   "makefile.configureOnOpen": true
 }
