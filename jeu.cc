@@ -13,7 +13,7 @@
 using namespace std;
 
 enum Etat {SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAINE, CHAINE_MODE, FIN};
-enum Chaine_mode {CONSTRUCTION, GUIDAGE};
+
 
 
 void reset(){
@@ -153,11 +153,7 @@ bool decodage_nb_faiseur(istringstream& data) {
 
 bool decodage_faiseur(istringstream& data) {
 	for(unsigned int i(0); i < nb_faiseur_init; i++){
-		Faiseur f;
-		if(f.lecture(data) == false) {return false;}
-		else {
-			tFaiseur.push_back(f);
-		}
+		if(lecture_f(data) == false) {return false;}
 	}
 	etat = NB_CHAINE;
 	return true;
@@ -173,26 +169,15 @@ bool decodage_nb_chaine(istringstream& data) {
 }
 bool decodage_chaine(istringstream& data) {
 	for(unsigned int i(0); i < nb_chaine_init; i++){
-		Chaine c;
-		if(c.lecture(data) == false) {return false;}
-		else {
-			tChaine.push_back(c);
-		}
+		if(lecture_c(data) == false) {return false;}
 	}
 	etat = CHAINE_MODE;
 	return true;
 }
 bool decodage_chaine_mode(istringstream& data) {
 	etat = FIN;
-	string mot;
-	if(data >> mot){
-		if(mot == "CONSTRUCTION") {mode = CONSTRUCTION;}
-		else if(mot == "GUIDAGE") {mode = GUIDAGE;}
-		else {return false;}
-		cout << "mode: " << mot << endl; //remove later, just for testing
-		return true;
-	}
-	return false;
+	if(lecture_c_mode(data) == false) {return false;}
+	return true;
 }
 /*
 if(une détection d’erreur est vraie)
