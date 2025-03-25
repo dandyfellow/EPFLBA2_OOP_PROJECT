@@ -47,17 +47,21 @@ private:
 class Faiseur : public Mobile {
 public:
     Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements);
-    bool collisions(const Faiseur* autre);
-    static const vector<Faiseur>& get_liste_faiseurs();
-    vector<S2d> get_elements() const;
-    void ajouter_element(const S2d& position);
     static void ajouter_faiseur(const Faiseur& f);
+    static vector<Faiseur>& get_liste_faiseurs();
+    void ajouter_element(const S2d& position);
+    vector<std::pair<int, S2d>> get_elements() const;
+    int get_index() const { return index; }
     
 
 private:
     int nbs_elements;
-    vector<S2d> elements;
-    static vector<Faiseur> liste_faiseurs;
+    static vector<Faiseur> liste_faiseurs;  
+    static int compteur_faiseurs;  // Compteur global d’indices pour les Faiseurs
+
+    int index;  // Identifiant unique du Faiseur
+    vector<std::pair<int, S2d>> elements;  // Chaque élément a un index unique
+    static int compteur_elements;
 };
 
 bool lecture_p(istringstream& data);
