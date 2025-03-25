@@ -21,7 +21,7 @@ class Chaine {
 
         bool distance_points(unsigned int i){
             Vecteur v(chaine[i], chaine[i+1]);
-            if(v.get_norme() <  ){
+            if(v.get_norme() < r_capture){
                 cout << message::chaine_distance(v.get_norme()) << endl;
                 return false;
             }
