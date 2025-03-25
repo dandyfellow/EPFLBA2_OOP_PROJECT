@@ -52,19 +52,24 @@ void Particule::set_nbrs_particules(int n) {
 Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
     : Mobile(position_init, vitesse_init, alpha_init, rayon_init), nbs_elements(nb_elements) {
     elements.resize(nbs_elements, position_init);
-    liste_faiseurs.push_back(this);
 }
 
-vector<Faiseur*>& Faiseur::get_liste_faiseurs() {
+vector<Faiseur> Faiseur::liste_faiseurs;
+
+const vector<Faiseur>& Faiseur::get_liste_faiseurs() {
     return liste_faiseurs;
 }
 
-vector<S2d> Faiseur::get_elements() {
+vector<S2d> Faiseur::get_elements() const {
     return elements;
 }
-vector<S2d> Particule:: add_to_elements(const S2d& element){
-    elements
+void Faiseur::ajouter_element(const S2d& position) {
+    elements.push_back(position);
 }
+const vector<Faiseur>& Faiseur::get_liste_faiseurs() { return liste_faiseurs; }
+void Faiseur::ajouter_faiseur(const Faiseur& f) {liste_faiseurs.push_back(f);}
+    
+
 
 
 
@@ -129,26 +134,25 @@ bool lecture_f(istringstream& data) {
     for (int i = 0; i < nbe; ++i) {
         double new_x = x - i * deplacement * cos(angle);
         double new_y = y - i * deplacement * sin(angle);
-        ({new_x, new_y});
+        f.ajouter_element({new_x, new_y});
     }
 
-    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
+    for (const auto& autre_faiseur : f.get_liste_faiseurs()) {  
         for (const auto& centre : f.get_elements()) {
             Cercle current_cercle(centre, rayon);
-            for (const auto& autre_centre : autre_faiseur->get_elements()) {
-                Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
+            for (const auto& autre_centre : autre_faiseur.get_elements()) { 
+                Cercle autre_cercle(autre_centre, autre_faiseur.get_rayon()); 
                 if (Cercle::intrusion(current_cercle, autre_cercle)) {
-                    cout << message::faiseur_collision(x, y) << endl;
+                    cout << message::faiseur_element_collision(x, y) << endl;
                     return false;
                 }
             }
         }
     }
-    liste_faiseurs.push_back(f);
+    f.ajouter_faiseur(f);  
     return true;
 }
 
-vector<Faiseur*> Faiseur::liste_faiseurs;
 
 
 /*int main() {

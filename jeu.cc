@@ -19,8 +19,24 @@ unsigned int nb_chaine_init = 0;
 
 Etat etat = SCORE;
 
-
-void Jeu::reset(){
+//---------------------------------------------------------------------------------------------------
+// 										PROTOTYPES
+//---------------------------------------------------------------------------------------------------
+void reset();
+bool imprimer_data(istringstream &data);
+bool decodage_score(istringstream &data);
+bool decodage_ligne(istringstream &data);
+bool decodage_nb_particule(istringstream &data);
+bool decodage_particule(istringstream &data);
+bool decodage_nb_faiseur(istringstream &data);
+bool decodage_faiseur(istringstream &data);
+bool decodage_nb_chaine(istringstream &data);
+bool decodage_chaine(istringstream &data);
+bool decodage_chaine_mode(istringstream &data);
+//---------------------------------------------------------------------------------------------------
+// 									END OF PROTOTYPES
+//---------------------------------------------------------------------------------------------------
+void reset(){
 	score = 0;
 	nb_particule_init = 0;
 	nb_faiseur_init = 0;

@@ -48,14 +48,16 @@ class Faiseur : public Mobile {
 public:
     Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements);
     bool collisions(const Faiseur* autre);
-    static vector<Faiseur*>& get_liste_faiseurs();
-    vector<S2d> get_elements();
-    vector<S2d> add_to_elements();
+    static const vector<Faiseur>& get_liste_faiseurs();
+    vector<S2d> get_elements() const;
+    void ajouter_element(const S2d& position);
+    static void ajouter_faiseur(const Faiseur& f);
+    
 
 private:
     int nbs_elements;
     vector<S2d> elements;
-    static vector<Faiseur*> liste_faiseurs;
+    static vector<Faiseur> liste_faiseurs;
 };
 
 bool lecture_p(istringstream& data);
