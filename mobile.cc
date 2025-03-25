@@ -55,12 +55,17 @@ Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, dou
     liste_faiseurs.push_back(this);
 }
 
-static vector Faiseur:: get_liste_faiseurs(){
+vector<Faiseur*>& Faiseur::get_liste_faiseurs() {
     return liste_faiseurs;
 }
-vector Faiseur:: get_elements(){
+
+vector<S2d> Faiseur::get_elements() {
     return elements;
 }
+vector<S2d> Particule:: add_to_elements(const S2d& element){
+    elements
+}
+
 
 
 bool Faiseur::collisions(const Faiseur* autre) {
@@ -124,11 +129,11 @@ bool lecture_f(istringstream& data) {
     for (int i = 0; i < nbe; ++i) {
         double new_x = x - i * deplacement * cos(angle);
         double new_y = y - i * deplacement * sin(angle);
-        f.elements.push_back({new_x, new_y});
+        ({new_x, new_y});
     }
 
     for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
-        for (const auto& centre : f.elements) {
+        for (const auto& centre : f.get_elements()) {
             Cercle current_cercle(centre, rayon);
             for (const auto& autre_centre : autre_faiseur->get_elements()) {
                 Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
