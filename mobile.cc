@@ -17,6 +17,10 @@ double Mobile::get_positiony() const {
     return position.y;
 }
 
+double Mobile::get_rayon() const{
+    return rayon;
+}
+
 Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init, int compteur)
     : Mobile(position_init, vitesse_init, alpha_init, 0.), compteur(compteur) {
     ++nbrs_particules;
@@ -49,6 +53,13 @@ Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, dou
     : Mobile(position_init, vitesse_init, alpha_init, rayon_init), nbs_elements(nb_elements) {
     elements.resize(nbs_elements, position_init);
     liste_faiseurs.push_back(this);
+}
+
+static vector Faiseur:: get_liste_faiseurs(){
+    return liste_faiseurs;
+}
+vector Faiseur:: get_elements(){
+    return elements;
 }
 
 
@@ -108,20 +119,32 @@ bool lecture_f(istringstream& data) {
         cout << message::mobile_displacement(deplacement) << endl;
         return false;
     }
-    if (!Cercle::inclusion(arene, c2)) {
-        cout << message::faiseur_outside(x, y) << endl;
-        return false;
+
+    Faiseur f({x,y}, v.get_norme(), angle, rayon, nbe);
+    for (int i = 0; i < nbe; ++i) {
+        double new_x = x - i * deplacement * cos(angle);
+        double new_y = y - i * deplacement * sin(angle);
+        f.elements.push_back({new_x, new_y});
     }
+
+    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
+        for (const auto& centre : f.elements) {
+            Cercle current_cercle(centre, rayon);
+            for (const auto& autre_centre : autre_faiseur->get_elements()) {
+                Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
+                if (Cercle::intrusion(current_cercle, autre_cercle)) {
+                    cout << message::faiseur_collision(x, y) << endl;
+                    return false;
+                }
+            }
+        }
+    }
+    liste_faiseurs.push_back(f);
     return true;
 }
 
 vector<Faiseur*> Faiseur::liste_faiseurs;
 
-
-
-
-
-// NE PAS TOUCHER CE QU IL Y A APRES_ RIEN EFFACER 
 
 /*int main() {
     // Créer une arène avec un rayon de 10 unités

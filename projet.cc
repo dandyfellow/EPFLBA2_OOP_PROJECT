@@ -22,7 +22,7 @@ int main(int argc, char * argv[]) {
     Jeu jeu;
 
     if(!jeu.lecture(nom_fichier)) {
-        //pas besoin de mettre de message d'erreur, les erreurs sont déjà gérées dans la fonction lecture
+        //les messaages d'erreurs sont gérées dans les fonctions lectures
         exit(EXIT_FAILURE);
     }
 

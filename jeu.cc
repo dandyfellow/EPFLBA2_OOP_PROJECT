@@ -12,24 +12,29 @@
 
 using namespace std;
 
-enum Etat {SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAINE, CHAINE_MODE, FIN};
+unsigned int score = 0;
+unsigned int nb_particule_init = 0;
+unsigned int nb_faiseur_init = 0;
+unsigned int nb_chaine_init = 0;
+
+Etat etat = SCORE;
 
 
-
-void reset(){
+void Jeu::reset(){
 	score = 0;
-	tFaiseur = {};
-	tParticule = {};
-	tChaine = {};
+	nb_particule_init = 0;
+	nb_faiseur_init = 0;
+	nb_chaine_init = 0;
+	etat = SCORE;
 }
 
-bool imprimer_data(istringstream& data)
+bool imprimer_data(istringstream& data) //this function is for testing purpouses only
 {
 	string txt = "";
 	string mot;
 	while(data >> mot) {
 		cout << mot << txt;
-	} //THIS IS FOR TESTING
+	} 
 	cout << endl;
 	return true;
 }
@@ -40,20 +45,18 @@ void Jeu::success(){
 
 bool Jeu::lecture(string nom_fichier){
 	//return true;
-	reset();
+	reset(); //resets the values to the default ones
 	ifstream fichier(nom_fichier); //opens the file (ifstream = input file stream)
     if(!fichier.fail()) {
 		string line;
         // l’appel de getline filtre aussi les séparateurs
         while(getline(fichier >> ws,line)) {
-	//getline(): It reads an entire line of text from an input stream (is) and stores
-	// it into the string (str), up to the newline character (\n), without including it.
-	//ws: whitespace
+
 		
 			if(line[0]=='#')  continue;  
 			istringstream data(line);
 			if(decodage_ligne(data) == false) return false; //detection d'erreur simple
-			//imprimer_data(data);
+			//imprimer_data(data); //testing
 		}
 		fichier.close();
         cout << "fin de la lecture du fichier ligne par ligne " << endl;
@@ -65,8 +68,8 @@ bool Jeu::lecture(string nom_fichier){
 
 
 
-//			/*
-bool Jeu::decodage_ligne(istringstream& data) {
+
+bool decodage_ligne(istringstream& data) {
 	switch(etat) 
 	{
 	case SCORE: // lecture du nombre de livreurs
@@ -100,16 +103,16 @@ bool Jeu::decodage_ligne(istringstream& data) {
 	case CHAINE_MODE:
 		if(decodage_chaine_mode(data)== false) return false;
 	    break;
-/*
-	case FIN: erreur(LECTURE_FIN) ; //techniquement inutile car on ne va jamais traiter FIN vu que la fonction lecture s'arrete avant
-		return false;
-		*/
+
+	case FIN: 
+		break;
+		
 	}
 	return true;	
 }
-//			*/
 
-bool Jeu::decodage_score(istringstream& data){
+
+bool decodage_score(istringstream& data){
 	if(data >> score){
 		if(score <= 0 or score > score_max) {
 			message::score_outside(score);
@@ -175,23 +178,7 @@ bool decodage_chaine(istringstream& data) {
 	return true;
 }
 bool decodage_chaine_mode(istringstream& data) {
-	etat = FIN;
 	if(lecture_c_mode(data) == false) {return false;}
+	etat = FIN;
 	return true;
 }
-/*
-if(une détection d’erreur est vraie)
-{
-cout << message::appel_de_la_fonction(paramètres éventuels);
- std ::exit(EXIT_FAILURE) ; // Rendu1
-} 
-
-*/
-
-
-
-
-
-
-
-

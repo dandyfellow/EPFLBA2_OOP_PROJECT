@@ -17,10 +17,10 @@ Cercle Arene({0,0}, r_max);
 class Mobile {
 public:
     Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init);
-
     double get_positionx() const;
     double get_positiony() const;
-
+    double get_rayon() const;
+    
 protected:
     S2d position;
     Vecteur vitesse;
@@ -48,6 +48,8 @@ class Faiseur : public Mobile {
 public:
     Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements);
     bool collisions(const Faiseur* autre);
+    vector get_liste_faiseurs();
+    vector get_elements();
 
 private:
     int nbs_elements;
