@@ -51,7 +51,6 @@ void Particule::set_nbrs_particules(int n) {
 
 vector<Faiseur> Faiseur::liste_faiseurs;
 int Faiseur::compteur_faiseurs = 0;
-int Faiseur::compteur_elements = 0;
 
 Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
     : Mobile(position_init, vitesse_init, alpha_init, rayon_init), index(compteur_faiseurs++) {

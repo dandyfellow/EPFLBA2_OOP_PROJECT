@@ -61,7 +61,7 @@ private:
 
     int index;  // Identifiant unique du Faiseur
     vector<std::pair<int, S2d>> elements;  // Chaque élément a un index unique
-    static int compteur_elements;
+    int compteur_elements;
 };
 
 bool lecture_p(istringstream& data);
