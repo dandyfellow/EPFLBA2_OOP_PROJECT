@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <istream>
 
 #include "message.h" //definitif
 #include "tools.h" 
@@ -11,12 +12,17 @@
 
 using namespace std;
 
+std::vector<S2d> Chaine::chaine;
+Mode Chaine::mode;
+
 
 Chaine::Chaine(S2d racine) {chaine.push_back(racine);}
 
+Chaine::Chaine(Mode mode) : mode(mode) {}
+
 unsigned int Chaine::longeur_chaine() const {return chaine.size();}
 
-bool Chaine::distance_points(unsigned int i) const { //input the index of the point, compares with the one before it
+bool Chaine::distance_points(unsigned int i) { //input the index of the point, compares with the one before it
     if(i == 0) { //check distance between point and edge of arena
         Vecteur v(chaine[i], {0, 0});
         if(r_max - v.get_norme() <= r_capture){
@@ -34,30 +40,32 @@ bool Chaine::distance_points(unsigned int i) const { //input the index of the po
     return true;
 }
 
-S2d Chaine::get_point(unsigned int i) const {return chaine[i];}
+S2d Chaine::get_point(unsigned int i) {return chaine[i];}
 
-bool lecture_c(istringstream& data){
-    double x, y;
-    data >> x >> y;
-    chaine.push_back({x, y});
-    if(distance_points(chaine.size()-1) == false) {return false;}
-    return true;
-}
-bool Chaine::lecture_c_mode(istringstream& data){
-    string mot = "";
-    if(data >> mot){
-        if(mot == "CONSTRUCTION") {mode = CONSTRUCTION;}
-        else if(mot == "GUIDAGE") {mode = GUIDAGE;}
-        else {return false;}
-        cout << "mode: " << mode << endl; //remove later, just for testing
-        return true;
-    }
-    return false;   
-}
+
 
 void Chaine::display() const {
     for (const auto& s : chaine){
         cout << s.x << " " << s.y << endl;
     }
 }
+//---------------------------------------------------------------------------------------------------
+bool lecture_c(istringstream& data){
+    double x, y;
+    data >> x >> y;
+    Chaine c({x,y});
+    if(c.distance_points(c.longeur_chaine()-1) == false) {return false;}
+    return true;
+}
 
+bool lecture_c_mode(istringstream& data){
+    string mot = "";
+    if(data >> mot){
+        if(mot == "CONSTRUCTION") {Chaine c(CONSTRUCTION);}
+        else if(mot == "GUIDAGE") {Chaine c(GUIDAGE);}
+        else {return false;}
+        cout << "mode: " << mot << endl; //remove later, just for testing
+        return true;
+    }
+    return false;   
+}

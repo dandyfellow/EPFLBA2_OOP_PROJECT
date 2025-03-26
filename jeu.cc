@@ -11,11 +11,10 @@
 #include "constantes.h"
 
 using namespace std;
-
-unsigned int score = 0;
-unsigned int nb_particule_init = 0;
-unsigned int nb_faiseur_init = 0;
-unsigned int nb_chaine_init = 0;
+int unsigned score = 0;
+int unsigned nb_particule_init = 0;
+int unsigned nb_faiseur_init = 0;
+int unsigned nb_chaine_init = 0;
 
 Etat etat = SCORE;
 
@@ -134,6 +133,7 @@ bool decodage_score(istringstream& data){
 			message::score_outside(score);
 			return false;
 		}
+		etat = NB_PARTICULE;
 		cout << "score: " << score << endl; //remove later, just for testing
 		return true;
 	}
