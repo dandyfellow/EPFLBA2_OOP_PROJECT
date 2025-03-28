@@ -65,7 +65,7 @@ bool lecture_c_mode(istringstream& data){
         if(mot == "CONSTRUCTION") {Chaine c(CONSTRUCTION);}
         else if(mot == "GUIDAGE") {Chaine c(GUIDAGE);}
         else {return false;}
-        cout << "mode: " << mot << endl; //remove later, just for testing
+        //cout << "mode: " << mot << endl; //remove later, just for testing
         return true;
     }
     return false;   

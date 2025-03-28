@@ -113,12 +113,12 @@ bool lecture_f(istringstream& data) {
     Cercle c2({x, y}, rayon);
 
     if (nbe <= 0) {
-        cout << message::faiseur_nbe(nbe) << endl;
+        cout << message::faiseur_nbe(nbe);
         return false;
     }
 
     if (rayon < r_min_faiseur || rayon > r_max_faiseur) {
-        cout << message::faiseur_radius(rayon) << endl;
+        cout << message::faiseur_radius(rayon);
         return false;
     }
 

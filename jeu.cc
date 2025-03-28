@@ -71,7 +71,7 @@ bool Jeu::lecture(string nom_fichier){
 			if(line[0]=='#')  continue;  
 			istringstream data(line);
 			if(decodage_ligne(data) == false) return false; //detection d'erreur simple
-			//imprimer_data(data); //testing
+			//imprimer_data(data); // TESTING
 		}
 		fichier.close();
         cout << "fin de la lecture du fichier ligne par ligne " << endl;
@@ -134,7 +134,7 @@ bool decodage_score(istringstream& data){
 			return false;
 		}
 		etat = NB_PARTICULE;
-		cout << "score: " << score << endl; //remove later, just for testing
+		//cout << "score: " << score << endl; //remove later, just for testing
 		return true;
 	}
 	return false;
@@ -148,7 +148,7 @@ bool decodage_nb_particule(istringstream& data) {
 		}
 		if(nb_particule_init == 0) {etat = NB_FAISEUR;}
 		else {etat = PARTICULE;}
-		cout << "nb particules: " << nb_particule_init << endl; //remove later, just for testing
+		//cout << "nb particules: " << nb_particule_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;
@@ -164,7 +164,7 @@ bool decodage_nb_faiseur(istringstream& data) {
 	if(data >> nb_faiseur_init){
 		if(nb_faiseur_init == 0) {etat = NB_CHAINE;}
 		else {etat = FAISEUR;}
-		cout << "nb faiseur: " << nb_faiseur_init << endl; //remove later, just for testing
+		//cout << "nb faiseur: " << nb_faiseur_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;
@@ -181,7 +181,7 @@ bool decodage_nb_chaine(istringstream& data) {
 	if(data >> nb_chaine_init){
 		if(nb_chaine_init == 0) {etat = CHAINE_MODE;}
 		else {etat = CHAINE;}
-		cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
+		//cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;

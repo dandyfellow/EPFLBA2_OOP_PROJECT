@@ -56,7 +56,6 @@ public:
 private:
     static vector<Faiseur*> liste_faiseurs;  
     static int compteur_faiseurs;  
-
     int index;  
     vector<pair<int, S2d>> elements;  
     int compteur_elements;
