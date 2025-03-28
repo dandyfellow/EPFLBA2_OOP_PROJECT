@@ -74,7 +74,6 @@ bool Jeu::lecture(string nom_fichier){
 			//imprimer_data(data); // TESTING
 		}
 		fichier.close();
-        cout << "fin de la lecture du fichier ligne par ligne " << endl;
         return true;
 	}
 	cout << "erreur lors de l'ouverture du fichier" << endl;
@@ -128,21 +127,20 @@ bool decodage_ligne(istringstream& data) {
 
 
 bool decodage_score(istringstream& data){
-	if(data >> score){
-		if(score <= 0 or score > score_max) {
-			message::score_outside(score);
-			return false;
-		}
-		etat = NB_PARTICULE;
-		//cout << "score: " << score << endl; //remove later, just for testing
-		return true;
+	data >> score;	
+	if(score <= 0 || score > score_max) {
+		message::score_outside(score);
+		return false;
 	}
-	return false;
+	etat = NB_PARTICULE;
+	//cout << "score: " << score << endl; //remove later, just for testing
+	return true;
+	
 }
 
 bool decodage_nb_particule(istringstream& data) {
 	if(data >> nb_particule_init){
-		if(nb_particule_init > nb_particule_max) {//!!!ü!!!!!!!!!!!!!!!!!!!!!!!!!!! nbr particule negatif ?
+		if(nb_particule_init > nb_particule_max) {//  !!!!!!!!!!!!!!!!!!!!!!!!!!! nbr particule negatif ?
 			message::nb_particule_outside(nb_particule_init);
 			return false;
 		}
@@ -155,7 +153,7 @@ bool decodage_nb_particule(istringstream& data) {
 }
 bool decodage_particule(istringstream& data) {
 	for(unsigned int i(0); i < nb_particule_init; i++){
-		if(lecture_c(data) == false){return false;}
+		if(lecture_p(data) == false){return false;}
 	}
 	etat = NB_FAISEUR;
 	return true;
@@ -181,7 +179,7 @@ bool decodage_nb_chaine(istringstream& data) {
 	if(data >> nb_chaine_init){
 		if(nb_chaine_init == 0) {etat = CHAINE_MODE;}
 		else {etat = CHAINE;}
-		//cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
+		cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;

@@ -30,17 +30,19 @@ protected:
 
 class Particule : public Mobile {
 public:
-    Particule(S2d position_init, Vecteur vitesse_init, double alpha_init, int compteur);
+    Particule(S2d position_init, Vecteur vitesse_init, double alpha_init);
     ~Particule();
 
     int get_compteur() const;
     void set_compteur(int c);
     static int get_nbrs_particules();
+    static void initializeCounter(double compteur);
 
 private:
     static int nbrs_particules;
-    int compteur;
+    static int compteur;
     static vector<Particule*> liste_particule;
+    static bool isInitialized;
 };
 
 class Faiseur : public Mobile {

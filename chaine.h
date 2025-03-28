@@ -18,11 +18,10 @@ class Chaine {
     public:
         Chaine(S2d racine);
         Chaine(Mode mode);
+        std::vector<S2d> get_chaine() const;
         unsigned int longeur_chaine() const;
         void display() const;
         
-        static S2d get_point(unsigned int i);
-        static bool distance_points(unsigned int i);
         
 
     private:

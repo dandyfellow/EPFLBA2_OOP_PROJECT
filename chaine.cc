@@ -20,29 +20,9 @@ Chaine::Chaine(S2d racine) {chaine.push_back(racine);}
 
 Chaine::Chaine(Mode m) {mode = m;}
 
+std::vector<S2d> Chaine::get_chaine() const {return chaine;}
+
 unsigned int Chaine::longeur_chaine() const {return chaine.size();}
-
-bool Chaine::distance_points(unsigned int i) { //input the index of the point, compares with the one before it
-    if(i == 0) { //check distance between point and edge of arena
-        Vecteur v(chaine[i], {0, 0});
-        if(r_max - v.get_norme() <= r_capture){
-            cout << message::articulation_outside(get_point(i).x, get_point(i).y);
-            return false;
-        }
-        return true;
-    }
-
-    Vecteur v(chaine[i], chaine[i-1]);
-    if(v.get_norme() <= r_capture){
-        cout << message::chaine_max_distance(i-1);
-        return false;
-    }
-    return true;
-}
-
-S2d Chaine::get_point(unsigned int i) {return chaine[i];}
-
-
 
 void Chaine::display() const {
     cout << "mode: " << mode << endl;
@@ -55,7 +35,20 @@ bool lecture_c(istringstream& data){
     double x, y;
     data >> x >> y;
     Chaine c({x,y});
-    if(c.distance_points(c.longeur_chaine()-1) == false) {return false;}
+    if (c.longeur_chaine() == 1) { //first chain
+        Vecteur v({x, y}, {0, 0});
+        if(!(r_max - v.get_norme() <= r_capture)){
+            //cout << "Vector norm for comparing: "<< v.get_norme() << endl;
+            cout << message::articulation_outside(x, y);
+            return false;
+        }
+        return true;
+    } 
+    Vecteur v(c.get_chaine()[c.longeur_chaine()-2], c.get_chaine()[c.longeur_chaine()-1]);
+    //cout << "Vector chaine i-1, i: norme " << v.get_norme() << " angle: " << v.get_angle() << endl;
+    if(!(v.get_norme() <= r_capture)){ 
+        cout << message::chaine_max_distance(c.longeur_chaine()-2);
+        return false;}
     return true;
 }
 

@@ -13,12 +13,11 @@ using namespace std;
 
 int main(int argc, char * argv[]) {
     if(argc != 2) {
-        cerr << "Usage correct: ./projet nom_du_ficher.txt" << endl;
+        //cerr << "Usage correct: ./projet nom_du_ficher.txt" << endl;
         exit(EXIT_FAILURE);
     }
 
     string nom_fichier = argv[1];
-	cout << "fichier: " << nom_fichier << endl;
     Jeu jeu;
 
     if(!jeu.lecture(nom_fichier)) {

@@ -4,6 +4,7 @@ int Particule::nbrs_particules = 0;
 vector<Particule*> Particule::liste_particule;
 vector<Faiseur*> Faiseur::liste_faiseurs;
 int Faiseur::compteur_faiseurs = 0;
+bool Particule::isInitialized = false;
 
 Cercle Arene({0,0}, r_max);
 
@@ -24,8 +25,8 @@ double Mobile::get_rayon() const{
     return rayon;
 }
 
-Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init, int compteur)
-    : Mobile(position_init, vitesse_init, alpha_init, 0.), compteur(compteur) {
+Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init)
+    : Mobile(position_init, vitesse_init, alpha_init, 0.){
     ++nbrs_particules;
     liste_particule.push_back(this);
 }
@@ -45,6 +46,12 @@ void Particule::set_compteur(int c) {
 
 int Particule::get_nbrs_particules() {
     return nbrs_particules;
+}
+void Particule::initializeCounter(double c) {
+    if (!isInitialized){
+        Particule:: compteur= c;
+        isInitialized = true;
+    }
 }
 
 Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
@@ -88,6 +95,7 @@ bool lecture_p(istringstream& data) {
 
     Cercle c1({x, y}, 0.);
     Vecteur v({x, y}, deplacement, angle);
+    Particule::initializeCounter(compteur);
 
     if (compteur >= time_to_split || compteur < 0) {
         cout << message::particule_counter(compteur) << endl;
@@ -126,7 +134,9 @@ bool lecture_f(istringstream& data) {
         cout << message::mobile_displacement(deplacement);
         return false;
     }
-
+    if( !Cercle::inclusion(arene, c2)){
+        cout << message::faiseur_outside(x,y);
+    }
     S2d position = {x, y};
     Faiseur f(position, v, angle, rayon, nbe);
     double cos_a= cos(angle);
