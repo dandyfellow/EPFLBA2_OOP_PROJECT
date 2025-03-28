@@ -18,14 +18,16 @@ class Chaine {
     public:
         Chaine(S2d racine);
         Chaine(Mode mode);
-        std::vector<S2d> get_chaine() const;
+        Chaine(Cercle cercle);
+        std::vector<Cercle> get_chaine() const;
+        Cercle get_chaine(unsigned int i) const;
         unsigned int longeur_chaine() const;
         void display() const;
         
         
 
     private:
-        static std::vector<S2d> chaine;
+        static std::vector<Cercle> chaine;
         static Mode mode;
 };
 

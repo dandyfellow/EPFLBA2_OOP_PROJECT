@@ -79,7 +79,7 @@ bool Cercle::get_epsil() { return epsil; } // techniquement inutile
 //on peut juste acceder direct par Cercle::epsil
 
 bool Cercle::inclusion(const Cercle &c1, const Cercle &c2)
-{
+{ //return true if c2 in c1
     Vecteur v1(c2.get_centre(), c1.get_centre());
     double distance = v1.get_norme();
     return (distance < (c1.get_rayon() - c2.get_rayon() - epsil_zero * epsil));
