@@ -1,5 +1,3 @@
-using namespace std;
-
 #define _USE_MATH_DEFINES //pour cmath constantes
 
 #include <cmath>
@@ -8,7 +6,7 @@ using namespace std;
 
 #include "tools.h"
 
-
+using namespace std;
 
 constexpr double epsil_zero = 0.5;
 

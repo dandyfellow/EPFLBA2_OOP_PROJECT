@@ -18,7 +18,7 @@ Mode Chaine::mode;
 
 Chaine::Chaine(S2d racine) {chaine.push_back(racine);}
 
-Chaine::Chaine(Mode mode) : mode(mode) {}
+Chaine::Chaine(Mode m) {mode = m;}
 
 unsigned int Chaine::longeur_chaine() const {return chaine.size();}
 
@@ -26,7 +26,7 @@ bool Chaine::distance_points(unsigned int i) { //input the index of the point, c
     if(i == 0) { //check distance between point and edge of arena
         Vecteur v(chaine[i], {0, 0});
         if(r_max - v.get_norme() <= r_capture){
-            cout << message::chaine_racine(get_point(i).x, get_point(i).y) << endl;
+            cout << message::chaine_racine(get_point(i).x, get_point(i).y);
             return false;
         }
         return true;
@@ -34,7 +34,7 @@ bool Chaine::distance_points(unsigned int i) { //input the index of the point, c
 
     Vecteur v(chaine[i], chaine[i-1]);
     if(v.get_norme() <= r_capture){
-        cout << message::chaine_max_distance(i-1) << endl;
+        cout << message::chaine_max_distance(i-1);
         return false;
     }
     return true;
@@ -45,6 +45,7 @@ S2d Chaine::get_point(unsigned int i) {return chaine[i];}
 
 
 void Chaine::display() const {
+    cout << "mode: " << mode << endl;
     for (const auto& s : chaine){
         cout << s.x << " " << s.y << endl;
     }
@@ -54,14 +55,7 @@ bool lecture_c(istringstream& data){
     double x, y;
     data >> x >> y;
     Chaine c({x,y});
-    if(c.distance_points(c.longeur_chaine()-1) == false) {
-        //message d'erreur gérer dans distance points
-
-        //Actually, I can change distance_point to check only with the
-    // the distance between the newly created point and the previous one
-    // not check everyone.
-        return false;
-    }
+    if(c.distance_points(c.longeur_chaine()-1) == false) {return false;}
     return true;
 }
 

@@ -1,14 +1,18 @@
 #ifndef CHAINE_H
 #define CHAINE_H
 
-#include <sstream>
+#include <fstream>
+#include <sstream> 
 #include <vector>
 #include <iostream>
+#include <string>
+#include <istream>
 
 #include "message.h" //definitif
 #include "tools.h" 
 #include "constantes.h"
 
+using namespace std;
 
 class Chaine {
     public:

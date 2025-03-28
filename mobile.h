@@ -12,7 +12,7 @@
 
 using namespace std;
 
-Cercle Arene({0,0}, r_max);
+extern Cercle Arene;
 
 class Mobile {
 public:
@@ -36,7 +36,6 @@ public:
     int get_compteur() const;
     void set_compteur(int c);
     static int get_nbrs_particules();
-    static void set_nbrs_particules(int n);
 
 private:
     static int nbrs_particules;
@@ -47,20 +46,19 @@ private:
 class Faiseur : public Mobile {
 public:
     Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements);
-    static void ajouter_faiseur(const Faiseur& f);
-    static vector<Faiseur>& get_liste_faiseurs();
+    static void ajouter_faiseur(Faiseur* f);
+    static const vector<Faiseur*>& get_liste_faiseurs();
     void ajouter_element(const S2d& position);
-    vector<std::pair<int, S2d>> get_elements() const;
+    vector<pair<int, S2d>> get_elements() const;
     int get_index() const { return index; }
     
 
 private:
-    int nbs_elements;
-    static vector<Faiseur> liste_faiseurs;  
+    static vector<Faiseur*> liste_faiseurs;  
     static int compteur_faiseurs;  
 
     int index;  
-    vector<std::pair<int, S2d>> elements;  
+    vector<pair<int, S2d>> elements;  
     int compteur_elements;
 };
 

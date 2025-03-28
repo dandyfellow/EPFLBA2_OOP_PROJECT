@@ -3,6 +3,10 @@
 int Particule::nbrs_particules = 0;
 vector<Particule*> Particule::liste_particule;
 vector<Faiseur*> Faiseur::liste_faiseurs;
+int Faiseur::compteur_faiseurs = 0;
+
+Cercle Arene({0,0}, r_max);
+
 
 
 Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init)
@@ -43,23 +47,16 @@ int Particule::get_nbrs_particules() {
     return nbrs_particules;
 }
 
-void Particule::set_nbrs_particules(int n) {
-    nbrs_particules = n;
-}
-
-vector<Faiseur> Faiseur::liste_faiseurs;
-int Faiseur::compteur_faiseurs = 0;
-
 Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
     : Mobile(position_init, vitesse_init, alpha_init, rayon_init), index(compteur_faiseurs++) {
     elements.reserve(nb_elements);
 }
 
-void Faiseur::ajouter_faiseur(const Faiseur& f) {
+void Faiseur::ajouter_faiseur(Faiseur* f) {
     liste_faiseurs.push_back(f);
 }
 
-vector<Faiseur>& Faiseur::get_liste_faiseurs() {
+const vector<Faiseur*>& Faiseur::get_liste_faiseurs(){
     return liste_faiseurs;
 }
 
@@ -67,7 +64,7 @@ void Faiseur::ajouter_element(const S2d& position) {
     elements.emplace_back(compteur_elements++, position);
 }
 
-vector<std::pair<int, S2d> > Faiseur::get_elements() const {
+vector<pair<int, S2d>> Faiseur::get_elements() const {
     return elements;
 }
     
@@ -132,10 +129,12 @@ bool lecture_f(istringstream& data) {
 
     S2d position = {x, y};
     Faiseur f(position, v, angle, rayon, nbe);
+    double cos_a= cos(angle);
+    double sin_a= sin(angle);
 
     for (int i = 0; i < nbe; ++i) {
-        double new_x = x - i * deplacement * cos(angle);
-        double new_y = y - i * deplacement * sin(angle);
+        double new_x = x - i * deplacement * cos_a;
+        double new_y = y - i * deplacement * sin_a;
         Cercle c_test({new_x, new_y}, rayon);
 
         if (!Cercle::inclusion(arene, c_test)) {
@@ -152,16 +151,16 @@ bool lecture_f(istringstream& data) {
     for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
         for (const auto& [index, centre] : f.get_elements()) {
             Cercle current_cercle(centre, rayon);
-            for (const auto& [autre_index, autre_centre] : autre_faiseur.get_elements()) { 
-                Cercle autre_cercle(autre_centre, autre_faiseur.get_rayon()); 
+            for (const auto& [autre_index, autre_centre] : autre_faiseur->get_elements()) { 
+                Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon()); 
                 if (Cercle::intrusion(current_cercle, autre_cercle)) {
-                    cout << message::faiseur_element_collision(f.get_index(), index, autre_faiseur.get_index(), autre_index);
+                    cout << message::faiseur_element_collision(f.get_index(), index, autre_faiseur->get_index(), autre_index);
                     return false;
                 }
             }
         }
     }
-    Faiseur::ajouter_faiseur(f);
+    Faiseur::ajouter_faiseur(&f);
     return true;
 }
 
