@@ -1,6 +1,6 @@
 #include "mobile.h"
 
-
+Cercle Arene({0,0}, r_max);
 int Particule::nbrs_particules = 0;
 vector<Particule*> Particule::liste_particule;
 vector<Faiseur*> Faiseur::liste_faiseurs;
@@ -71,7 +71,7 @@ void Faiseur::ajouter_element(const S2d& position) {
 }
 
 // Récupérer les éléments avec leurs indices
-vector<std::pair<int, S2d>> Faiseur::get_elements() const {
+vector<std::pair<int, S2d> > Faiseur::get_elements() const {
     return elements;
 }
     
@@ -170,52 +170,74 @@ bool lecture_f(istringstream& data) {
     Faiseur::ajouter_faiseur(f);
     return true;
 }
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include "mobile.h"
 
+using namespace std;
 
+int main() {
+    cout << "=== Début du programme - Création des particules et faiseurs ===\n";
+    
+    string input;
+    istringstream data;
+    
+    // Lecture et création des particules
+    while (true) {
+        cout << "\nEntrez les données de la particule (x y angle déplacement compteur) ou 'stop' pour terminer : ";
+        getline(cin, input);
+        if (input == "stop") break;
 
+        data.clear();
+        data.str(input);
 
-/*int main() {
-    // Créer une arène avec un rayon de 10 unités
-    Arene arene(10.0);
-
-    // Créer deux Faiseurs qui se touchent après deux mises à jour
-    S2d positionFaiseur1 = {0.0, 0.0};
-    Vecteur vitesseFaiseur1(positionFaiseur1, 1.0, 0.0); // Vitesse dirigée vers la droite
-    Faiseur faiseur1(positionFaiseur1, vitesseFaiseur1, 0.0, 1.0, 5);
-
-    S2d positionFaiseur2 = {2.0, 0.0};
-    Vecteur vitesseFaiseur2(positionFaiseur2, 1.0, M_PI); // Vitesse dirigée vers la gauche
-    Faiseur faiseur2(positionFaiseur2, vitesseFaiseur2, M_PI, 1.0, 5);
-
-    // Mettre à jour les positions des Faiseurs
-    faiseur1.mise_a_jour(arene);
-    faiseur2.mise_a_jour(arene);
-    faiseur1.mise_a_jour(arene);
-    faiseur2.mise_a_jour(arene);
-
-    // Vérifier s'ils se touchent
-    if (faiseur1.collisions(&faiseur2)) {
-        std::cout << "Les Faiseurs se touchent après deux mises à jour." << std::endl;
-    } else {
-        std::cout << "Les Faiseurs ne se touchent pas." << std::endl;
+        if (!lecture_p(data)) {
+            cout << "❌ Erreur dans les données de particule. Arrêt du programme.\n";
+            return 1;
+        } else {
+            cout << "✅ Particule ajoutée avec succès.\n";
+        }
     }
 
-    // Créer une Particule qui rebondit
-    S2d positionParticule = {5.0, 0.0};
-    Vecteur vitesseParticule(positionParticule, 2.0, M_PI / 4); // Vitesse dirigée en diagonale
-    Particule particule(positionParticule, vitesseParticule, M_PI / 4);
+    // Lecture et création des faiseurs
+    while (true) {
+        cout << "\nEntrez les données du faiseur (x y angle déplacement rayon nb_elements) ou 'stop' pour terminer : ";
+        getline(cin, input);
+        if (input == "stop") break;
 
-    // Mettre à jour la position de la Particule
-    particule.mise_a_jour(arene);
-    particule.mise_a_jour(arene);
+        data.clear();
+        data.str(input);
 
-    // Afficher la position finale de la Particule
-    std::cout << "Position finale de la Particule : ("
-              << particule.get_positionx() << ", "
-              << particule.get_positiony() << ")" << std::endl;
+        if (!lecture_f(data)) {
+            cout << "❌ Erreur dans les données de faiseur. Arrêt du programme.\n";
+            return 1;
+        } else {
+            cout << "✅ Faiseur ajouté avec succès.\n";
+        }
+    }
 
+    // Affichage des particules créées
+    cout << "\n=== Liste des particules créées ===\n";
+    for (const auto& particule : Particule::liste_particule) {  
+        cout << "Particule - Position: (" << particule->get_positionx() << ", " << particule->get_positiony() 
+             << ") | Compteur: " << particule->get_compteur() << endl;
+    }
+
+    // Affichage des faiseurs créés
+    cout << "\n=== Liste des faiseurs créés ===\n";
+    for (const auto& faiseur : Faiseur::get_liste_faiseurs()) {  
+        cout << "Faiseur - Position: (" << faiseur.get_positionx() << ", " << faiseur.get_positiony() 
+             << ") | Rayon: " << faiseur.get_rayon() << " | Nb éléments: " << faiseur.get_elements().size() << endl;
+    }
+
+    cout << "\n=== Programme terminé avec succès. ===\n";
     return 0;
-}*/
+}
+
+
+
+
 
    /*void mise_a_jour(const Arene &arene){
         Mobile::mise_a_jour(arene);

@@ -37,11 +37,12 @@ public:
     void set_compteur(int c);
     static int get_nbrs_particules();
     static void set_nbrs_particules(int n);
+    static vector<Particule*> liste_particule;
 
 private:
     static int nbrs_particules;
     int compteur;
-    static vector<Particule*> liste_particule;
+    
 };
 
 class Faiseur : public Mobile {
