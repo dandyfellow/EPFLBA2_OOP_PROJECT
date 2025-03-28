@@ -7,7 +7,7 @@
       "request": "launch",
       "args": [],
       "cwd": "/Users/costeadam/PROJET BOULIC BA2/IT_ProjectTest",
-      "program": "/Users/costeadam/PROJET BOULIC BA2/IT_ProjectTest/build/Debug/outDebug"
+      "program": "make"
     }
   ]
 }
