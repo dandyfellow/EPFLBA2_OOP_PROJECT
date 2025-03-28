@@ -37,12 +37,11 @@ public:
     void set_compteur(int c);
     static int get_nbrs_particules();
     static void set_nbrs_particules(int n);
-    static vector<Particule*> liste_particule;
 
 private:
     static int nbrs_particules;
     int compteur;
-    
+    static vector<Particule*> liste_particule;
 };
 
 class Faiseur : public Mobile {
@@ -58,10 +57,10 @@ public:
 private:
     int nbs_elements;
     static vector<Faiseur> liste_faiseurs;  
-    static int compteur_faiseurs;  // Compteur global d’indices pour les Faiseurs
+    static int compteur_faiseurs;  
 
-    int index;  // Identifiant unique du Faiseur
-    vector<std::pair<int, S2d>> elements;  // Chaque élément a un index unique
+    int index;  
+    vector<std::pair<int, S2d>> elements;  
     int compteur_elements;
 };
 

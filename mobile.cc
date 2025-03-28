@@ -1,6 +1,5 @@
 #include "mobile.h"
 
-Cercle Arene({0,0}, r_max);
 int Particule::nbrs_particules = 0;
 vector<Particule*> Particule::liste_particule;
 vector<Faiseur*> Faiseur::liste_faiseurs;
@@ -48,7 +47,6 @@ void Particule::set_nbrs_particules(int n) {
     nbrs_particules = n;
 }
 
-
 vector<Faiseur> Faiseur::liste_faiseurs;
 int Faiseur::compteur_faiseurs = 0;
 
@@ -65,18 +63,14 @@ vector<Faiseur>& Faiseur::get_liste_faiseurs() {
     return liste_faiseurs;
 }
 
-// Ajout d'un élément avec un index unique
 void Faiseur::ajouter_element(const S2d& position) {
     elements.emplace_back(compteur_elements++, position);
 }
 
-// Récupérer les éléments avec leurs indices
 vector<std::pair<int, S2d> > Faiseur::get_elements() const {
     return elements;
 }
     
-
-
 /*bool Faiseur::collisions(const Faiseur* autre) {
     for (const auto& [index1, e1] : autre.get_elements()) {  // Utilisation de get_elements()
         Cercle c1(e1, autre.get_rayon());  // Utilisation de get_rayon()
@@ -137,7 +131,7 @@ bool lecture_f(istringstream& data) {
     }
 
     S2d position = {x, y};
-    Faiseur f(position, v.get_norme(), angle, rayon, nbe);
+    Faiseur f(position, v, angle, rayon, nbe);
 
     for (int i = 0; i < nbe; ++i) {
         double new_x = x - i * deplacement * cos(angle);
@@ -148,7 +142,7 @@ bool lecture_f(istringstream& data) {
             position.x -= v.get_norme() * cos(v.get_angle());
             position.y -= v.get_norme() * sin(v.get_angle());
             v = v.reflechis(position);
-            v.set_angle(v.get_angle()); // Corrected this line
+            v.set_angle(v.get_angle()); 
             position.x += v.get_norme() * cos(v.get_angle());
             position.y += v.get_norme() * sin(v.get_angle());
         }
@@ -170,74 +164,6 @@ bool lecture_f(istringstream& data) {
     Faiseur::ajouter_faiseur(f);
     return true;
 }
-#include <iostream>
-#include <sstream>
-#include <vector>
-#include "mobile.h"
-
-using namespace std;
-
-int main() {
-    cout << "=== Début du programme - Création des particules et faiseurs ===\n";
-    
-    string input;
-    istringstream data;
-    
-    // Lecture et création des particules
-    while (true) {
-        cout << "\nEntrez les données de la particule (x y angle déplacement compteur) ou 'stop' pour terminer : ";
-        getline(cin, input);
-        if (input == "stop") break;
-
-        data.clear();
-        data.str(input);
-
-        if (!lecture_p(data)) {
-            cout << "❌ Erreur dans les données de particule. Arrêt du programme.\n";
-            return 1;
-        } else {
-            cout << "✅ Particule ajoutée avec succès.\n";
-        }
-    }
-
-    // Lecture et création des faiseurs
-    while (true) {
-        cout << "\nEntrez les données du faiseur (x y angle déplacement rayon nb_elements) ou 'stop' pour terminer : ";
-        getline(cin, input);
-        if (input == "stop") break;
-
-        data.clear();
-        data.str(input);
-
-        if (!lecture_f(data)) {
-            cout << "❌ Erreur dans les données de faiseur. Arrêt du programme.\n";
-            return 1;
-        } else {
-            cout << "✅ Faiseur ajouté avec succès.\n";
-        }
-    }
-
-    // Affichage des particules créées
-    cout << "\n=== Liste des particules créées ===\n";
-    for (const auto& particule : Particule::liste_particule) {  
-        cout << "Particule - Position: (" << particule->get_positionx() << ", " << particule->get_positiony() 
-             << ") | Compteur: " << particule->get_compteur() << endl;
-    }
-
-    // Affichage des faiseurs créés
-    cout << "\n=== Liste des faiseurs créés ===\n";
-    for (const auto& faiseur : Faiseur::get_liste_faiseurs()) {  
-        cout << "Faiseur - Position: (" << faiseur.get_positionx() << ", " << faiseur.get_positiony() 
-             << ") | Rayon: " << faiseur.get_rayon() << " | Nb éléments: " << faiseur.get_elements().size() << endl;
-    }
-
-    cout << "\n=== Programme terminé avec succès. ===\n";
-    return 0;
-}
-
-
-
-
 
    /*void mise_a_jour(const Arene &arene){
         Mobile::mise_a_jour(arene);
