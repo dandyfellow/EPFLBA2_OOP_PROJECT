@@ -78,7 +78,7 @@ bool lecture_c_mode(istringstream& data){
     string mot = "";
     
     if(data >> mot){
-        cout << "mot:  " << mot << endl;
+        //cout << "mot:  " << mot << endl;
         if(mot == "CONSTRUCTION") {Chaine c(CONSTRUCTION);}
         else if(mot == "GUIDAGE") {Chaine c(GUIDAGE);}
         else {return false;}
