@@ -19,15 +19,15 @@ class Chaine {
         Chaine(S2d racine);
         Chaine(Mode mode);
         Chaine(Cercle cercle);
-        std::vector<Cercle> get_chaine() const;
-        Cercle get_chaine(unsigned int i) const;
+        static vector<pair<int, Cercle>> get_chaine();
+        static pair<int, Cercle> get_chaine(unsigned int i);
         unsigned int longeur_chaine() const;
         void display() const;
         
         
 
     private:
-        static std::vector<Cercle> chaine;
+        static vector<pair<int, Cercle>> chaine;
         static Mode mode;
 };
 

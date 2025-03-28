@@ -33,6 +33,7 @@ bool decodage_faiseur(istringstream &data);
 bool decodage_nb_chaine(istringstream &data);
 bool decodage_chaine(istringstream &data);
 bool decodage_chaine_mode(istringstream &data);
+bool collisions_intertides();
 //---------------------------------------------------------------------------------------------------
 // 									END OF PROTOTYPES
 //---------------------------------------------------------------------------------------------------
@@ -88,36 +89,36 @@ bool decodage_ligne(istringstream& data) {
 	switch(etat) 
 	{
 	case SCORE: // lecture du nombre de livreurs
-		if(decodage_score(data)== false) return false;
+		if(decodage_score(data) == false) return false;
 	    break;
 
 	case NB_PARTICULE: // ajout dans le vector en cas de succès
-		if(decodage_nb_particule(data)== false) return false;
+		if(decodage_nb_particule(data) == false) return false;
 	    break;
 
 	case PARTICULE: // lecture du nombre de véhicules
-		if(decodage_particule(data)== false) return false;
+		if(decodage_particule(data) == false) return false;
 	    break;
 
 	case NB_FAISEUR: 
-		if(decodage_nb_faiseur(data)== false) return false;
+		if(decodage_nb_faiseur(data) == false) return false;
 	    break;
 
 	case FAISEUR: 
-		if(decodage_faiseur(data)== false) return false;
+		if(decodage_faiseur(data) == false) return false;
 	    break;
 
 	case NB_CHAINE: 
-		if(decodage_nb_chaine(data)== false) return false;
+		if(decodage_nb_chaine(data) == false) return false;
 	    break;
 
 	case CHAINE: 
-		if(decodage_chaine(data)== false) return false;
+		if(decodage_chaine(data) == false) return false;
 	    break;
 
 	case CHAINE_MODE:
-		if(decodage_chaine_mode(data)== false) return false;
-	    break;
+		if(decodage_chaine_mode(data) == false) return false;
+	    break;		
 
 	case FIN: 
 		break;
@@ -129,20 +130,23 @@ bool decodage_ligne(istringstream& data) {
 
 bool decodage_score(istringstream& data){
 	data >> score;	
-	if(score <= 0 || score > score_max) {
-		message::score_outside(score);
+	//cout << "score: " << score << endl; //remove later, just for testing
+	if((score == 0) or (score > score_max)) {
+		cout << message::score_outside(score);
 		return false;
 	}
 	etat = NB_PARTICULE;
-	//cout << "score: " << score << endl; //remove later, just for testing
 	return true;
 	
 }
 
 bool decodage_nb_particule(istringstream& data) {
 	if(data >> nb_particule_init){
-		if(nb_particule_init < 0 || nb_particule_init > nb_particule_max) {//  !!!!!!!!!!!!!!!!!!!!!!!!!!! nbr particule negatif ?
-			message::nb_particule_outside(nb_particule_init);
+		//cout << "nb particules: " << nb_particule_init << endl; //remove later, just for testing
+		//cout << "count: " << count << endl; //remove later, just for testing
+
+		if(nb_particule_init > nb_particule_max) {//  !!!!!!!!!!!!!!!!!!!!!!!!!!! nbr particule negatif ? removed : nb_particule_init < 0 ||
+			cout << message::nb_particule_outside(nb_particule_init);
 			return false;
 		}
 		if(nb_particule_init == 0) {etat = NB_FAISEUR;}
@@ -150,14 +154,13 @@ bool decodage_nb_particule(istringstream& data) {
 			etat = PARTICULE;
 			count = 0;
 		}
-		//cout << "nb particules: " << nb_particule_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;
 }
 bool decodage_particule(istringstream& data) {
-	if(count == nb_particule_init) etat = NB_FAISEUR;
 	count++;
+	if(count == nb_particule_init) etat = NB_FAISEUR;
 	if(lecture_p(data) == false){return false;}
 	return true;
 }
@@ -166,14 +169,20 @@ bool decodage_nb_faiseur(istringstream& data) {
 		if(nb_faiseur_init == 0) {etat = NB_CHAINE;}
 		else {etat = FAISEUR;}
 		//cout << "nb faiseur: " << nb_faiseur_init << endl; //remove later, just for testing
+		//cout << "count: " << count << endl; //remove later, just for testing
+
+		count = 0;
 		return true;
 	}
 	return false;
 }
 
 bool decodage_faiseur(istringstream& data) {
-	if(count == nb_faiseur_init) etat = NB_CHAINE;
 	count++;
+	if(count == nb_faiseur_init) etat = NB_CHAINE;
+
+	//cout << "count: " << count << endl; //remove later, just for testing
+	
 	if(lecture_f(data) == false) {return false;}
 	return true;
 }
@@ -181,19 +190,48 @@ bool decodage_nb_chaine(istringstream& data) {
 	if(data >> nb_chaine_init){
 		if(nb_chaine_init == 0) {etat = CHAINE_MODE;}
 		else {etat = CHAINE;}
-		//TESTING cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
+		//cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
+		//cout << "count: " << count << endl; //remove later, just for testing
+
+		count = 0;
 		return true;
 	}
 	return false;
 }
 bool decodage_chaine(istringstream& data) {
-	if(count == nb_chaine_init) etat = CHAINE_MODE;
 	count++;
+	if(count == nb_chaine_init) etat = CHAINE_MODE;
 	if(lecture_c(data) == false) {return false;}
 	return true;
 }
 bool decodage_chaine_mode(istringstream& data) {
 	if(lecture_c_mode(data) == false) {return false;}
+
+	count = 0;
 	etat = FIN;
+
+	if(collisions_intertides() == false) return false;
+
+	return true;
+}
+
+
+bool collisions_intertides(){
+	std::vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
+	const vector<Faiseur*>& faiseur = Faiseur::get_liste_faiseurs();
+	for(const auto& [index_articulation, articulation] : chaine){
+		for(const Faiseur* f : faiseur){
+			for(const auto& [index_elements, point] : f->get_elements()){
+
+				Cercle c_faiseur(point , f->get_rayon());
+				if(Cercle::inclusion(c_faiseur, articulation)) {
+					cout << message::chaine_articulation_collision(index_articulation, f->get_index(), index_elements);
+					return false;
+				}
+				
+			}
+			
+		}
+	}
 	return true;
 }

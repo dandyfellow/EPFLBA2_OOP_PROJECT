@@ -12,23 +12,28 @@
 
 using namespace std;
 
-std::vector<Cercle> Chaine::chaine;
+std::vector<pair<int, Cercle>> Chaine::chaine;
 Mode Chaine::mode;
 
 
 Chaine::Chaine(S2d p) {
+    int index = longeur_chaine();
     Cercle c(p, 0);
-    chaine.push_back(c);
+    pair<int, Cercle> pair = {index, c};
+
+    chaine.push_back(pair);
 }
 Chaine::Chaine(Cercle c) {
-    chaine.push_back(c);
+    int index = longeur_chaine();
+    pair<int, Cercle> p = {index, c};
+    chaine.push_back(p);
 }
 
 Chaine::Chaine(Mode m) {mode = m;}
 
-std::vector<Cercle> Chaine::get_chaine() const {return chaine;}
+vector<pair<int, Cercle>> Chaine::get_chaine() {return chaine;} //static
 
-Cercle Chaine::get_chaine(unsigned int i) const {return chaine[i];};
+pair<int, Cercle> Chaine::get_chaine(unsigned int i) {return chaine[i];}; //static
 
 unsigned int Chaine::longeur_chaine() const {return chaine.size();}
 
@@ -40,7 +45,7 @@ bool lecture_c(istringstream& data){
     double x, y;
     data >> x >> y;
 
-    //TESTING cout << "x:" << x << " y: " << y << endl;
+    //cout << "x:" << x << " y: " << y << endl; //TESTING remove later
     Cercle arene({0,0}, r_max);
     Cercle cercle({x,y}, 0);
     if(!Cercle::intrusion(arene, cercle)){ //condition verified if no intrusion
@@ -63,13 +68,14 @@ bool lecture_c(istringstream& data){
         }
         return true;
     } 
-    Vecteur v(c.get_chaine(c.longeur_chaine()-2).get_centre(), c.get_chaine(c.longeur_chaine()-1).get_centre());
-    //cout << "Vector chaine i-1, i: norme " << v.get_norme() << " angle: " << v.get_angle() << endl;
-    //TESTING cout << "v.get_norme() <= r_capture: " << (v.get_norme() <= r_capture) << endl;
+   
+
+    Vecteur v(c.get_chaine(c.longeur_chaine()-2).second.get_centre(), c.get_chaine(c.longeur_chaine()-1).second.get_centre());
+
     if(!(v.get_norme() <= r_capture)){ 
         cout << message::chaine_max_distance(c.longeur_chaine()-2);
-        return false;}
-
+        return false;
+    }
         //TESTING cout << "---- test concluded ----\n";
     return true;
 }

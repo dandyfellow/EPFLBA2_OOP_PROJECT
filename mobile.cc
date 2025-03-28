@@ -92,6 +92,7 @@ bool lecture_p(istringstream& data) {
     Cercle arene({0, 0}, r_max);
     double x, y, angle, deplacement, compteur;
     data >> x >> y >> angle >> deplacement >> compteur;
+    //cout << "x: " << x << " y: " << y << " angle: " << angle << " deplacement: " << deplacement << " compteur: " << compteur << endl;
 
     Cercle c1({x, y}, 0.);
     Vecteur v({x, y}, deplacement, angle);
@@ -162,10 +163,10 @@ bool lecture_f(istringstream& data) {
     }
     for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) { 
         for (const auto& [index, centre] : f.get_elements()) {
-            cout << index << endl;
+            //cout << index << endl;
             Cercle current_cercle(centre, rayon);
             for (const auto& [autre_index, autre_centre] : autre_faiseur->get_elements()) { 
-                cout << autre_index << endl;
+                //cout << autre_index << endl;
                 Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
                 if (!Cercle::intrusion(current_cercle, autre_cercle)) {
                     cout << message::faiseur_element_collision(
