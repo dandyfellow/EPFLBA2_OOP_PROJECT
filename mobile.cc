@@ -2,7 +2,7 @@
 
 int Particule::nbrs_particules = 0;
 vector<Particule*> Particule::liste_particule;
-vector<Faiseur*> Faiseur::liste_faiseurs;
+vector<Faiseur*> Faiseur::liste_faiseurs = {};
 int Faiseur::compteur_faiseurs = 0;
 //bool Particule::isInitialized = false;
 
@@ -134,10 +134,11 @@ bool lecture_f(istringstream& data) {
         cout << message::mobile_displacement(deplacement);
         return false;
     }
-    if( !Cercle::inclusion(arene, c2)){
+    if(!Cercle::inclusion(arene, c2)){
         cout << message::faiseur_outside(x,y);
         return false;
     }
+
     S2d position = {x, y};
     Faiseur f(position, v, angle, rayon, nbe);
     double cos_a= cos(angle);
@@ -159,21 +160,25 @@ bool lecture_f(istringstream& data) {
 
         f.ajouter_element({position.x, position.y});
     }
-    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
+    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) { 
         for (const auto& [index, centre] : f.get_elements()) {
+            cout << index << endl;
             Cercle current_cercle(centre, rayon);
             for (const auto& [autre_index, autre_centre] : autre_faiseur->get_elements()) { 
-                Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon()); 
-                if (Cercle::intrusion(current_cercle, autre_cercle)) {
-                    cout << message::faiseur_element_collision(f.get_index(), index, autre_faiseur->get_index(), autre_index);
+                cout << autre_index << endl;
+                Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
+                if (!Cercle::intrusion(current_cercle, autre_cercle)) {
+                    cout << message::faiseur_element_collision(
+                        f.get_index(), index, autre_faiseur->get_index(), autre_index
+                    );
                     return false;
                 }
             }
         }
     }
-    Faiseur::ajouter_faiseur(&f);
+    f.ajouter_faiseur(&f);
     return true;
-}
+}   
 
    /*void mise_a_jour(const Arene &arene){
         Mobile::mise_a_jour(arene);
