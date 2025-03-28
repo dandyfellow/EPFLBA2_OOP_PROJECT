@@ -179,7 +179,7 @@ bool decodage_nb_chaine(istringstream& data) {
 	if(data >> nb_chaine_init){
 		if(nb_chaine_init == 0) {etat = CHAINE_MODE;}
 		else {etat = CHAINE;}
-		cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
+		//cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
 		return true;
 	}
 	return false;

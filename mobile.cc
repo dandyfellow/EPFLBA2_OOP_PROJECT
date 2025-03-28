@@ -136,6 +136,7 @@ bool lecture_f(istringstream& data) {
     }
     if( !Cercle::inclusion(arene, c2)){
         cout << message::faiseur_outside(x,y);
+        return false;
     }
     S2d position = {x, y};
     Faiseur f(position, v, angle, rayon, nbe);
