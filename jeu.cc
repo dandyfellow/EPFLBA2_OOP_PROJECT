@@ -142,7 +142,7 @@ bool decodage_score(istringstream& data){
 
 bool decodage_nb_particule(istringstream& data) {
 	if(data >> nb_particule_init){
-		if(nb_particule_init < 0 or nb_particule_init > nb_particule_max) {
+		if(nb_particule_init > nb_particule_max) {//!!!ü!!!!!!!!!!!!!!!!!!!!!!!!!!! nbr particule negatif ?
 			message::nb_particule_outside(nb_particule_init);
 			return false;
 		}

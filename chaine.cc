@@ -26,7 +26,7 @@ bool Chaine::distance_points(unsigned int i) { //input the index of the point, c
     if(i == 0) { //check distance between point and edge of arena
         Vecteur v(chaine[i], {0, 0});
         if(r_max - v.get_norme() <= r_capture){
-            cout << message::chaine_racine(get_point(i).x, get_point(i).y);
+            cout << message::articulation_outside(get_point(i).x, get_point(i).y);
             return false;
         }
         return true;
