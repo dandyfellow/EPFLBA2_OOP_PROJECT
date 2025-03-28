@@ -54,7 +54,14 @@ bool lecture_c(istringstream& data){
     double x, y;
     data >> x >> y;
     Chaine c({x,y});
-    if(c.distance_points(c.longeur_chaine()-1) == false) {return false;}
+    if(c.distance_points(c.longeur_chaine()-1) == false) {
+        //message d'erreur gérer dans distance points
+
+        //Actually, I can change distance_point to check only with the
+    // the distance between the newly created point and the previous one
+    // not check everyone.
+        return false;
+    }
     return true;
 }
 
