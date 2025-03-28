@@ -39,7 +39,7 @@ bool lecture_c(istringstream& data){
         Vecteur v({x, y}, {0, 0});
         if(!(r_max - v.get_norme() <= r_capture)){
             //cout << "Vector norm for comparing: "<< v.get_norme() << endl;
-            cout << message::articulation_outside(x, y);
+            cout << message::chaine_racine(x, y);
             return false;
         }
         return true;
