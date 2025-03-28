@@ -1,8 +1,11 @@
 #include "mobile.h"
+#include <memory>
+
+using namespace std;
 
 int Particule::nbrs_particules = 0;
 vector<Particule*> Particule::liste_particule;
-vector<Faiseur*> Faiseur::liste_faiseurs = {};
+vector<shared_ptr<Faiseur>> Faiseur::liste_faiseurs = {};
 int Faiseur::compteur_faiseurs = 0;
 //bool Particule::isInitialized = false;
 
@@ -59,11 +62,11 @@ Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, dou
     elements.reserve(nb_elements);
 }
 
-void Faiseur::ajouter_faiseur(Faiseur* f) {
+void Faiseur::ajouter_faiseur(shared_ptr<Faiseur> f) { //STATIC
     liste_faiseurs.push_back(f);
 }
 
-const vector<Faiseur*>& Faiseur::get_liste_faiseurs(){
+const vector<shared_ptr<Faiseur>>& Faiseur::get_liste_faiseurs(){
     return liste_faiseurs;
 }
 
@@ -141,7 +144,7 @@ bool lecture_f(istringstream& data) {
     }
 
     S2d position = {x, y};
-    Faiseur f(position, v, angle, rayon, nbe);
+    auto f = make_shared<Faiseur>(position, v, angle, rayon, nbe); //using shared_ptr for Faiseur
     double cos_a= cos(angle);
     double sin_a= sin(angle);
 
@@ -159,10 +162,10 @@ bool lecture_f(istringstream& data) {
             position.y += v.get_norme() * sin(v.get_angle());
         }
 
-        f.ajouter_element({position.x, position.y});
+        f->ajouter_element({position.x, position.y});
     }
     for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) { 
-        for (const auto& [index, centre] : f.get_elements()) {
+        for (const auto& [index, centre] : f->get_elements()) {
             //cout << index << endl;
             Cercle current_cercle(centre, rayon);
             for (const auto& [autre_index, autre_centre] : autre_faiseur->get_elements()) { 
@@ -170,14 +173,14 @@ bool lecture_f(istringstream& data) {
                 Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
                 if (!Cercle::intrusion(current_cercle, autre_cercle)) {
                     cout << message::faiseur_element_collision(
-                        f.get_index(), index, autre_faiseur->get_index(), autre_index
+                        f->get_index(), index, autre_faiseur->get_index(), autre_index
                     );
                     return false;
                 }
             }
         }
     }
-    f.ajouter_faiseur(&f);
+    Faiseur::ajouter_faiseur(f);
     return true;
 }   
 

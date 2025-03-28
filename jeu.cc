@@ -182,7 +182,7 @@ bool decodage_faiseur(istringstream& data) {
 	if(count == nb_faiseur_init) etat = NB_CHAINE;
 
 	//cout << "count: " << count << endl; //remove later, just for testing
-	
+
 	if(lecture_f(data) == false) {return false;}
 	return true;
 }
@@ -218,10 +218,20 @@ bool decodage_chaine_mode(istringstream& data) {
 
 bool collisions_intertides(){
 	std::vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
-	const vector<Faiseur*>& faiseur = Faiseur::get_liste_faiseurs();
+	const vector<shared_ptr<Faiseur>>& faiseur = Faiseur::get_liste_faiseurs();
 	for(const auto& [index_articulation, articulation] : chaine){
-		for(const Faiseur* f : faiseur){
+
+		std::cout << "Articulation: " << articulation.get_centre().x << " ; " << articulation.get_centre().y << "\n"; //testing remove latter
+
+		for(const auto& f : faiseur){
+
+			std::cout << "Faiseur Rayon: " << f->get_rayon() << "\n"; //testing remove latter
+			std::cout << "Faiseur Position: " << f->get_positionx() << " " << f->get_positiony() << "\n"; //testing remove latter	
+			std::cout << "Faiseur Index: " << f->get_index() << "\n"; //testing remove latter
+
 			for(const auto& [index_elements, point] : f->get_elements()){
+
+				std::cout << "Element number: " << index_elements << " , point: " << point.x << " : " << point.y <<"\n"; //testing remove latter
 
 				Cercle c_faiseur(point , f->get_rayon());
 				if(Cercle::inclusion(c_faiseur, articulation)) {
