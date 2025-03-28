@@ -4,7 +4,7 @@ int Particule::nbrs_particules = 0;
 vector<Particule*> Particule::liste_particule;
 vector<Faiseur*> Faiseur::liste_faiseurs;
 int Faiseur::compteur_faiseurs = 0;
-bool Particule::isInitialized = false;
+//bool Particule::isInitialized = false;
 
 Cercle Arene({0,0}, r_max);
 
@@ -47,12 +47,12 @@ void Particule::set_compteur(int c) {
 int Particule::get_nbrs_particules() {
     return nbrs_particules;
 }
-void Particule::initializeCounter(double c) {
+/*void Particule::initializeCounter(double c) {
     if (!isInitialized){
         Particule:: compteur= c;
         isInitialized = true;
     }
-}
+}*/
 
 Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
     : Mobile(position_init, vitesse_init, alpha_init, rayon_init), index(compteur_faiseurs++) {
@@ -95,7 +95,7 @@ bool lecture_p(istringstream& data) {
 
     Cercle c1({x, y}, 0.);
     Vecteur v({x, y}, deplacement, angle);
-    Particule::initializeCounter(compteur);
+    //Particule::initializeCounter(compteur);
 
     if (compteur >= time_to_split || compteur < 0) {
         cout << message::particule_counter(compteur) << endl;

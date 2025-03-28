@@ -36,13 +36,13 @@ public:
     int get_compteur() const;
     void set_compteur(int c);
     static int get_nbrs_particules();
-    static void initializeCounter(double compteur);
+    //static void initializeCounter(double compteur);
 
 private:
     static int nbrs_particules;
-    static int compteur;
+    int compteur;
     static vector<Particule*> liste_particule;
-    static bool isInitialized;
+    //static bool isInitialized;
 };
 
 class Faiseur : public Mobile {
