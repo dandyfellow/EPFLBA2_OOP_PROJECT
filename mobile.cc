@@ -11,6 +11,28 @@ int Faiseur::compteur_faiseurs = 0;
 
 Cercle Arene({0,0}, r_max);
 
+bool verifier_collision_faiseur(const shared_ptr<Faiseur>& f);
+
+bool verifier_collision_faiseur(const shared_ptr<Faiseur>& f) {
+    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
+        auto elements_f = f->get_elements();
+        for (const auto& [index, centre] : elements_f) {  
+            Cercle current_cercle(centre, f->get_rayon());
+            auto elements_autre_f = autre_faiseur->get_elements();
+            for (const auto& [autre_index, autre_centre] : elements_autre_f) {  
+                Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
+                if (Cercle::intrusion(current_cercle, autre_cercle)) {  
+                    cout << message::faiseur_element_collision(
+                        f->get_index(), index, autre_faiseur->get_index(),
+                         autre_index);
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
 bool lecture_p(istringstream& data) {
     Cercle arene({0, 0}, r_max);
     double x, y, angle, deplacement, compteur;
@@ -19,7 +41,6 @@ bool lecture_p(istringstream& data) {
 
     Cercle c1({x, y}, 0.);
     Vecteur v({x, y}, deplacement, angle);
-    //Particule::initializeCounter(compteur);
 
     if (compteur >= time_to_split || compteur < 0) {
         cout << message::particule_counter(compteur);
@@ -64,9 +85,9 @@ bool lecture_f(istringstream& data) {
     }
 
     S2d position = {x, y};
-    auto f = make_shared<Faiseur>(position, v, angle, rayon, nbe); //using shared_ptr for Faiseur
+    auto f = make_shared<Faiseur>(position, v, angle, rayon, nbe); //using shared_ptr 
 
-    f->ajouter_element(position); //ajout de la position initiale dans le faiseur -> la tete
+    f->ajouter_element(position); //ajout de la tete du faiseur 
 
     for (int i = 0; i < nbe; ++i) {
         double new_x = position.x - deplacement * cos(angle);
@@ -74,7 +95,6 @@ bool lecture_f(istringstream& data) {
         Cercle c_test({new_x, new_y}, rayon);
 
         if (!Cercle::inclusion(arene, c_test)) {
-            //cout << "INCLUSION" << endl;
             v = v.reflechis({position.x, position.y});
             angle = v.get_angle();
             new_x = position.x - deplacement * cos(angle);
@@ -86,29 +106,8 @@ bool lecture_f(istringstream& data) {
         position.y = new_y;
 
     }
-    
-    //cout << " Début vérification des collisions" << endl;
-    //cout << "Nombre total de faiseurs existants : " << Faiseur::get_liste_faiseurs().size() << endl;
-    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
-        //cout << "-> Vérification avec Faiseur " << autre_faiseur->get_index() << endl;
-        auto elements_f = f->get_elements();
-        //cout << "Nombre d'éléments dans le faiseur en cours : " << elements_f.size() << endl;
-        for (const auto& [index, centre] : elements_f) {  
-            //cout << "Vérification de l'élément " << index << " du faiseur " << f->get_index() << endl;
-            Cercle current_cercle(centre, rayon);
-            auto elements_autre_f = autre_faiseur->get_elements();
-            //cout << "   Nombre d'éléments dans l'autre faiseur : " << elements_autre_f.size() << endl;
-            for (const auto& [autre_index, autre_centre] : elements_autre_f) {  
-                //cout << "Comparaison avec l'élément " << autre_index << " du faiseur " << autre_faiseur->get_index() << endl;
-                Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
-                //cout << "Vérification de l'intrusion entre (" << centre.x << ", " << centre.y << ") et ("  << autre_centre.x << ", " << autre_centre.y << ")" << endl;
-                if (Cercle::intrusion(current_cercle, autre_cercle)) {  
-                    //cout << " Collision" << endl;
-                    cout << message::faiseur_element_collision(f->get_index(), index, autre_faiseur->get_index(), autre_index);
-                    return false;
-                }
-            }
-        }
+    if (!verifier_collision_faiseur(f)){
+        return false;
     }
     Faiseur::ajouter_faiseur(f);
     return true;
@@ -129,7 +128,7 @@ void Faiseur::display(){
 Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init)
     : position(position_init), vitesse(vitesse_init), alpha(alpha_init), rayon(rayon_init) {}
 
-    //Particule
+//Particule
 Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init)
     : Mobile(position_init, vitesse_init, alpha_init, 0.){
     ++nbrs_particules;
@@ -161,6 +160,9 @@ const vector<shared_ptr<Faiseur>>& Faiseur::get_liste_faiseurs(){
 void Faiseur::ajouter_element(const S2d& position) {
     elements.emplace_back(compteur_elements++, position);
 }    
+
+
+
 
 //FONCTIONS RENDU 2 - EBAUCHES
    /*void mise_a_jour(const Arene &arene){

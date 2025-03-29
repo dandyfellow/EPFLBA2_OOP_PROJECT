@@ -42,7 +42,8 @@ bool lecture_c(istringstream& data){
         return true;
     } 
    
-    Vecteur v(c.get_chaine(c.longeur_chaine()-2).second.get_centre(), c.get_chaine(c.longeur_chaine()-1).second.get_centre());
+    Vecteur v(c.get_chaine(c.longeur_chaine()-2).second.get_centre(),
+              c.get_chaine(c.longeur_chaine()-1).second.get_centre());
 
     if(!(v.get_norme() <= r_capture)){ 
         cout << message::chaine_max_distance(c.longeur_chaine()-2);
