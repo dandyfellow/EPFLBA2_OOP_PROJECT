@@ -4,7 +4,6 @@
 //
 // Version 1.0 du 24.02.2025
 //
-
 #include "message.h"
 
 using namespace std;

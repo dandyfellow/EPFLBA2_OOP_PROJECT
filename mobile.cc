@@ -4,40 +4,21 @@
 
 using namespace std;
 
-int Particule::nbrs_particules = 0;
+namespace{
+    bool verifier_collision_faiseur(const shared_ptr<Faiseur>& f);
+    Cercle Arene({0,0}, r_max);
+}
+
 vector<Particule*> Particule::liste_particule;
 vector<shared_ptr<Faiseur>> Faiseur::liste_faiseurs = {};
 int Faiseur::compteur_faiseurs = 0;
+int Particule::nbrs_particules = 0;
 
-Cercle Arene({0,0}, r_max);
-
-bool verifier_collision_faiseur(const shared_ptr<Faiseur>& f);
-
-bool verifier_collision_faiseur(const shared_ptr<Faiseur>& f) {
-    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
-        auto elements_f = f->get_elements();
-        for (const auto& [index, centre] : elements_f) {  
-            Cercle current_cercle(centre, f->get_rayon());
-            auto elements_autre_f = autre_faiseur->get_elements();
-            for (const auto& [autre_index, autre_centre] : elements_autre_f) {  
-                Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
-                if (Cercle::intrusion(current_cercle, autre_cercle)) {  
-                    cout << message::faiseur_element_collision(
-                        f->get_index(), index, autre_faiseur->get_index(),
-                         autre_index);
-                    return false;
-                }
-            }
-        }
-    }
-    return true;
-}
 
 bool lecture_p(istringstream& data) {
     Cercle arene({0, 0}, r_max);
     double x, y, angle, deplacement, compteur;
     data >> x >> y >> angle >> deplacement >> compteur;
-    //cout << "x: " << x << " y: " << y << " angle: " << angle << " deplacement: " << deplacement << " compteur: " << compteur << endl;
 
     Cercle c1({x, y}, 0.);
     Vecteur v({x, y}, deplacement, angle);
@@ -69,12 +50,10 @@ bool lecture_f(istringstream& data) {
         cout << message::faiseur_nbe(nbe);
         return false;
     }
-
     if (rayon < r_min_faiseur || rayon > r_max_faiseur) {
         cout << message::faiseur_radius(rayon);
         return false;
     }
-
     if (v.get_norme() < 0 || v.get_norme() > d_max) {
         cout << message::mobile_displacement(deplacement);
         return false;
@@ -86,7 +65,6 @@ bool lecture_f(istringstream& data) {
 
     S2d position = {x, y};
     auto f = make_shared<Faiseur>(position, v, angle, rayon, nbe); //using shared_ptr 
-
     f->ajouter_element(position); //ajout de la tete du faiseur 
 
     for (int i = 0; i < nbe; ++i) {
@@ -100,11 +78,9 @@ bool lecture_f(istringstream& data) {
             new_x = position.x - deplacement * cos(angle);
             new_y = position.y - deplacement * sin(angle);
         }
-        //cout << "position.x " << position.x << " position.y " << position.y << " angle: " << angle << endl;
         f->ajouter_element({new_x, new_y});
         position.x = new_x;
         position.y = new_y;
-
     }
     if (!verifier_collision_faiseur(f)){
         return false;
@@ -161,8 +137,27 @@ void Faiseur::ajouter_element(const S2d& position) {
     elements.emplace_back(compteur_elements++, position);
 }    
 
-
-
+namespace {
+    bool verifier_collision_faiseur(const shared_ptr<Faiseur>& f) {
+        for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
+            auto elements_f = f->get_elements();
+            for (const auto& [index, centre] : elements_f) {  
+                Cercle current_cercle(centre, f->get_rayon());
+                auto elements_autre_f = autre_faiseur->get_elements();
+                for (const auto& [autre_index, autre_centre] : elements_autre_f) {  
+                    Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
+                    if (Cercle::intrusion(current_cercle, autre_cercle)) {  
+                        cout << message::faiseur_element_collision(
+                            f->get_index(), index, autre_faiseur->get_index(),
+                             autre_index);
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+}
 
 //FONCTIONS RENDU 2 - EBAUCHES
    /*void mise_a_jour(const Arene &arene){
