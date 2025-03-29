@@ -1,3 +1,4 @@
+//tools.cc, Adam Coste et Max Ciriani, version 1
 #include <cmath>
 #include <iostream>
 #include <cstdlib>

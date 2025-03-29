@@ -1,4 +1,4 @@
-//mobile.cc, Adam Coste et Max Ciriani, version 1
+//mobile.h, Adam Coste et Max Ciriani, version 1
 #ifndef MOBILE_H
 #define MOBILE_H
 

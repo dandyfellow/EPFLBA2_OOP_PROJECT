@@ -1,3 +1,4 @@
+//chaine.cc, Adam Coste et Max Ciriani, version 1
 #include <fstream>
 #include <sstream> 
 #include <vector>

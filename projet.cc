@@ -1,3 +1,4 @@
+//projet.cc, Adam Coste et Max Ciriani, version 1
 #define _USE_MATH_DEFINES
 
 #include <iostream>
