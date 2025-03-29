@@ -1,0 +1,13 @@
+# t16: Correct file; 2 faiseurs impliquant un calcul de réflexion
+#
+7996
+
+0
+
+2
+    -82 -20 0 2 2 10
+    -82  20 0 2 1.5 10
+
+0
+
+CONSTRUCTION
