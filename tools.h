@@ -14,7 +14,8 @@ struct S2d {
 class Vecteur {
 public:
     Vecteur(const S2d& p1 = {0, 0}, const S2d& p2 = {0, 0});
-    Vecteur(const S2d& p, const double& norme, const double& angle); // ne pas mettre de valeur par défaut, sinon confusion pour valeur par défaut lorsqu'on fait Vecteur v;
+    Vecteur(const S2d& p, const double& norme, const double& angle);
+     // ne pas mettre de valeur par défaut, sinon confusion pour valeur par défaut lorsqu'on fait Vecteur v;
     Vecteur reflechis(const S2d& point);
 
     // Getters and setters
@@ -55,7 +56,5 @@ private:
     S2d centre = {0, 0};
     double rayon = 0.;
 };
-
-// Independent functions
 
 #endif // TOOLS_H

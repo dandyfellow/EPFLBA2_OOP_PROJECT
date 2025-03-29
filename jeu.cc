@@ -11,6 +11,7 @@
 #include "constantes.h"
 
 using namespace std;
+//needed because all of these are statics -> cannot initialize statics with default values in the header file
 int unsigned counts = 0;
 int unsigned score = 0;
 int unsigned nb_particule_init = 0;
@@ -45,7 +46,7 @@ void reset(){
 	etat = SCORE;
 }
 
-void imprimer_data(istringstream& data) {//this function is for testing purpouses only
+void imprimer_data(istringstream& data) {//FOR TESTING ONLY, doesn't work tho :)
 	cout << "------------------TESTING----------------------" << endl;
 	string txt = " ";
 	string mot;
@@ -72,10 +73,10 @@ bool Jeu::lecture(string nom_fichier){
 			if(line[0]=='#')  continue;  
 			istringstream data(line);
 
-			//imprimer_data(data); // TESTING
+			
 
 			if(decodage_ligne(data) == false) return false; 
-			//cout << line << endl;
+			//cout << line << endl; //TESTING remove later
 		}
 		fichier.close();
         return true;
@@ -83,9 +84,6 @@ bool Jeu::lecture(string nom_fichier){
 	cout << "erreur lors de l'ouverture du fichier" << endl;
 	return false;
 }
-
-
-
 
 bool decodage_ligne(istringstream& data) {
 	switch(etat) 
@@ -124,7 +122,6 @@ bool decodage_ligne(istringstream& data) {
 
 	case FIN: 
 		break;
-		
 	}
 	return true;	
 }
@@ -147,7 +144,7 @@ bool decodage_nb_particule(istringstream& data) {
 		//cout << "nb particules: " << nb_particule_init << endl; //remove later, just for testing
 		//cout << "count: " << count << endl; //remove later, just for testing
 
-		if(nb_particule_init > nb_particule_max) {//  !!!!!!!!!!!!!!!!!!!!!!!!!!! nbr particule negatif ? removed : nb_particule_init < 0 ||
+		if(nb_particule_init > nb_particule_max) { //removed : nb_particule_init < 0 cause it is unsigned
 			cout << message::nb_particule_outside(nb_particule_init);
 			return false;
 		}
@@ -170,6 +167,7 @@ bool decodage_nb_faiseur(istringstream& data) {
 	if(data >> nb_faiseur_init){
 		if(nb_faiseur_init == 0) {etat = NB_CHAINE;}
 		else {etat = FAISEUR;}
+
 		//cout << "nb faiseur: " << nb_faiseur_init << endl; //remove later, just for testing
 		//cout << "count: " << count << endl; //remove later, just for testing
 
@@ -192,6 +190,7 @@ bool decodage_nb_chaine(istringstream& data) {
 	if(data >> nb_chaine_init){
 		if(nb_chaine_init == 0) {etat = CHAINE_MODE;}
 		else {etat = CHAINE;}
+
 		//cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
 		//cout << "count: " << count << endl; //remove later, just for testing
 
@@ -240,9 +239,7 @@ bool collisions_intertides(){
 					cout << message::chaine_articulation_collision(index_articulation, f->get_index(), index_elements);
 					return false;
 				}
-				
 			}
-			
 		}
 	}
 	return true;

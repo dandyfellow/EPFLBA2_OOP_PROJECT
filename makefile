@@ -1,4 +1,4 @@
-#Compiler and flags 			We can declare variables to make the makefile more readable
+#Compiler and flags
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17 -g 
 SRCS = projet.cc \
@@ -50,10 +50,10 @@ clean:
 	@echo "*** EFFACE OBJET ET EXECUTABLE ***"
 ifeq ($(IS_WINDOWS),Windows_NT)  # Windows
 	@if exist $(EXEC) del /q $(EXEC)  
-	@del /q /f *.o *.x *.cc~ *.h~ 2>nul
+	@del /q /f *.o *.x *.cc~ *.h~ 2>nul *.exe
 else  # Linux/macOS
 	@rm -f $(EXEC)
-	@rm -f *.o *.x *.cc~ *.h~
+	@rm -f *.o *.x *.cc~ *.h~ *.exe
 endif
 
 

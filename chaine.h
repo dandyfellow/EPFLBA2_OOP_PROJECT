@@ -22,9 +22,7 @@ class Chaine {
         static vector<pair<int, Cercle>> get_chaine();
         static pair<int, Cercle> get_chaine(unsigned int i);
         unsigned int longeur_chaine() const;
-        static void display();
-        
-        
+        static void display(); //for TESTING purpouses
 
     private:
         static vector<pair<int, Cercle>> chaine;

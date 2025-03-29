@@ -12,6 +12,8 @@ using namespace std;
 
 
 int main(int argc, char * argv[]) {
+
+    
     if(argc != 2) {
         //cerr << "Usage correct: ./projet nom_du_ficher.txt" << endl;
         exit(EXIT_FAILURE);
@@ -21,13 +23,14 @@ int main(int argc, char * argv[]) {
     Jeu jeu;
 
     Cercle::epsilFalse(); //desactive l'epsil pour les tests
+    //cout << Cercle::get_epsil() << endl;
     if(!jeu.lecture(nom_fichier)) {
         //les messaages d'erreurs sont gérées dans les fonctions lectures
         exit(EXIT_FAILURE);
     }
 
     jeu.success();
-    Cercle::epsilTrue(); //active l'epsil pour le reste de jeu
+    Cercle::epsilTrue(); //active epsil pour le reste de jeu
 
     // ----------------------------- SPACE FOR TESTING -----------------------------
     if(false) { 
@@ -59,10 +62,12 @@ int main(int argc, char * argv[]) {
     Vecteur v1(p1, p2);
     Vecteur v2(p1, norme, angle);
     Vecteur v3;
-    Vecteur v4({-1, 0}, 1, M_PI/2.0);
+    Vecteur v4({-1, 0}, 1, -4*M_PI + M_PI/2.0);
     cout << "v1: " << v1.get_x() << " " << v1.get_y() << " " << v1.get_angle() << " " << v1.get_norme() << endl;
     cout << "v2: " << v2.get_x() << " " << v2.get_y() << " " << v2.get_angle() << " " << v2.get_norme() << endl;
     cout << "v3: " << v3.get_x() << " " << v3.get_y() << " " << v3.get_angle() << " " << v3.get_norme() << endl;
+    cout << "v4: " << v4.get_x() << " " << v4.get_y() << " " << v4.get_angle() << " " << v4.get_norme() << endl;
+    cout << "--------------------------------------"<<endl;
     //Vecteur v4(p3, -4, M_PI); //norme negative : CA MARCHE
     Vecteur v_reflechis = v1.reflechis(p3);
     cout << "v_reflechis " << v_reflechis.get_x() << " " << v_reflechis.get_y() << " " << v_reflechis.get_angle() << " " << v_reflechis.get_norme() << endl;
@@ -71,7 +76,14 @@ int main(int argc, char * argv[]) {
     cout << "v_reflechis4 " << v2.reflechis(p4).get_x() << " " << v2.reflechis(p4).get_y() << " " << v2.reflechis(p4).get_angle() << " " << v2.reflechis(p4).get_norme() << endl;
     cout << "v_reflechis5 " << v1.reflechis(p5).get_x() << " " << v1.reflechis(p5).get_y() << " " << v1.reflechis(p5).get_angle() << " " << v1.reflechis(p5).get_norme() << endl;
     cout << "v_reflechis6 " << v4.reflechis(p5).get_x() << " " << v4.reflechis(p5).get_y() << " " << v4.reflechis(p5).get_angle() << " " << v4.reflechis(p5).get_norme() << endl;
-    
+    cout << "--------------------------------------"<<endl;
+    cout << "point: " << p1.x << " : " << p1.y << "  v_reflechis " << v1.get_angle() << " " << v1.reflechis(p1).get_angle() << " " << endl;
+    cout << "point: " << p2.x << " : " << p2.y << "  v_reflechis " << v1.get_angle() << " " << v1.reflechis(p2).get_angle() << " " << endl;
+    cout << "point: " << p3.x << " : " << p3.y << "  v_reflechis " << v1.get_angle() << " " << v1.reflechis(p3).get_angle() << " " << endl;
+    cout << "point: " << p1.x << " : " << p1.y << "  v_reflechis " << v2.get_angle() << " " << v2.reflechis(p1).get_angle() << " " << endl;
+    cout << "point: " << p2.x << " : " << p2.y << "  v_reflechis " << v2.get_angle() << " " << v2.reflechis(p2).get_angle() << " " << endl;
+    cout << "point: " << p3.x << " : " << p3.y << "  v_reflechis " << v2.get_angle() << " " << v2.reflechis(p3).get_angle() << " " << endl;
+
     cout << "Testing angle normalisation" << endl;
     cout << "-8./4.M_PI: " << fmod(-8./4*M_PI, M_PI) << endl;
     cout << "-7./4.M_PI: " << fmod(-7./4*M_PI, M_PI) << endl;
@@ -133,7 +145,7 @@ int main(int argc, char * argv[]) {
     cout << Cercle::intrusion(c1, c2) << endl;
     cout << Cercle::intrusion(c1, c3) << endl;
     cout << Cercle::intrusion(c1, c1) << endl;
-
 */
+
     return 0;
 }

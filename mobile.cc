@@ -118,7 +118,7 @@ bool lecture_f(istringstream& data) {
     double x, y, angle, deplacement, rayon, nbe;
     data >> x >> y >> angle >> deplacement >> rayon >> nbe;
 
-    Vecteur v({x, y}, deplacement, angle);
+    Vecteur v({x, y}, deplacement, angle + 3.14159265358979323846); //angle - pi
     Cercle arene({0, 0}, r_max);
     Cercle c2({x, y}, rayon);
 
@@ -144,6 +144,8 @@ bool lecture_f(istringstream& data) {
     S2d position = {x, y};
     auto f = make_shared<Faiseur>(position, v, angle, rayon, nbe); //using shared_ptr for Faiseur
 
+    f->ajouter_element(position); //ajout de la position initiale dans le faiseur -> la tete
+
     for (int i = 0; i < nbe; ++i) {
         double new_x = position.x - deplacement * cos(angle);
         double new_y = position.y - deplacement * sin(angle);
@@ -163,17 +165,17 @@ bool lecture_f(istringstream& data) {
         position.y = new_y;
         
     }
-    //cout << "🔍 Début de la vérification des collisions" << endl;
+    //cout << " Début de la vérification des collisions" << endl;
     //cout << "Nombre total de faiseurs existants : " << Faiseur::get_liste_faiseurs().size() << endl;
     
     for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
-        //cout << "➡ Vérification avec Faiseur " << autre_faiseur->get_index() << endl;
+        //cout << "-> Vérification avec Faiseur " << autre_faiseur->get_index() << endl;
     
         auto elements_f = f->get_elements();
         //cout << "Nombre d'éléments dans le faiseur en cours : " << elements_f.size() << endl;
     
         for (const auto& [index, centre] : elements_f) {  
-            //cout << "   🔹 Vérification de l’élément " << index << " du faiseur " << f->get_index() << endl;
+            //cout << "    Vérification de l'élément " << index << " du faiseur " << f->get_index() << endl;
     
             Cercle current_cercle(centre, rayon);
     
@@ -181,18 +183,16 @@ bool lecture_f(istringstream& data) {
             //cout << "   Nombre d'éléments dans l'autre faiseur : " << elements_autre_f.size() << endl;
     
             for (const auto& [autre_index, autre_centre] : elements_autre_f) {  
-                //cout << "      🟢 Comparaison avec l’élément " << autre_index << " du faiseur " << autre_faiseur->get_index() << endl;
+                //cout << "       Comparaison avec l'élément " << autre_index << " du faiseur " << autre_faiseur->get_index() << endl;
     
                 Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
     
-                //cout << "      Vérification de l’intrusion entre (" << centre.x << ", " << centre.y << ") et (" 
-                    //<< autre_centre.x << ", " << autre_centre.y << ")" << endl;
+                //cout << "Vérification de l'intrusion entre (" << centre.x << ", " << centre.y << ") et ("  << autre_centre.x << ", " << autre_centre.y << ")" << endl;
     
                 if (Cercle::intrusion(current_cercle, autre_cercle)) {  
-                    //cout << "❌ Collision détectée !" << endl;
-                    cout << message::faiseur_element_collision(
-                        f->get_index(), index, autre_faiseur->get_index(), autre_index
-                    );
+                    //cout << " Collision détectée !" << endl;
+                    
+                    cout << message::faiseur_element_collision(f->get_index(), index, autre_faiseur->get_index(), autre_index);
                     return false;
                 }
             }

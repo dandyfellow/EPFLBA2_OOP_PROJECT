@@ -18,12 +18,16 @@ Vecteur::Vecteur(const S2d& p1, const S2d& p2) : x(p2.x - p1.x), y(p2.y - p1.y)
 }
 
 Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
-    : x(p.x), y(p.y), angle(angle), norme(norme)
+    : x(p.x), y(p.y), norme(norme)
 {
     if (norme < 0)
     {
         cerr << "norme negative : tools.cc " << __LINE__ << endl;
         exit(EXIT_FAILURE);
+    }
+    double a = angle;
+    if (a < -M_PI or a > M_PI){ //normaliser la norme entre -pi et pi
+        this->angle = fmod(a, M_PI);
     }
 }
 
@@ -32,9 +36,6 @@ Vecteur Vecteur::reflechis(const S2d &point)
     S2d point_zero_zero; 
     Vecteur v_centre(point_zero_zero, point);
     double angle = M_PI + 2 * v_centre.get_angle() - this->get_angle();
-    if (angle < -M_PI or angle > M_PI){ //normaliser la norme entre -pi et pi
-        angle = fmod(angle, M_PI);
-    }
     Vecteur reflechis(point, this->get_norme(), angle);
     return reflechis;
     //la fonction reflechis marche pour les cas logiques, CAD pour les cas qui se produiront.
@@ -75,8 +76,7 @@ void Cercle::set_rayon(double rayon) {
 }
 void Cercle::epsilTrue() { epsil = true; }
 void Cercle::epsilFalse() { epsil = false; }// no static needed in .cc file
-bool Cercle::get_epsil() { return epsil; } // techniquement inutile
-//on peut juste acceder direct par Cercle::epsil
+bool Cercle::get_epsil() { return epsil; } 
 
 bool Cercle::inclusion(const Cercle &c1, const Cercle &c2)
 { //return true if c2 in c1
