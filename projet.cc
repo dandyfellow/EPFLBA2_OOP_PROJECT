@@ -26,6 +26,10 @@ int main(int argc, char * argv[]) {
     }
 
     jeu.success();
+
+    // ----------------------------- SPACE FOR TESTING -----------------------------
+    //Chaine::display();
+    // ----------------------------- END OF TESTING -----------------------------
     exit(EXIT_SUCCESS);
 
 

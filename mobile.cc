@@ -102,15 +102,15 @@ bool lecture_p(istringstream& data) {
     //Particule::initializeCounter(compteur);
 
     if (compteur >= time_to_split || compteur < 0) {
-        cout << message::particule_counter(compteur) << endl;
+        cout << message::particule_counter(compteur);
         return false;
     }
     if (!Cercle::inclusion(arene, c1)) {
-        cout << message::particule_outside(x, y) << endl;
+        cout << message::particule_outside(x, y);
         return false;
     }
     if (v.get_norme() < 0 || v.get_norme() > d_max) {
-        cout << message::mobile_displacement(deplacement) << endl;
+        cout << message::mobile_displacement(deplacement);
         return false;
     }
     return true;

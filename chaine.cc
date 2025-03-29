@@ -37,8 +37,11 @@ pair<int, Cercle> Chaine::get_chaine(unsigned int i) {return chaine[i];}; //stat
 
 unsigned int Chaine::longeur_chaine() const {return chaine.size();}
 
-void Chaine::display() const {
-    
+void Chaine::display() {
+    cout << "-------- Displaying chaine --------\n";
+    for(const auto& a : chaine){
+        cout << "index: " << a.first << " x: " << a.second.get_centre().x << " y: " << a.second.get_centre().y << endl;
+    }
 }
 //---------------------------------------------------------------------------------------------------
 bool lecture_c(istringstream& data){

@@ -62,7 +62,7 @@ private:
     static int compteur_faiseurs;  
     int index;  
     vector<pair<int, S2d>> elements; 
-    int compteur_elements;
+    int compteur_elements = 0;
 };
 
 bool lecture_p(istringstream& data);
