@@ -1,3 +1,4 @@
+//mobile.cc, Adam Coste et Max Ciriani, version 1
 #ifndef MOBILE_H
 #define MOBILE_H
 
@@ -11,8 +12,6 @@
 #include "tools.h"
 #include "constantes.h"
 #include "message.h"
-
-using namespace std;
 
 extern Cercle Arene;
 

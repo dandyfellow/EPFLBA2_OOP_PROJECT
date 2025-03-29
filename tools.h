@@ -1,3 +1,4 @@
+//tools.h, Adam Coste et Max Ciriani, version 1
 #ifndef TOOLS_H
 #define TOOLS_H
 
@@ -15,10 +16,7 @@ class Vecteur {
 public:
     Vecteur(const S2d& p1 = {0, 0}, const S2d& p2 = {0, 0});
     Vecteur(const S2d& p, const double& norme, const double& angle);
-     // ne pas mettre de valeur par défaut, sinon confusion pour valeur par défaut lorsqu'on fait Vecteur v;
     Vecteur reflechis(const S2d& point);
-
-    // Getters and setters
     double get_x() const;
     double get_y() const;
     double get_angle() const;
@@ -38,20 +36,17 @@ private:
 class Cercle {
 public:
     Cercle(S2d centre, double rayon);
-
-    // Getters and setters
     S2d get_centre() const;
     double get_rayon() const;
     void set_centre(S2d centre);
     void set_rayon(double rayon);
-
     static bool epsil;
     static void epsilTrue();
     static void epsilFalse();
     static bool get_epsil();
-
     static bool inclusion(const Cercle &c1, const Cercle &c2);
     static bool intrusion(const Cercle &c1, const Cercle &c2);
+
 private:
     S2d centre = {0, 0};
     double rayon = 0.;

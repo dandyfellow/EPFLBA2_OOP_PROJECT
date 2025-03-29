@@ -1,10 +1,11 @@
+//mobile.cc, Adam Coste et Max Ciriani, version 1
 #ifndef CONSTANTES_H
 #define CONSTANTES_H
 
 // nécessaire pour utiliser epsil_zero et disposer des symboles de graphic.h
 #include "tools.h" 
-enum Mode
-{
+
+enum Mode{
     CONSTRUCTION,
     GUIDAGE
 };

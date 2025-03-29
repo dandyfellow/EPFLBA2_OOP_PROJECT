@@ -1,3 +1,4 @@
+// message.h, Adam Coste et Max Ciriani, version 1
 #ifndef MESSAGE_H_INCLUDED
 #define MESSAGE_H_INCLUDED
 //

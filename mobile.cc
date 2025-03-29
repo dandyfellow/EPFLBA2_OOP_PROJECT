@@ -1,5 +1,6 @@
-#include "mobile.h"
+//mobile.cc, Adam Coste et Max Ciriani, version 1
 #include <memory>
+#include "mobile.h"
 
 using namespace std;
 
@@ -7,7 +8,6 @@ int Particule::nbrs_particules = 0;
 vector<Particule*> Particule::liste_particule;
 vector<shared_ptr<Faiseur>> Faiseur::liste_faiseurs = {};
 int Faiseur::compteur_faiseurs = 0;
-//bool Particule::isInitialized = false;
 
 Cercle Arene({0,0}, r_max);
 
