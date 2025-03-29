@@ -20,15 +20,17 @@ int main(int argc, char * argv[]) {
     string nom_fichier = argv[1];
     Jeu jeu;
 
+    Cercle::epsilFalse(); //desactive l'epsil pour les tests
     if(!jeu.lecture(nom_fichier)) {
         //les messaages d'erreurs sont gérées dans les fonctions lectures
         exit(EXIT_FAILURE);
     }
 
     jeu.success();
+    Cercle::epsilTrue(); //active l'epsil pour le reste de jeu
 
     // ----------------------------- SPACE FOR TESTING -----------------------------
-    if(false){
+    if(false) { 
         Chaine::display();
         Faiseur::display();
     }

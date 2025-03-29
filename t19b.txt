@@ -1,0 +1,13 @@
+# t19: faiseur (0) element (2) collides with faiseur (1) element (2)
+#
+7996
+
+0
+
+2
+    5.   0     0.       1.5 1.5 3
+    0    6.5   1.57079  2   2   3
+
+0
+
+CONSTRUCTION

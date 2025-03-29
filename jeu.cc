@@ -23,7 +23,7 @@ Etat etat = SCORE;
 // 										PROTOTYPES
 //---------------------------------------------------------------------------------------------------
 void reset();
-bool imprimer_data(istringstream &data);
+void imprimer_data(istringstream &data);
 bool decodage_score(istringstream &data);
 bool decodage_ligne(istringstream &data);
 bool decodage_nb_particule(istringstream &data);
@@ -45,15 +45,14 @@ void reset(){
 	etat = SCORE;
 }
 
-bool imprimer_data(istringstream& data) //this function is for testing purpouses only
-{
-	string txt = "";
+void imprimer_data(istringstream& data) {//this function is for testing purpouses only
+	cout << "------------------TESTING----------------------" << endl;
+	string txt = " ";
 	string mot;
 	while(data >> mot) {
 		cout << mot << txt;
 	} 
 	cout << endl;
-	return true;
 }
 
 void Jeu::success(){
@@ -61,8 +60,8 @@ void Jeu::success(){
 }
 
 bool Jeu::lecture(string nom_fichier){
-	//return true;
-	reset(); //resets the values to the default ones
+	
+	reset();
 	ifstream fichier(nom_fichier); //opens the file (ifstream = input file stream)
     if(!fichier.fail()) {
 		string line;
@@ -72,8 +71,11 @@ bool Jeu::lecture(string nom_fichier){
 		
 			if(line[0]=='#')  continue;  
 			istringstream data(line);
-			if(decodage_ligne(data) == false) return false; //detection d'erreur simple
+
 			//imprimer_data(data); // TESTING
+
+			if(decodage_ligne(data) == false) return false; 
+			//cout << line << endl;
 		}
 		fichier.close();
         return true;
@@ -88,15 +90,15 @@ bool Jeu::lecture(string nom_fichier){
 bool decodage_ligne(istringstream& data) {
 	switch(etat) 
 	{
-	case SCORE: // lecture du nombre de livreurs
+	case SCORE: 
 		if(decodage_score(data) == false) return false;
 	    break;
 
-	case NB_PARTICULE: // ajout dans le vector en cas de succès
+	case NB_PARTICULE:
 		if(decodage_nb_particule(data) == false) return false;
 	    break;
 
-	case PARTICULE: // lecture du nombre de véhicules
+	case PARTICULE: 
 		if(decodage_particule(data) == false) return false;
 	    break;
 

@@ -143,24 +143,26 @@ bool lecture_f(istringstream& data) {
 
     S2d position = {x, y};
     auto f = make_shared<Faiseur>(position, v, angle, rayon, nbe); //using shared_ptr for Faiseur
-    double cos_a= cos(angle);
-    double sin_a= sin(angle);
 
     for (int i = 0; i < nbe; ++i) {
-        double new_x = x - i * deplacement * cos_a;
-        double new_y = y - i * deplacement * sin_a;
+        double new_x = position.x - i * deplacement * cos(angle);
+        double new_y = position.y - i * deplacement * sin(angle);
         Cercle c_test({new_x, new_y}, rayon);
 
         if (!Cercle::inclusion(arene, c_test)) {
-            position.x -= v.get_norme() * cos(v.get_angle());
-            position.y -= v.get_norme() * sin(v.get_angle());
-            v = v.reflechis(position);
-            v.set_angle(v.get_angle()); 
-            position.x += v.get_norme() * cos(v.get_angle());
-            position.y += v.get_norme() * sin(v.get_angle());
+            cout << "INCLUSION" << endl;
+            v = v.reflechis({position.x, position.y});
+            angle = v.get_angle();
+            new_x = position.x - i * deplacement * cos(angle);
+            new_y = position.y - i * deplacement * sin(angle);
         }
 
-        f->ajouter_element({position.x, position.y});
+        //cout << "position.x " << position.x << " position.y " << position.y << " angle: " << angle << endl;
+
+        f->ajouter_element({new_x, new_y});
+        position.x = new_x;
+        position.y = new_y;
+        
     }
     //cout << "🔍 Début de la vérification des collisions" << endl;
     //cout << "Nombre total de faiseurs existants : " << Faiseur::get_liste_faiseurs().size() << endl;
