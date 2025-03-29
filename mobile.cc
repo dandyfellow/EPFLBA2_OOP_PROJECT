@@ -150,7 +150,7 @@ bool lecture_f(istringstream& data) {
         Cercle c_test({new_x, new_y}, rayon);
 
         if (!Cercle::inclusion(arene, c_test)) {
-            cout << "INCLUSION" << endl;
+            //cout << "INCLUSION" << endl;
             v = v.reflechis({position.x, position.y});
             angle = v.get_angle();
             new_x = position.x - i * deplacement * cos(angle);
