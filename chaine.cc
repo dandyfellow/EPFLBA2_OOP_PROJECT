@@ -15,35 +15,6 @@ using namespace std;
 std::vector<pair<int, Cercle>> Chaine::chaine;
 Mode Chaine::mode;
 
-
-Chaine::Chaine(S2d p) {
-    int index = longeur_chaine();
-    Cercle c(p, 0);
-    pair<int, Cercle> pair = {index, c};
-
-    chaine.push_back(pair);
-}
-Chaine::Chaine(Cercle c) {
-    int index = longeur_chaine();
-    pair<int, Cercle> p = {index, c};
-    chaine.push_back(p);
-}
-
-Chaine::Chaine(Mode m) {mode = m;}
-
-vector<pair<int, Cercle>> Chaine::get_chaine() {return chaine;} //static
-
-pair<int, Cercle> Chaine::get_chaine(unsigned int i) {return chaine[i];}; //static
-
-unsigned int Chaine::longeur_chaine() const {return chaine.size();}
-
-void Chaine::display() { //for TESTING purpouses
-    cout << "-------- Displaying chaine --------\n";
-    for(const auto& a : chaine){
-        cout << "index: " << a.first << " x: " << a.second.get_centre().x << " y: " << a.second.get_centre().y << endl;
-    }
-}
-//---------------------------------------------------------------------------------------------------
 bool lecture_c(istringstream& data){
     double x, y;
     data >> x >> y;
@@ -95,4 +66,33 @@ bool lecture_c_mode(istringstream& data){
         return true;
     }
     return false;   
+}
+
+//Chaine
+Chaine::Chaine(S2d p) {
+    int index = longeur_chaine();
+    Cercle c(p, 0);
+    pair<int, Cercle> pair = {index, c};
+
+    chaine.push_back(pair);
+}
+Chaine::Chaine(Cercle c) {
+    int index = longeur_chaine();
+    pair<int, Cercle> p = {index, c};
+    chaine.push_back(p);
+}
+
+Chaine::Chaine(Mode m) {mode = m;}
+
+vector<pair<int, Cercle>> Chaine::get_chaine() {return chaine;} //static
+
+pair<int, Cercle> Chaine::get_chaine(unsigned int i) {return chaine[i];}; //static
+
+unsigned int Chaine::longeur_chaine() const {return chaine.size();}
+
+void Chaine::display() { //for TESTING purpouses
+    cout << "-------- Displaying chaine --------\n";
+    for(const auto& a : chaine){
+        cout << "index: " << a.first << " x: " << a.second.get_centre().x << " y: " << a.second.get_centre().y << endl;
+    }
 }
