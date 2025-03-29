@@ -11,8 +11,6 @@ int Faiseur::compteur_faiseurs = 0;
 
 Cercle Arene({0,0}, r_max);
 
-
-
 Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init)
     : position(position_init), vitesse(vitesse_init), alpha(alpha_init), rayon(rayon_init) {}
 
@@ -164,14 +162,33 @@ bool lecture_f(istringstream& data) {
 
         f->ajouter_element({position.x, position.y});
     }
-    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) { 
-        for (const auto& [index, centre] : f->get_elements()) {
-            //cout << index << endl;
+    //cout << "🔍 Début de la vérification des collisions" << endl;
+    //cout << "Nombre total de faiseurs existants : " << Faiseur::get_liste_faiseurs().size() << endl;
+    
+    for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
+       // cout << "➡ Vérification avec Faiseur " << autre_faiseur->get_index() << endl;
+    
+        auto elements_f = f->get_elements();
+        //cout << "Nombre d'éléments dans le faiseur en cours : " << elements_f.size() << endl;
+    
+        for (const auto& [index, centre] : elements_f) {  
+            //cout << "   🔹 Vérification de l’élément " << index << " du faiseur " << f->get_index() << endl;
+    
             Cercle current_cercle(centre, rayon);
-            for (const auto& [autre_index, autre_centre] : autre_faiseur->get_elements()) { 
-                //cout << autre_index << endl;
+    
+            auto elements_autre_f = autre_faiseur->get_elements();
+           // cout << "   Nombre d'éléments dans l'autre faiseur : " << elements_autre_f.size() << endl;
+    
+            for (const auto& [autre_index, autre_centre] : elements_autre_f) {  
+                //cout << "      🟢 Comparaison avec l’élément " << autre_index << " du faiseur " << autre_faiseur->get_index() << endl;
+    
                 Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
-                if (!Cercle::intrusion(current_cercle, autre_cercle)) {
+    
+               // cout << "      Vérification de l’intrusion entre (" << centre.x << ", " << centre.y << ") et (" 
+                    // << autre_centre.x << ", " << autre_centre.y << ")" << endl;
+    
+                if (Cercle::intrusion(current_cercle, autre_cercle)) {  
+                    //cout << "❌ Collision détectée !" << endl;
                     cout << message::faiseur_element_collision(
                         f->get_index(), index, autre_faiseur->get_index(), autre_index
                     );

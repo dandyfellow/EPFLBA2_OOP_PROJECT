@@ -11,7 +11,7 @@
 #include "constantes.h"
 
 using namespace std;
-int unsigned count = 0;
+int unsigned counts = 0;
 int unsigned score = 0;
 int unsigned nb_particule_init = 0;
 int unsigned nb_faiseur_init = 0;
@@ -152,15 +152,15 @@ bool decodage_nb_particule(istringstream& data) {
 		if(nb_particule_init == 0) {etat = NB_FAISEUR;}
 		else {
 			etat = PARTICULE;
-			count = 0;
+			counts = 0;
 		}
 		return true;
 	}
 	return false;
 }
 bool decodage_particule(istringstream& data) {
-	count++;
-	if(count == nb_particule_init) etat = NB_FAISEUR;
+	counts++;
+	if(counts == nb_particule_init) etat = NB_FAISEUR;
 	if(lecture_p(data) == false){return false;}
 	return true;
 }
@@ -171,15 +171,15 @@ bool decodage_nb_faiseur(istringstream& data) {
 		//cout << "nb faiseur: " << nb_faiseur_init << endl; //remove later, just for testing
 		//cout << "count: " << count << endl; //remove later, just for testing
 
-		count = 0;
+		counts = 0;
 		return true;
 	}
 	return false;
 }
 
 bool decodage_faiseur(istringstream& data) {
-	count++;
-	if(count == nb_faiseur_init) etat = NB_CHAINE;
+	counts++;
+	if(counts == nb_faiseur_init) etat = NB_CHAINE;
 
 	//cout << "count: " << count << endl; //remove later, just for testing
 
@@ -193,21 +193,21 @@ bool decodage_nb_chaine(istringstream& data) {
 		//cout << "nb chaine: " << nb_chaine_init << endl; //remove later, just for testing
 		//cout << "count: " << count << endl; //remove later, just for testing
 
-		count = 0;
+		counts = 0;
 		return true;
 	}
 	return false;
 }
 bool decodage_chaine(istringstream& data) {
-	count++;
-	if(count == nb_chaine_init) etat = CHAINE_MODE;
+	counts++;
+	if(counts == nb_chaine_init) etat = CHAINE_MODE;
 	if(lecture_c(data) == false) {return false;}
 	return true;
 }
 bool decodage_chaine_mode(istringstream& data) {
 	if(lecture_c_mode(data) == false) {return false;}
 
-	count = 0;
+	counts = 0;
 	etat = FIN;
 
 	if(collisions_intertides() == false) return false;
