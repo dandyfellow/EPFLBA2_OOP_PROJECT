@@ -19,12 +19,10 @@ Mode Chaine::mode;
 bool lecture_c(istringstream& data){
     double x, y;
     data >> x >> y;
-
     //cout << "x:" << x << " y: " << y << endl; //TESTING remove later
     Cercle arene({0,0}, r_max);
     Cercle cercle({x,y}, 0);
     if(!Cercle::intrusion(arene, cercle)){ //condition verified if no intrusion
-        //error, chaine outside arena
         cout << message::articulation_outside(x, y);
         return false;
     }
@@ -44,7 +42,6 @@ bool lecture_c(istringstream& data){
         return true;
     } 
    
-
     Vecteur v(c.get_chaine(c.longeur_chaine()-2).second.get_centre(), c.get_chaine(c.longeur_chaine()-1).second.get_centre());
 
     if(!(v.get_norme() <= r_capture)){ 
@@ -57,7 +54,6 @@ bool lecture_c(istringstream& data){
 
 bool lecture_c_mode(istringstream& data){
     string mot = "";
-    
     if(data >> mot){
         //cout << "mot:  " << mot << endl;
         if(mot == "CONSTRUCTION") {Chaine c(CONSTRUCTION);}

@@ -13,6 +13,8 @@
 #include "tools.h" 
 #include "constantes.h"
 
+using namespace std;
+
 bool lecture_c(istringstream& data);
 bool lecture_c_mode(istringstream& data);
 
