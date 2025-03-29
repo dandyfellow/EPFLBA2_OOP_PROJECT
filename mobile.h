@@ -55,6 +55,7 @@ public:
     void ajouter_element(const S2d& position);
     vector<pair<int, S2d>> get_elements() const;
     int get_index() const { return index; }
+    static void display();
     
 
 private:

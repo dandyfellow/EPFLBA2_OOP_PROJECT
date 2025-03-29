@@ -184,6 +184,18 @@ bool lecture_f(istringstream& data) {
     return true;
 }   
 
+void Faiseur::display(){
+    cout << "-------- Displaying faiseur --------\n";
+    for (const auto& f : Faiseur::get_liste_faiseurs()) {
+        cout << "Faiseur index: " << f->get_index() << "\n";
+        cout << "Elements: \n";
+        for (const auto& [index, point] : f->get_elements()) {
+            cout << "Element number: " << index << " , point: " << point.x << " : " << point.y << "\n";
+        }
+    }
+}
+
+
    /*void mise_a_jour(const Arene &arene){
         Mobile::mise_a_jour(arene);
         for (const auto& autre : liste_faiseurs){
