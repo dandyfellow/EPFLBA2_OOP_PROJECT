@@ -11,7 +11,8 @@
 #include "constantes.h"
 
 using namespace std;
-//needed because all of these are statics -> cannot initialize statics with default values in the header file
+//needed because all of these are statics 
+// -> cannot initialize statics with default values in the header file
 
 namespace{
 	void reset();

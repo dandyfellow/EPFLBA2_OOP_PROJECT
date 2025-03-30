@@ -42,7 +42,8 @@ bool lecture_f(istringstream& data) {
     double x, y, angle, deplacement, rayon, nbe;
     data >> x >> y >> angle >> deplacement >> rayon >> nbe;
 
-    Vecteur v({x, y}, deplacement, angle + 3.14159265358979323846); //angle - pi
+    Vecteur v({x, y}, deplacement, angle + 3.14159265358979323846); 
+    //angle + pi pour adapter à l'angle reflechi
     Cercle arene({0, 0}, r_max);
     Cercle c2({x, y}, rayon);
 
