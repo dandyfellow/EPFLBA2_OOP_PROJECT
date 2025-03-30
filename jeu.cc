@@ -81,6 +81,17 @@ namespace {
 		} 
 		cout << endl;
 	}
+
+	bool decodage_score(istringstream& data){
+		data >> score;	
+		if((score == 0) or (score > score_max)) {
+			cout << message::score_outside(score);
+			return false;
+		}
+		etat = NB_PARTICULE;
+		return true;
+		
+	}
 	
 	bool decodage_ligne(istringstream& data) {
 		switch(etat) 
@@ -121,18 +132,6 @@ namespace {
 			break;
 		}
 		return true;	
-	}
-	
-	
-	bool decodage_score(istringstream& data){
-		data >> score;	
-		if((score == 0) or (score > score_max)) {
-			cout << message::score_outside(score);
-			return false;
-		}
-		etat = NB_PARTICULE;
-		return true;
-		
 	}
 	
 	bool decodage_nb_particule(istringstream& data) {

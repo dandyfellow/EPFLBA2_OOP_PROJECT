@@ -9,7 +9,7 @@ using namespace std;
 #define _USE_MATH_DEFINES //pour cmath constantes
 
 constexpr double epsil_zero = 0.5;
-bool Cercle::epsil = false;  
+
 
 //Vecteur 
 Vecteur::Vecteur(const S2d& p1, const S2d& p2) : x(p2.x - p1.x), y(p2.y - p1.y) {
@@ -45,6 +45,7 @@ void Vecteur::set_angle(double new_angle) { this->angle = new_angle; }
 void Vecteur::set_norme(double new_norme) { this->norme = new_norme; }
 
 //Cercle
+bool Cercle::epsil = false;  
 Cercle::Cercle(S2d centre, double rayon)
     : centre(centre), rayon(rayon){}
 

@@ -19,7 +19,6 @@ EXEC = projet
 
 # Directories
 
-
 all: $(EXEC) 
 
 chaine.o: chaine.cc chaine.h tools.h
