@@ -9,7 +9,8 @@
 #include "message.h"
 #include "tools.h"
 
-enum Etat {SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAINE, CHAINE_MODE, FIN};
+enum Etat { SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAINE, 
+            CHAINE_MODE, FIN};
 
 class Jeu {
 public:

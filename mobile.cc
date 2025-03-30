@@ -14,7 +14,6 @@ vector<shared_ptr<Faiseur>> Faiseur::liste_faiseurs = {};
 int Faiseur::compteur_faiseurs = 0;
 int Particule::nbrs_particules = 0;
 
-
 bool lecture_p(istringstream& data) {
     Cercle arene({0, 0}, r_max);
     double x, y, angle, deplacement, compteur;
@@ -96,14 +95,17 @@ void Faiseur::display(){
         cout << "Faiseur index: " << f->get_index() << "\n";
         cout << "Elements: \n";
         for (const auto& [index, point] : f->get_elements()) {
-            cout << "Element number: " << index << " , point: " << point.x << " : " << point.y << "\n";
+            cout << "Element number: " << index << " , point: " << point.x << " : " 
+                 << point.y << "\n";
         }
     }
 }
 
 //Mobile
-Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init)
-    : position(position_init), vitesse(vitesse_init), alpha(alpha_init), rayon(rayon_init) {}
+Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, 
+               double rayon_init)
+    :position(position_init), vitesse(vitesse_init), alpha(alpha_init), 
+     rayon(rayon_init) {}
 
 //Particule
 Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init)
@@ -121,9 +123,11 @@ void Particule::set_compteur(int c) {
 }
 
 //Faiseur 
-Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
-    : Mobile(position_init, vitesse_init, alpha_init, rayon_init), index(compteur_faiseurs++) {
-    elements.reserve(nb_elements);
+Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, 
+                 double rayon_init, int nb_elements)
+    :Mobile(position_init, vitesse_init, alpha_init, rayon_init),
+             index(compteur_faiseurs++) {
+                elements.reserve(nb_elements);
 }
 
 void Faiseur::ajouter_faiseur(shared_ptr<Faiseur> f) { 
@@ -149,8 +153,8 @@ namespace {
                     Cercle autre_cercle(autre_centre, autre_faiseur->get_rayon());
                     if (Cercle::intrusion(current_cercle, autre_cercle)) {  
                         cout << message::faiseur_element_collision(
-                            f->get_index(), index, autre_faiseur->get_index(),
-                             autre_index);
+                                f->get_index(), index, autre_faiseur->get_index(),
+                                autre_index);
                         return false;
                     }
                 }

@@ -1,3 +1,4 @@
+//jeu.cc, Adam Coste et Max Ciriani, version 1
 #include <iostream>
 #include <fstream>
 #include <sstream> //for istringstream
@@ -136,7 +137,7 @@ namespace {
 	
 	bool decodage_nb_particule(istringstream& data) {
 		if(data >> nb_particule_init){
-			if(nb_particule_init > nb_particule_max) { //removed : nb_particule_init < 0 cause it is unsigned
+			if(nb_particule_init > nb_particule_max) { 
 				cout << message::nb_particule_outside(nb_particule_init);
 				return false;
 			}
@@ -205,7 +206,8 @@ namespace {
 				for(const auto& [index_elements, point] : f->get_elements()){
 					Cercle c_faiseur(point , f->get_rayon());
 					if(Cercle::inclusion(c_faiseur, articulation)) {
-						cout << message::chaine_articulation_collision(index_articulation, f->get_index(), index_elements);
+						cout << message::chaine_articulation_collision(
+								index_articulation, f->get_index(), index_elements);
 						return false;
 					}
 				}

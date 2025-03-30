@@ -13,10 +13,6 @@
 
 using namespace std;
 
-namespace{
-
-
-}
 std::vector<pair<int, Cercle>> Chaine::chaine;
 Mode Chaine::mode;
 
@@ -88,6 +84,7 @@ unsigned int Chaine::longeur_chaine() const {return chaine.size();}
 void Chaine::display() { //for TESTING purpouses
     cout << "-------- Displaying chaine --------\n";
     for(const auto& a : chaine){
-        cout << "index: " << a.first << " x: " << a.second.get_centre().x << " y: " << a.second.get_centre().y << endl;
+        cout << "index: " << a.first << " x: " << a.second.get_centre().x << " y: " 
+             << a.second.get_centre().y << endl;
     }
 }
