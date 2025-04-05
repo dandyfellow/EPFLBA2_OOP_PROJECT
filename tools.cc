@@ -8,9 +8,6 @@
 using namespace std;
 #define _USE_MATH_DEFINES //pour cmath constantes
 
-constexpr double epsil_zero = 0.5;
-
-
 //Vecteur 
 Vecteur::Vecteur(const S2d& p1, const S2d& p2) : x(p2.x - p1.x), y(p2.y - p1.y) {
     angle = atan2(y, x);

@@ -1,15 +1,31 @@
 //projet.cc, Adam Coste et Max Ciriani, version 1
 #define _USE_MATH_DEFINES
 
+//#include <gtkmm/application.h>
+#include <string>
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
 #include <fstream>
 
-#include "jeu.h" 
+//#include "gui.h"
+#include "jeu.h"
+
 
 using namespace std;
 
+
+/*int main(int argc, char *argv[])
+{
+    string file_name("");
+    if (argc > 1)
+    {
+        file_name = argv[1];
+    }
+    auto app = Gtk::Application::create();
+    return app->make_window_and_run<My_window>(1, argv, file_name);
+}
+*/
 
 int main(int argc, char * argv[]) {
     if(argc != 2) {

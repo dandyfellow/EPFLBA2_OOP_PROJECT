@@ -8,6 +8,13 @@
 #include "mobile.h"
 #include "message.h"
 #include "tools.h"
+#include "constantes.h"
+
+enum Status{
+    ONGOING,
+    WON,
+    LOST
+};
 
 enum Etat { SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAINE, 
             CHAINE_MODE, FIN};

@@ -5,12 +5,12 @@
 using namespace std;
 
 namespace{
-    bool verifier_collision_faiseur(const shared_ptr<Faiseur>& f);
+    bool verifier_collision_faiseur(const unique_ptr<Faiseur>& f);
     Cercle Arene({0,0}, r_max);
 }
 
 vector<Particule*> Particule::liste_particule;
-vector<shared_ptr<Faiseur>> Faiseur::liste_faiseurs = {};
+vector<unique_ptr<Faiseur>> Faiseur::liste_faiseurs = {};
 int Faiseur::compteur_faiseurs = 0;
 int Particule::nbrs_particules = 0;
 
@@ -64,7 +64,7 @@ bool lecture_f(istringstream& data) {
     }
 
     S2d position = {x, y};
-    auto f = make_shared<Faiseur>(position, v, angle, rayon, nbe); //using shared_ptr 
+    auto f = make_unique<Faiseur>(position, v, angle, rayon, nbe); //using shared_ptr 
     f->ajouter_element(position); //ajout de la tete du faiseur 
 
     for (int i = 0; i < nbe; ++i) {
@@ -85,7 +85,7 @@ bool lecture_f(istringstream& data) {
     if (!verifier_collision_faiseur(f)){
         return false;
     }
-    Faiseur::ajouter_faiseur(f);
+    Faiseur::ajouter_faiseur(std::move(f));
     return true;
 }   
 
@@ -130,11 +130,11 @@ Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init,
                 elements.reserve(nb_elements);
 }
 
-void Faiseur::ajouter_faiseur(shared_ptr<Faiseur> f) { 
-    liste_faiseurs.push_back(f);
+void Faiseur::ajouter_faiseur(unique_ptr<Faiseur>&& f) { 
+    liste_faiseurs.push_back(std::move(f));
 }
 
-const vector<shared_ptr<Faiseur>>& Faiseur::get_liste_faiseurs(){
+const vector<unique_ptr<Faiseur>>& Faiseur::get_liste_faiseurs(){
     return liste_faiseurs;
 }
 
@@ -143,7 +143,7 @@ void Faiseur::ajouter_element(const S2d& position) {
 }    
 
 namespace {
-    bool verifier_collision_faiseur(const shared_ptr<Faiseur>& f) {
+    bool verifier_collision_faiseur(const unique_ptr<Faiseur>& f) {
         for (const auto& autre_faiseur : Faiseur::get_liste_faiseurs()) {  
             auto elements_f = f->get_elements();
             for (const auto& [index, centre] : elements_f) {  

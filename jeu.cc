@@ -199,7 +199,7 @@ namespace {
 	
 	bool collisions_intertides(){
 		std::vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
-		const vector<shared_ptr<Faiseur>>& faiseur = Faiseur::get_liste_faiseurs();
+		const vector<unique_ptr<Faiseur>>& faiseur = Faiseur::get_liste_faiseurs();
 		for(const auto& [index_articulation, articulation] : chaine){
 			for(const auto& f : faiseur){
 				for(const auto& [index_elements, point] : f->get_elements()){

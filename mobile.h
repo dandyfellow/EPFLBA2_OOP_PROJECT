@@ -51,15 +51,15 @@ private:
 class Faiseur : public Mobile {
 public:
     Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements);
-    static void ajouter_faiseur(shared_ptr<Faiseur> f);
-    static const vector<shared_ptr<Faiseur>>& get_liste_faiseurs();
+    static void ajouter_faiseur(unique_ptr<Faiseur>&& f);
+    static const vector<unique_ptr<Faiseur>>& get_liste_faiseurs();
     void ajouter_element(const S2d& position);
     vector<pair<int, S2d>> get_elements() const{ return elements; };
     int get_index() const { return index; }
     static void display();
     
 private:
-    static vector<shared_ptr<Faiseur>> liste_faiseurs;  
+    static vector<unique_ptr<Faiseur>> liste_faiseurs;  
     static int compteur_faiseurs;  
     int index;  
     vector<pair<int, S2d>> elements; 
