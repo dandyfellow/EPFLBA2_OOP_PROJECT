@@ -45,7 +45,7 @@ int main(int argc, char * argv[]) {
     // ----------------------------- SPACE FOR TESTING -----------------------------
     if(false) { 
         Chaine::display();
-        Faiseur::display();
+        //Faiseur::display();
     }
     // ----------------------------- END OF TESTING -----------------------------
     exit(EXIT_SUCCESS);

@@ -197,16 +197,24 @@ namespace {
 		return true;
 	}
 	
-	bool collisions_intertides(){
-		std::vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
-		const vector<unique_ptr<Faiseur>>& faiseur = Faiseur::get_liste_faiseurs();
-		for(const auto& [index_articulation, articulation] : chaine){
-			for(const auto& f : faiseur){
-				for(const auto& [index_elements, point] : f->get_elements()){
-					Cercle c_faiseur(point , f->get_rayon());
-					if(Cercle::inclusion(c_faiseur, articulation)) {
+	bool collisions_intertides() {
+		const vector<pair<int, Cercle>>& chaine = Chaine::get_chaine();
+		const vector<unique_ptr<Faiseur>>& faiseurs = Faiseur::get_liste_faiseurs();
+	
+		for (const auto& [index_articulation, articulation] : chaine) {
+			for (size_t i = 0; i < faiseurs.size(); ++i) {
+				const auto& faiseur = faiseurs[i];
+				if (!faiseur) continue;
+	
+				const auto& elements = faiseur->get_elements();
+				for (size_t j = 0; j < elements.size(); ++j) {
+					if (!elements[j]) continue;
+	
+					Cercle c_faiseur(elements[j]->get_position(), faiseur->get_rayon());
+					if (Cercle::inclusion(c_faiseur, articulation)) {
 						cout << message::chaine_articulation_collision(
-								index_articulation, f->get_index(), index_elements);
+							index_articulation, static_cast<int>(i), static_cast<int>(j)
+						);
 						return false;
 					}
 				}
