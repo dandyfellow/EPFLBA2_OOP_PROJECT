@@ -101,6 +101,21 @@ void Faiseur::display(){
     }
 }
 
+void Particule::move_particule(Particule* p, const Cercle arene){
+    cout << " Mise a jour position particule " << endl;
+            S2d new_position = {position.x + vitesse.get_x(), position.y + vitesse.get_y()};//demander a max 
+            Cercle c_test(new_position, rayon);
+            if (!Cercle::inclusion(arene, c_test)) {
+                Vecteur v_reflechis = vitesse.reflechis(position);
+                alpha = v_reflechis.get_angle();
+                new_position.x = position.x + v_reflechis.get_x();
+                new_position.y = position.y + v_reflechis.get_y();
+            }
+            position.x = new_position.x;
+            position.y = new_position.y;
+        }
+
+
 //Mobile
 Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, 
                double rayon_init)
@@ -118,8 +133,8 @@ Particule::~Particule() {
     --nbrs_particules;
 }
 
-void Particule::set_compteur(int c) {
-    compteur = c;
+void Particule::increase_compteur() {
+    ++compteur;
 }
 
 //Faiseur 
@@ -178,33 +193,43 @@ namespace {
         elements[0]={(position.x),(position.y)};
     }*/
 
-     /*void mise_a_jour(const Arene& arene) override{
-        Mobile::mise_a_jour(arene);
-        ++compteur;
-        if(compteur==time_to_split){
-            if(nbrs_particules >= nb_particule_max){
-                delete this;
-            }else{
-                Vecteur nouvelle_vitesse1(position, (vitesse.get_norme()*coef_split), alpha+delta_split);
-                Particule* particule1 = new Particule(position, nouvelle_vitesse1, alpha+delta_split);
-                Vecteur nouvelle_vitesse2(position, (vitesse.get_norme()*coef_split), alpha-delta_split);
-                Particule* particule2 = new Particule(position, nouvelle_vitesse2, alpha-delta_split);
-                delete this;
-            }
-        }
-    };*/
+void Particule::mise_a_jour(const Cercle arene){
+    vector<Particule*> liste_particule_temporaire;
 
-    /*virtual void mise_a_jour(const Arene& arene){
-        position.x += vitesse.get_norme() * cos(alpha);
-        position.y += vitesse.get_norme() * sin(alpha);
-        if (arene.in_cercle(position, rayon)){
-            return;
+    for (Particule* p : liste_particule) {
+        liste_particule_temporaire.push_back(new Particule(*p));
+    }//changer constructeur de copie 
+    cout << "nombres particules initiale(taille tableau): " << liste_particule.size() << endl;
+    cout << "nombres particules initiale(nbrs_particules): " << nbrs_particules << endl;
+
+    for (const auto &p : liste_particule_temporaire){
+        p->increase_compteur();
+        if (p->compteur == time_to_split){
+            cout << "Time to split" << endl;
+            if (nbrs_particules == nb_particule_max){
+                cout << "Trop de particules, suppression" << endl;
+                delete p;
+                liste_particule.erase(remove(liste_particule.begin(), liste_particule.end(), p), liste_particule.end());
+                continue;
+            }else{
+                cout << "Split de particules" << endl;
+                Vecteur nouvelle_vitesse1(p->position, (vitesse.get_norme() * coef_split), p->alpha + delta_split);
+                Vecteur nouvelle_vitesse2(p->position, (vitesse.get_norme() * coef_split), p->alpha - delta_split);
+                Particule* nouvelle_particule1 = new Particule(p->position, nouvelle_vitesse1, p->alpha + delta_split);
+                Particule* nouvelle_particule2 = new Particule(p->position, nouvelle_vitesse2, p->alpha - delta_split);
+                liste_particule.push_back(nouvelle_particule1);
+                liste_particule.push_back(nouvelle_particule2);
+                delete p;
+                liste_particule.erase(remove(liste_particule.begin(), liste_particule.end(), p), liste_particule.end());//verifier si marche
+                move_particule(nouvelle_particule1,arene);
+                move_particule(nouvelle_particule2,arene);
+                continue;
+            }
         }else{
-            position.x -= vitesse.get_norme() * cos(alpha);
-            position.y -= vitesse.get_norme() * sin(alpha);
-            vitesse = vitesse.reflechis(position);
-            alpha = vitesse.get_angle(); 
-            position.x += vitesse.get_norme() * cos(alpha);
-            position.y += vitesse.get_norme() * sin(alpha);
-        }       
-     };*/
+            cout << "Pas time to split" << endl;
+            move_particule(p,arene);
+        }
+        cout << "nombres particules finale(taille tableau): " << liste_particule.size() << endl;
+        cout << "nombres particules finale(nbrs_particules): " << nbrs_particules << endl;
+    }
+};

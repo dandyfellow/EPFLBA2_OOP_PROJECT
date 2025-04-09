@@ -19,6 +19,7 @@ extern Cercle Arene;
 
 bool lecture_p(istringstream& data);
 bool lecture_f(istringstream& data);
+void mise_a_jour_p(const Cercle& arene);
 
 class Mobile {
 public:
@@ -38,13 +39,15 @@ class Particule : public Mobile {
 public:
     Particule(S2d position_init, Vecteur vitesse_init, double alpha_init);
     int get_compteur() const { return compteur; };
-    void set_compteur(int c);
+    void increase_compteur();
     static int get_nbrs_particules(){ return nbrs_particules; };
-    ~Particule();
-   
+    static const vector<Particule*>& get_liste_particules(){ return liste_particule; };
+    void mise_a_jour(const Cercle arene);
+    void move_particule(Particule* p, const Cercle arene);
+    ~Particule(){--nbrs_particules;};
 private:
     static int nbrs_particules;
-    int compteur;
+    int compteur=0;
     static vector<Particule*> liste_particule;
 };
 
