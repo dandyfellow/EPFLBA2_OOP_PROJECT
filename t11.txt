@@ -1,0 +1,16 @@
+# t11: particule counter (600) must be within [0, time_to_spli[
+# 
+8000
+
+# nombre d’entité particule puis les données d’une entité par ligne
+1
+    0.	0.	0.	0.	600	
+
+# nombre d’entité faiseur puis les données d’une entité par ligne
+0
+
+# nombre d’articulations (nul veut dire « pas de chaîne ») 
+#        puis une ligne par articulation 
+0
+
+CONSTRUCTION

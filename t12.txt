@@ -1,0 +1,16 @@
+# t12: mobile entity displacement (20.000000) must be within [0, d_max]
+# 
+8000
+
+# nombre d’entité particule puis les données d’une entité par ligne
+1
+    0.	0.	0.	20.	0	
+
+# nombre d’entité faiseur puis les données d’une entité par ligne
+0
+
+# nombre d’articulations (nul veut dire « pas de chaîne ») 
+#        puis une ligne par articulation 
+0
+
+CONSTRUCTION
