@@ -20,6 +20,7 @@ bool lecture_p(istringstream& data);
 bool lecture_f(istringstream& data);
 void mise_a_jour_particules(const Cercle arene); // mise à jour (déplacement, split)
 
+
 class Mobile {
 public:
     Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init);
@@ -44,12 +45,15 @@ public:
     int get_compteur() const { return compteur; }
     void increase_compteur();
     static int get_nbrs_particules() { return nbrs_particules; }
-    static vector<Particule*> liste_particule;
+    static const vector<Particule*>& get_liste_particules() { return liste_particule; }
+    static void ajouter_particule(Particule* p);
+    static void supprimer_particule(Particule* p);
     ~Particule() { --nbrs_particules; }
 
 private:
     static int nbrs_particules;
     int compteur = 0;
+    static vector<Particule*> liste_particule;
 };
 
 class Faiseur : public Mobile {
@@ -59,6 +63,7 @@ public:
     static const vector<unique_ptr<Faiseur>>& get_liste_faiseurs();
     void ajouter_element(unique_ptr<Mobile> element);
     const vector<unique_ptr<Mobile>>& get_elements() const { return elements; }
+    void move_faiseur(const Cercle arene);
 
 private:
     static vector<unique_ptr<Faiseur>> liste_faiseurs;

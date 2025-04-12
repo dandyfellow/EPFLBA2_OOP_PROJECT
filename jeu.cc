@@ -149,12 +149,14 @@ namespace {
 		}
 		return false;
 	}
+	
 	bool decodage_particule(istringstream& data) {
 		counts++;
 		if(counts == nb_particule_init) etat = NB_FAISEUR;
 		if(lecture_p(data) == false){return false;}
 		return true;
 	}
+
 	bool decodage_nb_faiseur(istringstream& data) {
 		if(data >> nb_faiseur_init){
 			if(nb_faiseur_init == 0) {etat = NB_CHAINE;}
@@ -180,12 +182,14 @@ namespace {
 		}
 		return false;
 	}
+
 	bool decodage_chaine(istringstream& data) {
 		counts++;
 		if(counts == nb_chaine_init) etat = CHAINE_MODE;
 		if(lecture_c(data) == false) {return false;}
 		return true;
 	}
+
 	bool decodage_chaine_mode(istringstream& data) {
 		if(lecture_c_mode(data) == false) {return false;}
 	
@@ -204,12 +208,8 @@ namespace {
 		for (const auto& [index_articulation, articulation] : chaine) {
 			for (size_t i = 0; i < faiseurs.size(); ++i) {
 				const auto& faiseur = faiseurs[i];
-				if (!faiseur) continue;
-	
 				const auto& elements = faiseur->get_elements();
 				for (size_t j = 0; j < elements.size(); ++j) {
-					if (!elements[j]) continue;
-	
 					Cercle c_faiseur(elements[j]->get_position(), faiseur->get_rayon());
 					if (Cercle::inclusion(c_faiseur, articulation)) {
 						cout << message::chaine_articulation_collision(
