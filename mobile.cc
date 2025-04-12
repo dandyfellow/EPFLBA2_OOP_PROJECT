@@ -183,6 +183,11 @@ void Mobile::move(const Cercle arene) {
 }
 
 //Particule
+Particule::Particule(S2d position, Vecteur vitesse, double alpha)
+    : Mobile(position, vitesse, alpha, rayon=0), compteur(0) {
+    
+}
+
 void Particule::ajouter_particule(Particule* p) {
     liste_particule.push_back(p);
 }
@@ -190,6 +195,10 @@ void Particule::ajouter_particule(Particule* p) {
 void Particule::supprimer_particule(Particule* p) {
     auto& lp = liste_particule;
     lp.erase(std::remove(lp.begin(), lp.end(), p), lp.end());
+}
+
+void Particule::increase_compteur() {
+    ++compteur;  // ou autre logique selon ton besoin
 }
 
 //Faiseur 
