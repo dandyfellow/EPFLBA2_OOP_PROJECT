@@ -9,6 +9,7 @@
 #include "message.h"
 #include "tools.h"
 #include "constantes.h"
+#include "gui.h"
 
 enum Status{
     ONGOING,
@@ -24,13 +25,13 @@ public:
     bool lecture(std::string nom_fichier);
     void success(); //only these ones needed for project.cc
     void update();
+
+    //save_file() writes the current state of the game to a file
+    void save_file();
+
+
     
 private:
-    static unsigned int score;
-    static unsigned int nb_particule_init;
-    static unsigned int nb_faiseur_init;
-    static unsigned int nb_chaine_init;
-    static Etat etat;
 };
 
 #endif

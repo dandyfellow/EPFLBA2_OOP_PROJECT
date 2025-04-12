@@ -328,8 +328,17 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     cr->translate(width / 2, height / 2);
     cr->scale(side / (2 * r_max), -side / (2 * r_max));
 
-	// remplacer affichage par votre code
+	//================================remplacer affichage par votre code===============
 	cout <<  __func__ << endl;
+    //draw a blank canvas for when lecture fails
+    cr->set_source_rgb(1, 1, 1);
+    cr->paint();
+
+    //if lecture succeed:
+    //draw the arena
+    
+    //draw the rest
+    //=======================================FIN DE NOTRE CODE=========================
 }
 
 void My_window::set_mouse_controller()

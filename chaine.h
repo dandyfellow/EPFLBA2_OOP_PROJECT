@@ -28,6 +28,7 @@ public:
     unsigned int longeur_chaine() const;
     static void display(); // for TESTING purpouses
     static Mode get_mode() { return mode; }
+    static void clear_chaine(); //clears chain and sets guidage to CONSTRUCTION
 
 private:
     static vector<pair<int, Cercle>> chaine;

@@ -30,6 +30,8 @@ public:
     void set_norme(double norme);
 
     void draw_vecteur(const double& width, Color color);
+
+
 private:
     S2d p1 = {0, 0};
     S2d p2 = {0, 0};
@@ -54,7 +56,9 @@ public:
     static bool inclusion(const Cercle &c1, const Cercle &c2);
     static bool intrusion(const Cercle &c1, const Cercle &c2);
 
-    void draw_cercle(const double& width, const bool& full, Color color);
+    void draw_cercle(const double& width, const Color& c1, const Color& c2);
+
+
 private:
     S2d centre = {0, 0};
     double rayon = 0.;

@@ -19,7 +19,7 @@ Vecteur::Vecteur(const S2d& p1, const S2d& p2) : p1(p1), p2(p2), x(p2.x - p1.x),
 }
 
 Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
-    : p1(p2), x(p.x), y(p.y), norme(norme), 
+    : p1(p), x(p.x), y(p.y), norme(norme), 
       p2({p.x + norme*cos(angle), p.y + norme*sin(angle)}) {
     if (norme < 0){
         cerr << "norme negative : tools.cc " << __LINE__ << endl;
@@ -72,8 +72,8 @@ bool Cercle::intrusion(const Cercle &c1, const Cercle &c2){
     return (distance < (c1.get_rayon() + c2.get_rayon() + epsil_zero * epsil));
 }
 
-void Cercle::draw_cercle(const double& width, const bool& full, Color color){
-    Graphic::draw_cercle(centre.x, centre.y , rayon, width, full, color);
+void Cercle::draw_cercle(const double& width, const Color& c1, const Color& c2){
+    Graphic::draw_cercle(centre.x, centre.y , rayon, width, c1, c2);
 }
 
 

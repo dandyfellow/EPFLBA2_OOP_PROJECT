@@ -88,3 +88,8 @@ void Chaine::display() { //for TESTING purpouses
              << a.second.get_centre().y << endl;
     }
 }
+
+void Chaine::clear_chaine(){
+    chaine.clear();
+    mode = CONSTRUCTION;
+}

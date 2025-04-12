@@ -10,6 +10,7 @@
 
 //#include "gui.h"
 #include "jeu.h"
+#include "gui.h"
 
 
 using namespace std;
@@ -37,10 +38,14 @@ int main(int argc, char * argv[]) {
     Cercle::epsilFalse(); //desactive l'epsil pour les tests
     if(!jeu.lecture(nom_fichier)) {
         //les messages d'erreurs sont gérées dans les fonctions lectures
-        exit(EXIT_FAILURE);
+        //exit(EXIT_FAILURE); RENDU 1
+        //effacer les donnees est gereer dans la fonction Jeu::lecture();
     }
     jeu.success();
     Cercle::epsilTrue(); //active epsil pour le reste de jeu
+
+    auto app = Gtk::Application::create();
+    return app->make_window_and_run<My_window>(1, argv, nom_fichier);
 
     // ----------------------------- SPACE FOR TESTING -----------------------------
     if(false) { 

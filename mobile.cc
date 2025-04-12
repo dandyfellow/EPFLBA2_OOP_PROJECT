@@ -2,6 +2,7 @@
 #include <memory>
 #include "mobile.h"
 #include <cmath>  // Pour cos, sin
+#include <algorithm> // Pour std::remove
 
 using namespace std;
 
@@ -164,7 +165,7 @@ void mise_a_jour_faiseur(const Cercle arene){
 }
 
 
-//Mobile
+//==========================MOBILE=====================================================
 Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init)
     : position(position_init), vitesse(vitesse_init), alpha(alpha_init), rayon(rayon_init) { }
 
@@ -182,7 +183,8 @@ void Mobile::move(const Cercle arene) {
     position.y = new_position.y;
 }
 
-//Particule
+//==========================PARTICULE==================================================
+
 Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init)
     : Mobile(position_init, vitesse_init, alpha_init, 0.){
     ++nbrs_particules;
@@ -198,11 +200,13 @@ void Particule::supprimer_particule(Particule* p) {
     lp.erase(std::remove(lp.begin(), lp.end(), p), lp.end());
 }
 
+
 void Particule::increase_compteur() {
     ++compteur;  // ou autre logique selon ton besoin
 }
 
-//Faiseur 
+//==========================FAISEUR====================================================
+
 Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
     : Mobile(position_init, vitesse_init, alpha_init, rayon_init) {
         elements.reserve(nb_elements);

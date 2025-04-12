@@ -10,6 +10,7 @@
 #include "tools.h"
 #include "jeu.h"  
 #include "constantes.h"
+#include "gui.h"
 
 using namespace std;
 //needed because all of these are statics 
@@ -29,50 +30,28 @@ namespace{
 	bool decodage_chaine_mode(istringstream &data);
 	bool collisions_intertides();
 
+	string single_particule_sauvegarde_ecriture(Particule* p_ptr);
+	string particule_sauvegarde_ecriture();
+
+	string single_faiseur_sauvegarde_ecriture(Faiseur* f_ptr);
+	string faiseur_sauvegarde_ecriture();
+
+	string single_chaine_sauvegarde_ecriture(pair<int, Cercle> c_pair);
+	string chaine_sauvegarde_ecriture();
+
 	int unsigned counts = 0;
-	int unsigned score = 0;
-	int unsigned nb_particule_init = 0;
-	int unsigned nb_faiseur_init = 0;
-	int unsigned nb_chaine_init = 0;
+	static int unsigned score = 0;
+	static int unsigned nb_particule_init = 0;
+	static int unsigned nb_faiseur_init = 0;
+	static int unsigned nb_chaine_init = 0;
 
 	Etat etat = SCORE;
 }
 
-void update() {
-	/*
+void Jeu::update() {
 	score--;
-	//particules
-	for(auto& p : Particule::get_liste_particule()) {
-		p->set_compteur(p->get_compteur() + 1);
-		if(p->get_compteur() == time_to_split){
-			if(Particule::get_nbrs_particules() == nb_particule_max) {delete p;}
-			else {} //p->split(); (doesn't exist yet)
-		}
-		//p->move();
-	}
-
-	//faiseurs
-	for(auto& f : Faiseur::get_liste_faiseurs()){
-		//if(verifier_collision_faiseur(f) == false) {f->move();}
-		//if(colision_faiseur_chaine(f, Chaine::get_chaine()) == true) {
-// colision_faiseur_chaine(f, Chaine::get_chaine()) function doesn't exist yet
-			//Chaine::~Chaine() // destructor not defined yet
-		//}
-	}
-
-	//chaine
-	if(Chaine::get_mode() == GUIDAGE){
-		//Chaine::guidage(); //function not defined yet
-		//if(colision_faiseur_chaine(f, Chaine::get_chaine()) == true) {
-			// colision_faiseur_chaine(f, Chaine::get_chaine()) function doesn't exist yet
-			//Chaine::~Chaine() // destructor not defined yet
-		//}
-		
-		if(Chaine::dans_zone_capture() == true) {jeu->success();} //functions not defined yet
-		
-	
-	}
-	*/
+	//Particule::update();
+	//Faiseur::update();
 }
 
 void Jeu::success(){
@@ -80,8 +59,9 @@ void Jeu::success(){
 }
 
 bool Jeu::lecture(string nom_fichier){
-	
+
 	reset();
+
 	ifstream fichier(nom_fichier); //opens the file (ifstream = input file stream)
     if(!fichier.fail()) {
 		string line;
@@ -91,7 +71,10 @@ bool Jeu::lecture(string nom_fichier){
 			if(line[0]=='#')  continue;  
 			istringstream data(line);
 
-			if(decodage_ligne(data) == false) return false; 
+			if(decodage_ligne(data) == false) {
+				reset(); // reset if problem during lecture
+				return false; 
+			}
 		}
 		fichier.close();
         return true;
@@ -100,13 +83,139 @@ bool Jeu::lecture(string nom_fichier){
 	return false;
 }
 
+void Jeu::save_file(){
+	ofstream save("sauvegarde.txt");
+	if (!save.is_open()) { // Check if the file opened successfully
+		std::cerr << "Error opening file!" << std::endl;
+		return;
+	}
+	save << "# fichier de sauvegarde" << endl;
+	save << "# score: " << endl;
+	save << score << endl;
+	save << endl;
+
+	save << "# nombre d’entité particule puis les données d’une entité par ligne\n";
+	save << Particule::get_nbrs_particules() << endl;
+	save << particule_sauvegarde_ecriture() << endl;
+
+	save << "# nombre d’entité faiseur puis les données d’une entité par ligne\n";
+	save << Faiseur::get_liste_faiseurs().size() << endl;
+	save << faiseur_sauvegarde_ecriture() << endl;
+
+	save << "# nombre d’articulations (nul veut dire « pas de chaîne »)" << endl;
+	save << "#        puis une ligne par articulation" << endl;
+	save << Chaine::get_chaine().size() << endl;
+	save << chaine_sauvegarde_ecriture() << endl;
+	save << to_string(Chaine::get_mode());	
+
+	save.close();
+}
+
 namespace {
+
+//=====DRAW ARENE, PARTICULES, FAISEURS | I DON'T KNOW WHERE TO PUT THIS YET=============================
+
+
+void draw_arene(Cercle arene){
+	arene.draw_cercle(100, NO_COLOR, GREEN);
+}
+void draw_faiseur(){
+	for(const auto& f : Faiseur::get_liste_faiseurs()) {
+		for(const auto& e : f->get_elements()) {
+			Cercle c(e->get_position(), e->get_rayon());
+			c.draw_cercle(100, NO_COLOR, BLUE);
+		}
+	}
+}
+void draw_particules(){
+	for(const auto& p : Particule::get_liste_particules()) {
+		Cercle c(p->get_position(), r_viz);
+		c.draw_cercle(100, CYAN, GREEN);
+	}
+}
+void draw_chaine(){
+	vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
+	unsigned int chaine_size = chaine.size();
+	for(unsigned int i = 0; i < chaine_size; ++i) {
+		Cercle c(chaine[i].second.get_centre(), r_viz);
+		c.draw_cercle(100, NO_COLOR, RED);
+		if(i != chaine_size - 1) {
+			Vecteur v(chaine[i].second.get_centre(), chaine[i + 1].second.get_centre());
+			v.draw_vecteur(100, RED);
+		}
+	}
+	Cercle capture(chaine[chaine_size-1].second.get_centre(), r_capture);
+	capture.draw_cercle(100, NO_COLOR, RED);
+}
+
+
+//===============================================================================================================
+	string single_chaine_sauvegarde_ecriture(pair<int, Cercle> c_pair){
+		string txt = "\t";
+		txt += to_string(c_pair.second.get_centre().x) + "\t";
+		txt += to_string(c_pair.second.get_centre().y) + "\t";
+		return txt;
+	}
+	
+	string chaine_sauvegarde_ecriture(){
+		string txt = "";
+		const vector<pair<int, Cercle>> chaines = Chaine::get_chaine();
+		for(const auto& c : chaines) {
+			txt += single_chaine_sauvegarde_ecriture(c);
+			txt += "\n";
+		}
+		return txt;
+	}
+
+	string single_faiseur_sauvegarde_ecriture(Faiseur* f_ptr){
+		string txt = "\t";
+		txt += to_string(f_ptr->get_positionx()) + "\t";
+		txt += to_string(f_ptr->get_positiony()) + "\t";
+		txt += to_string(f_ptr->get_alpha()) + "\t";
+		txt += to_string(f_ptr->get_vitesse().get_norme()) + "\t";
+		txt += to_string(f_ptr->get_rayon()) + "\t";
+		txt += to_string(f_ptr->get_elements().size()) + "\t";
+		return txt;
+	}
+
+	string faiseur_sauvegarde_ecriture(){
+		string txt = "";
+		const vector<unique_ptr<Faiseur>>& faiseurs = Faiseur::get_liste_faiseurs();
+		for(const auto& f : faiseurs) {
+			txt += single_faiseur_sauvegarde_ecriture(f.get());
+			txt += "\n";
+		}
+		return txt;
+	}
+
+	string single_particule_sauvegarde_ecriture(Particule* p_ptr){
+		string txt = "\t";
+		txt += to_string(p_ptr->get_positionx()) + "\t";
+		txt += to_string(p_ptr->get_positiony()) + "\t";
+		txt += to_string(p_ptr->get_alpha()) + "\t";
+		txt += to_string(p_ptr->get_vitesse().get_norme()) + "\t";
+		txt += to_string(p_ptr->get_compteur()) + "\t";
+		return txt;
+	}
+
+	string particule_sauvegarde_ecriture(){
+		string txt = "";
+		const vector<Particule*>& particules = Particule::get_liste_particules();
+		for(const auto& p : particules) {
+			txt += single_particule_sauvegarde_ecriture(p);
+			txt += "\n";
+		}
+	}
+
+
 	void reset(){
 		score = 0;
 		nb_particule_init = 0;
 		nb_faiseur_init = 0;
 		nb_chaine_init = 0;
 		etat = SCORE;
+		counts = 0;
+		//write functions to clear the lists
 	}
 	
 	void imprimer_data(istringstream& data) {//FOR TESTING ONLY, doesn't work tho :)
