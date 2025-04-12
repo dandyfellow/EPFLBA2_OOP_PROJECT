@@ -1,0 +1,17 @@
+# t10: faiseur (0) element (0) collides with faiseur (1) element (0)
+# 
+8000
+
+# nombre d’entité particule puis les données d’une entité par ligne
+0
+
+# nombre d’entité faiseur puis les données d’une entité par ligne
+2
+    10. 0.	0.	0.	5.	1	
+    17. 0.	0.	0.	5.	1	
+
+# nombre d’articulations (nul veut dire « pas de chaîne ») 
+#        puis une ligne par articulation 
+0
+ 
+CONSTRUCTION

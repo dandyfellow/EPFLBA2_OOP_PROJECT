@@ -1,0 +1,17 @@
+# t03: faiseur nbe (0) is not strictly positive
+# 
+8000
+
+# nombre d’entité particule puis les données d’une entité par ligne
+1
+    0.	0.	0.	0.	0	
+
+# nombre d’entité faiseur puis les données d’une entité par ligne
+1
+    0.	0.	0.	0.	3.	0	
+
+# nombre d’articulations (nul veut dire « pas de chaîne ») 
+#        puis une ligne par articulation 
+0
+
+CONSTRUCTION

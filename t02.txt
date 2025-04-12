@@ -1,0 +1,17 @@
+# t02: faiseur radius (1.000000) is not within [r_min_faiseur, r_max_faiseur]
+# 
+8000
+
+# nombre d’entité particule puis les données d’une entité par ligne
+1
+    0.	0.	0.	0.	0	
+
+# nombre d’entité faiseur puis les données d’une entité par ligne
+1
+    0.	0.	0.	0.	1.	1	
+
+# nombre d’articulations (nul veut dire « pas de chaîne ») 
+#        puis une ligne par articulation 
+0
+
+CONSTRUCTION

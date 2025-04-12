@@ -1,0 +1,18 @@
+# t06: too long distance between articulation (1) and the following one
+# 
+8000
+
+# nombre d’entité particule puis les données d’une entité par ligne
+0
+
+# nombre d’entité faiseur puis les données d’une entité par ligne
+0
+
+# nombre d’articulations (nul veut dire « pas de chaîne ») 
+#        puis une ligne par articulation 
+3
+    -99. 0.
+    -88. 1.
+    -70. 0.9
+
+CONSTRUCTION

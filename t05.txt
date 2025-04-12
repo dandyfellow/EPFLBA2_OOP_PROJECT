@@ -1,0 +1,16 @@
+# t05: root at (81.000000;0.000000) is not close enough to the arena boundary
+# 
+8000
+
+# nombre d’entité particule puis les données d’une entité par ligne
+0
+
+# nombre d’entité faiseur puis les données d’une entité par ligne
+0
+
+# nombre d’articulations (nul veut dire « pas de chaîne ») 
+#        puis une ligne par articulation 
+1
+    81. 0.
+
+CONSTRUCTION

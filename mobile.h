@@ -19,7 +19,7 @@ extern Cercle Arene;
 bool lecture_p(istringstream& data);
 bool lecture_f(istringstream& data);
 void mise_a_jour_particules(const Cercle arene); // mise à jour (déplacement, split)
-
+void mise_a_jour_faiseurs(const Cercle arene); // mise à jour (déplacement, collisons entre faisuers)
 
 class Mobile {
 public:
