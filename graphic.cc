@@ -4,17 +4,44 @@
 
 using namespace std;
 
-static const Cairo::RefPtr<Cairo::Context> *ptcr(nullptr);
+static const Cairo::RefPtr<Cairo::Context>* ptcr(nullptr);
 
 // local prototypes
 static void set_color(Color color);
 // graphic_gui.h
-void graphic_set_context(const Cairo::RefPtr<Cairo::Context> &cr)
+
+//grabs the cr pointer in gui.cc and stores it in a static variable to be used
+//in the drawing functions
+void graphic_set_context(const Cairo::RefPtr<Cairo::Context>& cr)
 {
     ptcr = &cr;
 }
 // à compléter pour effectuer des dessins élémentaires: trait, cercle, ...
+//=====================================================================================
+void Graphic::draw_vecteur(const double& p1x, const double& p1y,const double& p2x, 
+                           const double& p2y, const double& width, Color color)
+{
+    set_color(color);
+    
+    ptcr->set_line_width(width);
 
+    ptcr->move_to(p1x, p1y);
+    ptcr->line_to(p2x, p2y);
+    ptcr->stroke();
+}
+
+void Graphic::draw_cercle(const double& px, const double& py, const double& r,
+                          const double& width, const bool& full, Color color){
+    set_color(color);
+    
+    ptcr->set_line_width(width);
+    ptcr->arc(px, py, r, 0., 2 * M_PI);
+    full ? ptcr->fill() : ptcr->stroke();
+    //since we don't need 2 colors for inner and outer circle, no need to do 
+    //fill_preserve or stroke_preserve. -> only monocolor circles
+}
+
+//=====================================================================================
 
 // local function
 static void set_color(Color color)

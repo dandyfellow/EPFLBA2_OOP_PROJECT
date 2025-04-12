@@ -7,17 +7,20 @@
 #include <cstdlib>
 
 #include "tools.h"
+#include "graphic.h"
 
 using namespace std;
 
 //Vecteur 
-Vecteur::Vecteur(const S2d& p1, const S2d& p2) : x(p2.x - p1.x), y(p2.y - p1.y) {
+Vecteur::Vecteur(const S2d& p1, const S2d& p2) : p1(p1), p2(p2), x(p2.x - p1.x), 
+                                                 y(p2.y - p1.y) {
     angle = atan2(y, x);
     norme = sqrt(x * x + y * y);
 }
 
 Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
-    : x(p.x), y(p.y), norme(norme) {
+    : p1(p2), x(p.x), y(p.y), norme(norme), 
+      p2({p.x + norme*cos(angle), p.y + norme*sin(angle)}) {
     if (norme < 0){
         cerr << "norme negative : tools.cc " << __LINE__ << endl;
         exit(EXIT_FAILURE);
@@ -43,7 +46,11 @@ void Vecteur::set_y(double new_y) { this->y = new_y; }
 void Vecteur::set_angle(double new_angle) { this->angle = new_angle; }
 void Vecteur::set_norme(double new_norme) { this->norme = new_norme; }
 
-//Cercle
+void Vecteur::draw_vecteur(const double& width, Color color) {
+    Graphic::draw_vecteur(p1.x, p1.y, p2.x, p2.y, width, color);
+}
+
+//=====================================Cercle==========================================
 bool Cercle::epsil = false;  
 Cercle::Cercle(S2d centre, double rayon)
     : centre(centre), rayon(rayon){}
@@ -63,6 +70,10 @@ bool Cercle::intrusion(const Cercle &c1, const Cercle &c2){
     Vecteur v1(c2.get_centre(), c1.get_centre());
     double distance = v1.get_norme();
     return (distance < (c1.get_rayon() + c2.get_rayon() + epsil_zero * epsil));
+}
+
+void Cercle::draw_cercle(const double& width, const bool& full, Color color){
+    Graphic::draw_cercle(centre.x, centre.y , rayon, width, full, color);
 }
 
 

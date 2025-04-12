@@ -122,7 +122,8 @@
     "chrono": "cpp",
     "compare": "cpp",
     "concepts": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "xiosbase": "cpp"
   },
   "makefile.configureOnOpen": true
 }

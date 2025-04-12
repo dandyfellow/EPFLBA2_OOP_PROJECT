@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cstdlib>
 
-//#include "graphic.h"
+#include "graphic.h"
 
 constexpr double epsil_zero(0.5);
 
@@ -17,7 +17,7 @@ struct S2d {
 
 class Vecteur {
 public:
-    Vecteur(const S2d& p1 = {0, 0}, const S2d& p2 = {0, 0});
+    Vecteur(const S2d& p1 = {0, 0}, const S2d& p2 = {0, 0}); //acts as default constr
     Vecteur(const S2d& p, const double& norme, const double& angle);
     Vecteur reflechis(const S2d& point);
     double get_x() const{ return x; };
@@ -28,8 +28,12 @@ public:
     void set_y(double y);
     void set_angle(double angle);
     void set_norme(double norme);
-    
+
+    void draw_vecteur(const double& width, Color color);
 private:
+    S2d p1 = {0, 0};
+    S2d p2 = {0, 0};
+    // x, y are p1.x and p1.y respectively
     double x = 0.;
     double y = 0.;
     double angle = 0.; // en radians
@@ -50,6 +54,7 @@ public:
     static bool inclusion(const Cercle &c1, const Cercle &c2);
     static bool intrusion(const Cercle &c1, const Cercle &c2);
 
+    void draw_cercle(const double& width, const bool& full, Color color);
 private:
     S2d centre = {0, 0};
     double rayon = 0.;
