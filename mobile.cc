@@ -137,13 +137,13 @@ void mise_a_jour_faiseur(const Cercle arene){
     bool collision = false;
     cout << "Mise à jour faiseur" << endl;
 
-    for(int i=0; i<faiseurs.size(); i++){
+    for(size_t i=0; i<faiseurs.size(); i++){
         const auto& f = faiseurs[i];
         auto& elements = f->get_elements();
         auto& tete= elements[0];//Creation tete faiseur
         S2d new_position = {tete->get_positionx() + f->get_vitesse().get_x(), tete->get_positiony() + f->get_vitesse().get_y()};
         Cercle c_test(new_position, f->get_rayon());
-        for(int j=0; j<faiseurs.size(); ++j){
+        for(size_t j=0; j<faiseurs.size(); ++j){
             if(i==j) continue;
             const auto& f_autre= faiseurs[j]->get_elements();
             for(const auto& k : f_autre){
@@ -183,9 +183,10 @@ void Mobile::move(const Cercle arene) {
 }
 
 //Particule
-Particule::Particule(S2d position, Vecteur vitesse, double alpha)
-    : Mobile(position, vitesse, alpha, rayon=0), compteur(0) {
-    
+Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init)
+    : Mobile(position_init, vitesse_init, alpha_init, 0.){
+    ++nbrs_particules;
+    liste_particule.push_back(this);
 }
 
 void Particule::ajouter_particule(Particule* p) {
@@ -204,7 +205,7 @@ void Particule::increase_compteur() {
 //Faiseur 
 Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
     : Mobile(position_init, vitesse_init, alpha_init, rayon_init) {
-    
+        elements.reserve(nb_elements);
 }
 
 void Faiseur::ajouter_faiseur(unique_ptr<Faiseur>&& f) {
