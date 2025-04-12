@@ -1,4 +1,7 @@
 //tools.cc, Adam Coste et Max Ciriani, version 1
+#define _USE_MATH_DEFINES //pour cmath constantes -> NEEDS TO COME BEFORE CMATH
+
+
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
@@ -6,7 +9,6 @@
 #include "tools.h"
 
 using namespace std;
-#define _USE_MATH_DEFINES //pour cmath constantes
 
 //Vecteur 
 Vecteur::Vecteur(const S2d& p1, const S2d& p2) : x(p2.x - p1.x), y(p2.y - p1.y) {

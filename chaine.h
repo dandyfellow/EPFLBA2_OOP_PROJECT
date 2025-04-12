@@ -27,6 +27,7 @@ public:
     static pair<int, Cercle> get_chaine(unsigned int i);
     unsigned int longeur_chaine() const;
     static void display(); // for TESTING purpouses
+    static Mode get_mode() { return mode; }
 
 private:
     static vector<pair<int, Cercle>> chaine;

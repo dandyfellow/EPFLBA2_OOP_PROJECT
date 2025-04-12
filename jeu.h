@@ -23,6 +23,7 @@ class Jeu {
 public:
     bool lecture(std::string nom_fichier);
     void success(); //only these ones needed for project.cc
+    void update();
     
 private:
     static unsigned int score;

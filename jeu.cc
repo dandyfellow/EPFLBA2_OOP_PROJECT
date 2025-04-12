@@ -38,6 +38,43 @@ namespace{
 	Etat etat = SCORE;
 }
 
+void update() {
+	/*
+	score--;
+	//particules
+	for(auto& p : Particule::get_liste_particule()) {
+		p->set_compteur(p->get_compteur() + 1);
+		if(p->get_compteur() == time_to_split){
+			if(Particule::get_nbrs_particules() == nb_particule_max) {delete p;}
+			else {} //p->split(); (doesn't exist yet)
+		}
+		//p->move();
+	}
+
+	//faiseurs
+	for(auto& f : Faiseur::get_liste_faiseurs()){
+		//if(verifier_collision_faiseur(f) == false) {f->move();}
+		//if(colision_faiseur_chaine(f, Chaine::get_chaine()) == true) {
+// colision_faiseur_chaine(f, Chaine::get_chaine()) function doesn't exist yet
+			//Chaine::~Chaine() // destructor not defined yet
+		//}
+	}
+
+	//chaine
+	if(Chaine::get_mode() == GUIDAGE){
+		//Chaine::guidage(); //function not defined yet
+		//if(colision_faiseur_chaine(f, Chaine::get_chaine()) == true) {
+			// colision_faiseur_chaine(f, Chaine::get_chaine()) function doesn't exist yet
+			//Chaine::~Chaine() // destructor not defined yet
+		//}
+		
+		if(Chaine::dans_zone_capture() == true) {jeu->success();} //functions not defined yet
+		
+	
+	}
+	*/
+}
+
 void Jeu::success(){
 	cout << message::success();
 }
