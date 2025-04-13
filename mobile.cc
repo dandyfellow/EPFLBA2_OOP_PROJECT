@@ -91,7 +91,7 @@ bool lecture_f(istringstream& data) {//nombres lignes a changer
     return true;
 }
 
-void mise_a_jour_p(const Cercle arene){
+void update_particules(const Cercle arene){
     vector<Particule*> liste_particule_temporaire;
 
     for (Particule* p : Particule::get_liste_particules()){ {
@@ -133,7 +133,7 @@ void mise_a_jour_p(const Cercle arene){
 }
 };
 
-void mise_a_jour_faiseur(const Cercle arene){
+void update_faiseurs(const Cercle arene){
     auto& faiseurs = Faiseur::get_liste_faiseurs();
     bool collision = false;
     cout << "Mise à jour faiseur" << endl;
