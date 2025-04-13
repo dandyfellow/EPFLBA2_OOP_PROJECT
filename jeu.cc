@@ -50,8 +50,9 @@ namespace{
 
 void Jeu::update() {
 	score--;
-	//Particule::update();
-	//Faiseur::update();
+	update_particules();
+	update_faiseurs();
+	//a completer pour le rendu 3 
 }
 
 void Jeu::success(){
@@ -119,7 +120,8 @@ namespace {
 void draw_arene(Cercle arene){
 	arene.draw_cercle(100, NO_COLOR, GREEN);
 }
-void draw_faiseur(){
+
+void draw_faiseurs(){
 	for(const auto& f : Faiseur::get_liste_faiseurs()) {
 		for(const auto& e : f->get_elements()) {
 			Cercle c(e->get_position(), e->get_rayon());
@@ -127,12 +129,14 @@ void draw_faiseur(){
 		}
 	}
 }
+
 void draw_particules(){
 	for(const auto& p : Particule::get_liste_particules()) {
 		Cercle c(p->get_position(), r_viz);
 		c.draw_cercle(100, CYAN, GREEN);
 	}
 }
+
 void draw_chaine(){
 	vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
 	unsigned int chaine_size = chaine.size();

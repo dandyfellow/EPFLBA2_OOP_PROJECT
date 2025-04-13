@@ -29,6 +29,7 @@ public:
     static void display(); // for TESTING purpouses
     static Mode get_mode() { return mode; }
     static void clear_chaine(); //clears chain and sets guidage to CONSTRUCTION
+    static void set_mode(Mode m);
 
 private:
     static vector<pair<int, Cercle>> chaine;

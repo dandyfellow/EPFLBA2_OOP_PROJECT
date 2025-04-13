@@ -22,6 +22,9 @@ enum Etat { SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAI
 
 class Jeu {
 public:
+    /*Jeu(string nom_fichier){
+        lecture(nom_fichier);
+    };*/
     bool lecture(std::string nom_fichier);
     void success(); //only these ones needed for project.cc
     void update();

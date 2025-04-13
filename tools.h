@@ -50,16 +50,14 @@ public:
     static bool get_epsil(){ return epsil; };
     void set_centre(S2d centre);
     void set_rayon(double rayon);
-    static bool epsil;
     static void epsilTrue();
     static void epsilFalse();
     static bool inclusion(const Cercle &c1, const Cercle &c2);
     static bool intrusion(const Cercle &c1, const Cercle &c2);
-
     void draw_cercle(const double& width, const Color& c1, const Color& c2);
 
-
 private:
+    static bool epsil;
     S2d centre = {0, 0};
     double rayon = 0.;
 };

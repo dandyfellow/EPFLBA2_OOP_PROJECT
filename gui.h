@@ -23,8 +23,9 @@ private:
     std::array<Gtk::Label, 4> info_text, info_value;
     Gtk::DrawingArea drawing;
     std::string previous_file_name;
-	// ajouter un attribut pour accéder au jeu (instance ou pointeur)
-	
+	// ajouter un attribut pour accéder au jeu (instance ou pointeur)=================
+	std::unique_ptr<Jeu> jeu;
+    //===============================================================================
     void set_commands();
 
     void exit_clicked();

@@ -41,6 +41,9 @@ My_window::My_window(string file_name)
                  Gtk::Label("articulations:")}),
       previous_file_name(file_name)
       // ici éventuelle initialisation de l'attribut pour l'accès au jeu
+      //==============================================================================
+      jeu = make_unique<Jeu>(file_name);//il n'y pas de constructeur dans jeu?!
+      //==============================================================================
 {
     set_title("Linked-Crossing Challenge");
     set_child(main_box);
@@ -108,7 +111,8 @@ void My_window::save_clicked()
 }
 void My_window::restart_clicked()
 {
-    // remplacer affichage par votre code
+    // ==============================================================================
+    //===============================================================================
     cout << __func__ << endl;
 }
 void My_window::start_clicked()
@@ -138,45 +142,69 @@ void My_window::start_clicked()
         buttons[B_STEP].set_sensitive(false);
     }
 }
-void My_window::step_clicked()
-{
-    // remplacer affichage par votre code
+void My_window::step_clicked(){
+    //==================================================================================
+    if(!activated){
+    //incrementation d'1 du compteur du jeu(timer)
+    jeu update;//faux
+    update_infos();
+    drawing.queue_draw();
+    }
+    //==================================================================================
     cout << __func__ << endl;
 }
-void My_window::build_clicked()
-{
-    // remplacer affichage par votre code
+void My_window::build_clicked(){
+    //==================================================================================
+    //activation du bouton de construction
+    //changer mode du jeu 
+    if(checks[0].get_active()){
+        Chaine::set_mode(CONSTRUCTION);
+        checks[1].set_sensitive(true);
+        checks[0].set_sensitive(false);
+    }
+    //==================================================================================
     cout << __func__ << endl;
 }
-void My_window::guide_clicked()
-{
-    // remplacer affichage par votre code
+void My_window::guide_clicked(){
+    //==================================================================================
+    //activation du bouton de guidage
+    //changer mode du jeu 
+    if(checks[1].get_active()){
+        Chaine::set_mode(GUIDAGE);
+        checks[1].set_sensitive(false);
+        checks[0].set_sensitive(true);
+    }
+    //==================================================================================
     cout << __func__ << endl;
 }
-void My_window::set_key_controller()
-{
+
+void My_window::set_key_controller(){
     auto contr = Gtk::EventControllerKey::create();
     contr->signal_key_pressed().connect(sigc::mem_fun(*this, &My_window::key_pressed),
                                         false);
     add_controller(contr);
 }
-bool My_window::key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
-{
 
-    switch (keyval)
-    {
-    case '1':
-        // remplacer affichage par votre code
+bool My_window::key_pressed(guint keyval, guint keycode, Gdk::ModifierType state){
+
+    switch (keyval){
+    case '1'://step - 1 mise a jour 
+        //==================================================================================
+        step_clicked();
+        //==================================================================================
+		cout << keyval <<"  " << __func__ << endl;
+        return true;
+    case 's'://start - depause 
+        //==================================================================================
+        start_clicked();
+        //==================================================================================
 		cout << keyval <<"  " << __func__ << endl;
 
         return true;
-    case 's':
-        // remplacer affichage par votre code
-		cout << keyval <<"  " << __func__ << endl;
-
-        return true;
-    case 'r':
-        // remplacer affichage par votre code
+    case 'r'://restart - reset et relancer 
+        //==================================================================================
+        restart_clicked();
+        //==================================================================================
 		cout << keyval <<"  " << __func__ << endl;
 
         return true;
@@ -236,17 +264,17 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog)
         dialog->hide();
         break;
     case OPEN:
-        if (file_name != "")
-        {
-	        // remplacer affichage par votre code
+        if (file_name != ""){
+	        //=========================================================================
+            //=========================================================================
 			cout << file_name <<"  " << __func__ << endl;
             dialog->hide();
         }
         break;
     case SAVE:
-        if (file_name != "")
-        {
-	        // remplacer affichage par votre code
+        if (file_name != ""){
+	        //=========================================================================
+            //=========================================================================
 			cout << file_name <<"  " << __func__ << endl;
             dialog->hide();
         }
@@ -267,7 +295,8 @@ bool My_window::loop()
 }
 void My_window::update()
 {
-	// remplacer affichage par votre code
+	 //=========================================================================
+     //=========================================================================
 	cout <<  __func__ << endl;
 	
     update_infos();
@@ -319,6 +348,7 @@ void My_window::set_drawing()
     drawing.set_expand();
     drawing.set_draw_func(sigc::mem_fun(*this, &My_window::on_draw));
 }
+
 void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
                         int width, int height)
 {
@@ -335,9 +365,14 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     cr->paint();
 
     //if lecture succeed:
+    if(jeu.lecture(nom_de_fichier) == true) {
     //draw the arena
-    
+    draw_arene(arene);//ne sont pas dans les includes a modifier leur position 
     //draw the rest
+    draw_chaine();
+    draw_particules();
+    draw_faiseurs();
+    }
     //=======================================FIN DE NOTRE CODE=========================
 }
 
