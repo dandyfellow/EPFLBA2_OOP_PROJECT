@@ -14,12 +14,11 @@
 
 using namespace std;
 
-extern Cercle Arene;
 
 bool lecture_p(istringstream& data);
 bool lecture_f(istringstream& data);
-void update_particules(const Cercle arene); // mise à jour (déplacement, split)
-void update_faiseurs(const Cercle arene); // mise à jour (déplacement, collisons entre faisuers)
+void update_particules(); // mise à jour (déplacement, split)
+void update_faiseurs(); // mise à jour (déplacement, collisons entre faisuers)
 
 class Mobile {
 public:
@@ -49,6 +48,7 @@ public:
     static void ajouter_particule(Particule* p);
     static void supprimer_particule(Particule* p);
     ~Particule() { --nbrs_particules; }
+    static void display();
 
 private:
     static int nbrs_particules;
@@ -64,6 +64,7 @@ public:
     void ajouter_element(unique_ptr<Mobile> element);
     const vector<unique_ptr<Mobile>>& get_elements() const { return elements; }
     void move_faiseur(const Cercle arene);
+    static void display();
 
 private:
     static vector<unique_ptr<Faiseur>> liste_faiseurs;

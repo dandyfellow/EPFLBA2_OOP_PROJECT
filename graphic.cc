@@ -23,6 +23,9 @@ void graphic_set_context(const Cairo::RefPtr<Cairo::Context>& cr)
 void Graphic::draw_vecteur(const double& p1x, const double& p1y,const double& p2x, 
                            const double& p2y, const double& width, const Color& color)
 {
+    if(color == NO_COLOR) {
+        cout << "Graphic::draw_vecteur: color is NO_COLOR -> incorrect" << endl;
+    }
     set_color(color);
     
     (*ptcr)->set_line_width(width);

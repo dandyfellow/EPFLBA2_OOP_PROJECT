@@ -8,7 +8,7 @@ using namespace std;
 
 namespace {
     bool verifier_collision_faiseur(const unique_ptr<Faiseur>& f);
-    Cercle Arene({0, 0}, r_max);
+    Cercle arene({0, 0}, r_max);
 }
 
 vector<Particule*> Particule::liste_particule;
@@ -36,13 +36,16 @@ bool lecture_p(istringstream& data) {
         cout << message::mobile_displacement(deplacement);
         return false;
     }
+
+    Particule* p = new Particule({x, y}, v, angle);
+    Particule::ajouter_particule(p);
     return true;
 }
 
 bool lecture_f(istringstream& data) {//nombres lignes a changer 
     double x, y, angle, deplacement, rayon, nbe;
     data >> x >> y >> angle >> deplacement >> rayon >> nbe;
-
+    cout << "lecture_f" << endl;
     Vecteur v({x, y}, deplacement, angle + 3.14159265358979323846);  // angle + pi pour adapter à l'angle réfléchi
     Cercle arene({0, 0}, r_max);
     Cercle c2({x, y}, rayon);
@@ -87,11 +90,12 @@ bool lecture_f(istringstream& data) {//nombres lignes a changer
     if (!verifier_collision_faiseur(f)) {
         return false;
     }
+    cout << "ajouter faiseur" << endl;
     Faiseur::ajouter_faiseur(std::move(f));
     return true;
 }
 
-void update_particules(const Cercle arene){
+void update_particules(){
     vector<Particule*> liste_particule_temporaire;
 
     for (Particule* p : Particule::get_liste_particules()){ {
@@ -133,7 +137,7 @@ void update_particules(const Cercle arene){
 }
 };
 
-void update_faiseurs(const Cercle arene){
+void update_faiseurs(){
     auto& faiseurs = Faiseur::get_liste_faiseurs();
     bool collision = false;
     cout << "Mise à jour faiseur" << endl;
@@ -164,6 +168,25 @@ void update_faiseurs(const Cercle arene){
     }
 }
 
+#include <iostream>
+
+void Faiseur::display() {
+    std::cout << "-------- Displaying faiseurs --------\n";
+    const auto& faiseurs = Faiseur::get_liste_faiseurs();
+
+    for (size_t i = 0; i < faiseurs.size(); ++i) {
+        const auto& f = faiseurs[i];
+        std::cout << "Faiseur " << i << " :\n";
+        const auto& elements = f->get_elements();
+        for (size_t j = 0; j < elements.size(); ++j) {
+            const auto& e = elements[j];
+            std::cout << "  Élément " << j << " → "
+                      << "x = " << e->get_positionx()
+                      << ", y = " << e->get_positiony() << "\n";
+        }
+    }
+}
+
 
 //==========================MOBILE=====================================================
 Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init)
@@ -188,7 +211,14 @@ void Mobile::move(const Cercle arene) {
 Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init)
     : Mobile(position_init, vitesse_init, alpha_init, 0.){
     ++nbrs_particules;
-    liste_particule.push_back(this);
+}
+
+void Particule::display() {
+    cout << "-------- Displaying particule --------\n";
+    for(size_t i=0; i < liste_particule.size(); ++i) {
+        Particule* p = liste_particule[i];
+        cout << "Particule number: " << i << " , point: " << p->get_positionx() << " : " << p->get_positiony() << "\n";
+    }
 }
 
 void Particule::ajouter_particule(Particule* p) {

@@ -42,17 +42,20 @@ int main(int argc, char * argv[]) {
         //effacer les donnees est gereer dans la fonction Jeu::lecture();
     }
     jeu.success();
+    jeu.set_lecture_success(true);
     Cercle::epsilTrue(); //active epsil pour le reste de jeu
+
+    // ----------------------------- SPACE FOR TESTING -----------------------------
+    if(true) { 
+        Chaine::display();
+        Faiseur::display();
+        Particule::display();
+    }
+    // ----------------------------- END OF TESTING -----------------------------
 
     auto app = Gtk::Application::create();
     return app->make_window_and_run<My_window>(1, argv, nom_fichier);
 
-    // ----------------------------- SPACE FOR TESTING -----------------------------
-    if(false) { 
-        Chaine::display();
-        //Faiseur::display();
-    }
-    // ----------------------------- END OF TESTING -----------------------------
     exit(EXIT_SUCCESS);
 
 

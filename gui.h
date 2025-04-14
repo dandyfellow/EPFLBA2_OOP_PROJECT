@@ -7,8 +7,7 @@
 #include <gtkmm.h>
 #include "jeu.h"
 
-class My_window : public Gtk::Window
-{
+class My_window : public Gtk::Window{
 public:
     My_window(std::string file_name);
 
@@ -24,7 +23,7 @@ private:
     Gtk::DrawingArea drawing;
     std::string previous_file_name;
 	// ajouter un attribut pour accéder au jeu (instance ou pointeur)=================
-	std::unique_ptr<Jeu> jeu;
+	Jeu jeu;
     //===============================================================================
     void set_commands();
 

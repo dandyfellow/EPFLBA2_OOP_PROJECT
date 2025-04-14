@@ -15,13 +15,12 @@ CXXFILES = projet.cc \
 
 OFILES = $(CXXFILES:.cc=.o)
 
-
 all: $(OUT) 
 
 chaine.o: chaine.cc chaine.h tools.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-jeu.o: jeu.cc jeu.h tools.h chaine.h message.h mobile.h gui.h
+jeu.o: jeu.cc jeu.h tools.h chaine.h message.h mobile.h
 	$(CXX) $(CXXFLAGS) $(LINKING)  -c $< -o $@
 
 message.o: message.cc message.h
@@ -47,7 +46,6 @@ projet.o: projet.cc gui.h jeu.h graphic.h
 
 $(OUT): $(OFILES)
 	$(CXX) $(CXXFLAGS) $(LINKING) $(OFILES) -o $@ $(LDLIBS)
-
 
 # Always use Unix tools in MSYS2
 RM = /bin/rm -f

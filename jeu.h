@@ -9,7 +9,6 @@
 #include "message.h"
 #include "tools.h"
 #include "constantes.h"
-#include "gui.h"
 
 enum Status{
     ONGOING,
@@ -28,13 +27,24 @@ public:
     bool lecture(std::string nom_fichier);
     void success(); //only these ones needed for project.cc
     void update();
+    static bool get_lecture_success() { return lecture_success; }
+    void set_lecture_success(bool success) { lecture_success = success; }
+    void reset();
+
+    static void set_score(unsigned int s) { score = s; }
+    static unsigned int get_score() { return score; }
+
+    void draw_arene();
+    void draw_faiseurs();
+    void draw_particules();
+    void draw_chaine();
 
     //save_file() writes the current state of the game to a file
     void save_file();
 
-
-    
 private:
+    static unsigned int score;
+    static bool lecture_success;
 };
 
 #endif

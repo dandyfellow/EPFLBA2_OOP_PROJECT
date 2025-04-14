@@ -10,11 +10,15 @@
 #include "tools.h"
 #include "jeu.h"  
 #include "constantes.h"
-#include "gui.h"
 
 using namespace std;
 //needed because all of these are statics 
 // -> cannot initialize statics with default values in the header file
+
+
+unsigned int Jeu::score = 0;
+bool Jeu::lecture_success = false;
+
 
 namespace{
 	void reset();
@@ -40,7 +44,6 @@ namespace{
 	string chaine_sauvegarde_ecriture();
 
 	int unsigned counts = 0;
-	static int unsigned score = 0;
 	static int unsigned nb_particule_init = 0;
 	static int unsigned nb_faiseur_init = 0;
 	static int unsigned nb_chaine_init = 0;
@@ -48,8 +51,10 @@ namespace{
 	Etat etat = SCORE;
 }
 
+
+
 void Jeu::update() {
-	score--;
+	Jeu::score--;
 	update_particules();
 	update_faiseurs();
 	//a completer pour le rendu 3 
@@ -92,7 +97,7 @@ void Jeu::save_file(){
 	}
 	save << "# fichier de sauvegarde" << endl;
 	save << "# score: " << endl;
-	save << score << endl;
+	save << Jeu::score << endl;
 	save << endl;
 
 	save << "# nombre d’entité particule puis les données d’une entité par ligne\n";
@@ -111,49 +116,58 @@ void Jeu::save_file(){
 
 	save.close();
 }
-
-namespace {
-
-//=====DRAW ARENE, PARTICULES, FAISEURS | I DON'T KNOW WHERE TO PUT THIS YET=============================
-
-
-void draw_arene(Cercle arene){
-	arene.draw_cercle(100, NO_COLOR, GREEN);
+void Jeu::draw_arene(){
+	Cercle arene({0, 0}, r_max);
+	arene.draw_cercle(10, NO_COLOR, GREEN);
 }
 
-void draw_faiseurs(){
+void Jeu::draw_faiseurs(){
 	for(const auto& f : Faiseur::get_liste_faiseurs()) {
 		for(const auto& e : f->get_elements()) {
 			Cercle c(e->get_position(), e->get_rayon());
-			c.draw_cercle(100, NO_COLOR, BLUE);
+			c.draw_cercle(10, NO_COLOR, BLUE);
+			cout << __func__ << endl;
 		}
 	}
 }
 
-void draw_particules(){
+void Jeu::draw_particules(){
 	for(const auto& p : Particule::get_liste_particules()) {
 		Cercle c(p->get_position(), r_viz);
-		c.draw_cercle(100, CYAN, GREEN);
+		c.draw_cercle(10, CYAN, GREEN);
+		cout << __func__ << endl;
 	}
 }
 
-void draw_chaine(){
+void Jeu::draw_chaine(){
 	vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
 	unsigned int chaine_size = chaine.size();
+	cout <<"debut boucle for chaine" << endl;
 	for(unsigned int i = 0; i < chaine_size; ++i) {
+		
 		Cercle c(chaine[i].second.get_centre(), r_viz);
-		c.draw_cercle(100, NO_COLOR, RED);
+		c.draw_cercle(10, NO_COLOR, RED);
+
 		if(i != chaine_size - 1) {
 			Vecteur v(chaine[i].second.get_centre(), chaine[i + 1].second.get_centre());
-			v.draw_vecteur(100, RED);
+			v.draw_vecteur(10, RED);
 		}
 	}
 	Cercle capture(chaine[chaine_size-1].second.get_centre(), r_capture);
-	capture.draw_cercle(100, NO_COLOR, RED);
+	capture.draw_cercle(10, NO_COLOR, RED);
 }
 
+void Jeu::reset(){
+	Jeu::score = 0;
+	nb_particule_init = 0;
+	nb_faiseur_init = 0;
+	nb_chaine_init = 0;
+	etat = SCORE;
+	counts = 0;
+	//write functions to clear the lists
+}
 
-//===============================================================================================================
+namespace {
 	string single_chaine_sauvegarde_ecriture(pair<int, Cercle> c_pair){
 		string txt = "\t";
 		txt += to_string(c_pair.second.get_centre().x) + "\t";
@@ -210,17 +224,6 @@ void draw_chaine(){
 			txt += "\n";
 		}
 	}
-
-
-	void reset(){
-		score = 0;
-		nb_particule_init = 0;
-		nb_faiseur_init = 0;
-		nb_chaine_init = 0;
-		etat = SCORE;
-		counts = 0;
-		//write functions to clear the lists
-	}
 	
 	void imprimer_data(istringstream& data) {//FOR TESTING ONLY, doesn't work tho :)
 		cout << "------------------TESTING----------------------" << endl;
@@ -233,9 +236,11 @@ void draw_chaine(){
 	}
 
 	bool decodage_score(istringstream& data){
-		data >> score;	
-		if((score == 0) or (score > score_max)) {
-			cout << message::score_outside(score);
+		unsigned int s;
+		data >> s;	
+		Jeu::set_score(s);
+		if((s == 0) or (s > score_max)) {
+			cout << message::score_outside(s);
 			return false;
 		}
 		etat = NB_PARTICULE;

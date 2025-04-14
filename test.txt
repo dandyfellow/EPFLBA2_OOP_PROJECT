@@ -1,0 +1,24 @@
+# t01: Correct file; 1 particule et 1 faiseur immobiles au centre
+#
+8000
+
+# nombre d’entité particule puis les données d’une entité par ligne
+4
+    0.	0.	0.	0.	0	
+    4.	2.	3.	1.	0	
+    -43.2038 36.6682 0.0248867 0.262144 165
+    23.8176 81.7534 0.739279 0.262144 165
+
+
+# nombre d’entité faiseur puis les données d’une entité par ligne
+2
+    0.	0.	0.	2.	3.	4	
+    20.	20.	-2.	2.	3.	4
+
+# nombre d’articulations (nul veut dire « pas de chaîne ») 
+#        puis une ligne par articulation 
+2
+    -99. 0.
+    -96. 0.
+
+CONSTRUCTION

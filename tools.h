@@ -28,7 +28,8 @@ public:
     void set_y(double y);
     void set_angle(double angle);
     void set_norme(double norme);
-
+    S2d get_p1() const{ return p1; };
+    S2d get_p2() const{ return p2; };
     void draw_vecteur(const double& width, Color color);
 
 
@@ -36,8 +37,8 @@ private:
     S2d p1 = {0, 0};
     S2d p2 = {0, 0};
     // x, y are p1.x and p1.y respectively
-    double x = 0.;
-    double y = 0.;
+    double x = 0.; //p1.x
+    double y = 0.; //p1.y
     double angle = 0.; // en radians
     double norme = 0.;
 };

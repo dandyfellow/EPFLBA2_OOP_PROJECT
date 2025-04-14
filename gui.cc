@@ -39,11 +39,11 @@ My_window::My_window(string file_name)
                  Gtk::Label("particules:"),
                  Gtk::Label("faiseurs:"),
                  Gtk::Label("articulations:")}),
-      previous_file_name(file_name)
+      previous_file_name(file_name),
       // ici éventuelle initialisation de l'attribut pour l'accès au jeu
-      //==============================================================================
-      jeu = make_unique<Jeu>(file_name);//il n'y pas de constructeur dans jeu?!
-      //==============================================================================
+      //===============================================================================
+      jeu(Jeu())
+      //===============================================================================
 {
     set_title("Linked-Crossing Challenge");
     set_child(main_box);
@@ -59,8 +59,7 @@ My_window::My_window(string file_name)
     set_drawing();
     set_jeu(file_name);
 }
-void My_window::set_commands()
-{
+void My_window::set_commands(){
     command_frame.set_child(command_box);
     for (auto &button : buttons)
     {
@@ -93,30 +92,28 @@ void My_window::set_commands()
                                                      &My_window::guide_clicked));
 }
 
-void My_window::exit_clicked()
-{
+void My_window::exit_clicked(){
     hide();
 }
-void My_window::open_clicked()
-{
+
+void My_window::open_clicked(){
     auto dialog = new Gtk::FileChooserDialog("Choose a text file",
                                              Gtk::FileChooserDialog::Action::OPEN);
     set_dialog(dialog);
 }
-void My_window::save_clicked()
-{
+void My_window::save_clicked(){
     auto dialog = new Gtk::FileChooserDialog("Choose a text file",
                                              Gtk::FileChooserDialog::Action::SAVE);
     set_dialog(dialog);
 }
-void My_window::restart_clicked()
-{
+
+void My_window::restart_clicked(){
     // ==============================================================================
     //===============================================================================
     cout << __func__ << endl;
 }
-void My_window::start_clicked()
-{
+
+void My_window::start_clicked(){
     if (activated) // variable d'état: true si le jeu est en cours
     {
         loop_conn.disconnect();
@@ -142,17 +139,19 @@ void My_window::start_clicked()
         buttons[B_STEP].set_sensitive(false);
     }
 }
+
 void My_window::step_clicked(){
     //==================================================================================
     if(!activated){
     //incrementation d'1 du compteur du jeu(timer)
-    jeu update;//faux
+    jeu.update(); //changer
     update_infos();
     drawing.queue_draw();
     }
     //==================================================================================
     cout << __func__ << endl;
 }
+
 void My_window::build_clicked(){
     //==================================================================================
     //activation du bouton de construction
@@ -247,8 +246,8 @@ void My_window::set_dialog(Gtk::FileChooserDialog *dialog)
 
     dialog->show();
 }
-void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog)
-{
+
+void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
     string file_name = "";
     if (dialog->get_file())
     {
@@ -350,9 +349,7 @@ void My_window::set_drawing()
 }
 
 void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
-                        int width, int height)
-{
-
+                        int width, int height){
     graphic_set_context(cr);
     double side(min(width, height));
     cr->translate(width / 2, height / 2);
@@ -363,21 +360,19 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     //draw a blank canvas for when lecture fails
     cr->set_source_rgb(1, 1, 1);
     cr->paint();
-
     //if lecture succeed:
-    if(jeu.lecture(nom_de_fichier) == true) {
+    if(jeu.get_lecture_success() == true) {
     //draw the arena
-    draw_arene(arene);//ne sont pas dans les includes a modifier leur position 
+    jeu.draw_arene();//ne sont pas dans les includes a modifier leur position 
     //draw the rest
-    draw_chaine();
-    draw_particules();
-    draw_faiseurs();
+    jeu.draw_particules();
+    jeu.draw_faiseurs();
+    jeu.draw_chaine();
     }
     //=======================================FIN DE NOTRE CODE=========================
 }
 
-void My_window::set_mouse_controller()
-{
+void My_window::set_mouse_controller(){
     auto left_click = Gtk::GestureClick::create();
     auto right_click = Gtk::GestureClick::create();
     auto move = Gtk::EventControllerMotion::create();
@@ -425,13 +420,11 @@ void My_window::on_drawing_move(double x, double y)
 }
 
 
-void My_window::set_jeu(string file_name)
-{
+void My_window::set_jeu(string file_name){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
 
-    //~ if (à compléter pour cas d'échec de lecture)
-    {
+    if (Jeu::get_lecture_success() == false) {// cas d'erreur de lecture : maxwc
         buttons[2].set_sensitive(false);
         buttons[4].set_sensitive(false);
         buttons[5].set_sensitive(false);
@@ -439,24 +432,23 @@ void My_window::set_jeu(string file_name)
         checks[0].set_sensitive(false);
         checks[1].set_sensitive(false);
         // éventuelle mise à jour de l'attribut jeu
+    } else {
+        buttons[2].set_sensitive(true);
+        buttons[4].set_sensitive(true);
+        buttons[5].set_sensitive(true);
+        checks[0].set_sensitive(true);
+        checks[1].set_sensitive(true);
+    switch (Chaine::get_mode()) {// voir jeu.h
+        case CONSTRUCTION:
+            checks[0].set_active(true);
+            Chaine::set_mode(CONSTRUCTION);
+            break;
+        case GUIDAGE:
+            checks[1].set_active(true);
+            Chaine::set_mode(GUIDAGE);
+            break;
+        }
     }
-    //~ else // cas de succès de lecture
-    //~ {
-        //~ buttons[2].set_sensitive(true);
-        //~ buttons[4].set_sensitive(true);
-        //~ buttons[5].set_sensitive(true);
-        //~ checks[0].set_sensitive(true);
-        //~ checks[1].set_sensitive(true);
-        //~ switch (appel pour obtenir le statut du jeu ) // voir jeu.h
-        //~ {
-        //~ case CONSTRUCTION:
-            //~ checks[0].set_active(true);
-            //~ break;
-        //~ case GUIDAGE:
-            //~ checks[1].set_active(true);
-            //~ break;
-        //~ }
-    //~ }
     update_infos();
     drawing.queue_draw();
 }
