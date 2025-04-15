@@ -43,12 +43,12 @@ public:
     void save_file();
 
     Status get_status() const;
-    void set_status(Status s);
+    static void set_status(Status s);
 
 private:
     static unsigned int score;
     static bool lecture_success;
-    Status status=ONGOING;
+    static Status status;
 };
 
 #endif

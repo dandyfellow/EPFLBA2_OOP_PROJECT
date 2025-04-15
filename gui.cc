@@ -158,8 +158,6 @@ void My_window::step_clicked(){
 
 void My_window::build_clicked(){
     //==================================================================================
-    //activation du bouton de construction
-    //changer mode du jeu 
     if(checks[0].get_active()){
         Chaine::set_mode(CONSTRUCTION);
         checks[1].set_sensitive(true);
@@ -170,8 +168,6 @@ void My_window::build_clicked(){
 }
 void My_window::guide_clicked(){
     //==================================================================================
-    //activation du bouton de guidage
-    //changer mode du jeu 
     if(checks[1].get_active()){
         Chaine::set_mode(GUIDAGE);
         checks[1].set_sensitive(false);
@@ -378,7 +374,7 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     //draw the rest
     jeu.draw_particules();
     jeu.draw_faiseurs();
-    //jeu.draw_chaine();
+    jeu.draw_chaine();
     }
     //=======================================FIN DE NOTRE CODE=========================
 }
@@ -431,7 +427,7 @@ void My_window::on_drawing_move(double x, double y)
 
 
 void My_window::set_jeu(string file_name){
-	// remplacer affichage par votre code
+	//================================================================================
 	cout <<  __func__ << endl;
 
     Cercle::epsilFalse(); //desactive l'epsil pour les tests
@@ -440,13 +436,12 @@ void My_window::set_jeu(string file_name){
     jeu.set_lecture_success(true);
     Cercle::epsilTrue(); //active epsil pour le reste de jeu
 
-    // ----------------------------- SPACE FOR TESTING -----------------------------
     if(false) { 
         Chaine::display();
         Faiseur::display();
         Particule::display();
     }
-
+//=====================================================================================
     if (!Jeu::get_lecture_success()) {// cas d'erreur de lecture : maxwc
         buttons[2].set_sensitive(false);
         buttons[4].set_sensitive(false);
@@ -461,7 +456,7 @@ void My_window::set_jeu(string file_name){
         buttons[5].set_sensitive(true);
         checks[0].set_sensitive(true);
         checks[1].set_sensitive(true);
-    switch (Chaine::get_mode()) {// voir jeu.h
+    switch (Chaine::get_mode()) {
         case CONSTRUCTION:
             checks[0].set_active(true);
             Chaine::set_mode(CONSTRUCTION);

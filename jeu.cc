@@ -19,6 +19,7 @@ using namespace std;
 unsigned int Jeu::score = 0;
 bool Jeu::lecture_success = false;
 #define WIDTH_DRAWING 2
+Status Jeu::status = ONGOING;
 
 
 namespace{
@@ -66,10 +67,15 @@ void Jeu::reset(){
 }
 
 void Jeu::update() {
-	Jeu::score--;
-	update_particules();
-	update_faiseurs();
-	//a completer pour le rendu 3 
+	if(score == 0) {Jeu::set_status(LOST);}
+	else {
+		Jeu::score--;
+		update_particules();
+		update_faiseurs();
+		//a completer chaine pour le rendu 3 
+	}
+	
+	
 }
 
 void Jeu::success(){
@@ -161,7 +167,7 @@ void Jeu::draw_chaine(){
 		Cercle c(chaine[i].second.get_centre(), r_viz);
 		c.draw_cercle(WIDTH_DRAWING, NO_COLOR, RED);
 
-		if(i != (chaine_size - 2)) {
+		if(i < (chaine_size - 1)) {
 			Vecteur v(chaine[i].second.get_centre(), chaine[i + 1].second.get_centre());
 			v.draw_vecteur(WIDTH_DRAWING, RED);
 		}
