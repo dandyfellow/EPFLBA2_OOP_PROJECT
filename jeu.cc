@@ -137,7 +137,7 @@ void Jeu::draw_faiseurs(){
 	for(const auto& f : Faiseur::get_liste_faiseurs()) {
 		for(const auto& e : f->get_elements()) {
 			Cercle c(e->get_position(), e->get_rayon());
-			c.draw_cercle(WIDTH_DRAWING, NO_COLOR, BLUE);
+			c.draw_cercle(1, NO_COLOR, BLUE);
 			cout << __func__ << endl;
 		}
 	}
