@@ -93,8 +93,7 @@ void Chaine::display() { //for TESTING purpouses
     }
 }
 
-void Chaine::clear_chaine(){
+void Chaine::reset(){
     chaine.clear();
     mode = CONSTRUCTION;
-    cout<<"taille chaine"<<chaine.size()<<endl;
 }

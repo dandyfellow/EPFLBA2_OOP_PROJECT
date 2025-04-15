@@ -14,7 +14,7 @@ namespace {
 
 vector<Particule*> Particule::liste_particule;
 vector<unique_ptr<Faiseur>> Faiseur::liste_faiseurs = {};
-int Particule::nbrs_particules = 0;
+unsigned int Particule::nbrs_particules = 0;
 int Faiseur::compteur_faiseurs = 0;
 
 
@@ -24,15 +24,8 @@ bool lecture_p(istringstream& data) {
     double x, y, angle, deplacement, compteur;
     data >> x >> y >> angle >> deplacement >> compteur;
 
-    cout << "lecture_p" << endl;
-    cout << "Position initiale: (" << x << ", " << y << ")" << endl;
-    cout << "Angle: " << angle << ", Déplacement: " << deplacement << ", Compteur: " << compteur << endl;
-
     Cercle c1({x, y}, 0.);
     Vecteur v({x, y}, deplacement, angle);
-
-    cout << "Vecteur construit: " << v.get_x() << " , " << v.get_y() << endl;
-    cout << "Norme: " << v.get_norme() << ", Angle réel: " << v.get_angle() << endl;
 
     if (compteur >= time_to_split || compteur < 0) {
         cout << message::particule_counter(compteur);
@@ -48,16 +41,14 @@ bool lecture_p(istringstream& data) {
     }
 
     Particule* p = new Particule({x, y}, v, angle);
-    cout << "→ Particule créée et ajoutée" << endl;
     Particule::ajouter_particule(p);
     return true;
 }
 
-bool lecture_f(istringstream& data) {//nombres lignes a changer 
+bool lecture_f(istringstream& data) { 
     double x, y, angle, deplacement, rayon, nbe;
     data >> x >> y >> angle >> deplacement >> rayon >> nbe;
-    cout << "lecture_f" << endl;
-    Vecteur v({x, y}, deplacement, angle);  // angle + pi pour adapter à l'angle réfléchi
+    Vecteur v({x, y}, deplacement, angle); 
 
     Cercle arene({0, 0}, r_max);
     Cercle c2({x, y}, rayon);
@@ -105,40 +96,37 @@ bool lecture_f(istringstream& data) {//nombres lignes a changer
     if (!verifier_collision_faiseur(f)) {
         return false;
     }
-    cout << "Vitesse finale faiseur (avant ajout): "
-          << f->get_vitesse().get_x() << " , "
-          << f->get_vitesse().get_y() << std::endl;
-
-    cout << "ajouter faiseur" << endl;
+    
     Faiseur::ajouter_faiseur(std::move(f));
     return true;
 }
 
 void update_particules() {
-    cout << "Début update_particules" << endl;
     const auto& particules = Particule::get_liste_particules();
     Cercle arene({0, 0}, r_max);
     vector<Particule*> copie_particules = particules;
 
     for (Particule* p : copie_particules) {
-        cout << "Particule compteur = " << p->get_compteur() << endl;
         p->increase_compteur();
 
         if (p->get_compteur() == time_to_split) {
-            cout << "→ Time to split" << endl;
 
             if (Particule::get_nbrs_particules() >= nb_particule_max) {
-                cout << "→ Trop de particules, suppression" << endl;
                 Particule::supprimer_particule(p);
                 delete p;
                 continue;
             }
-            cout << "→ Split en deux nouvelles particules" << endl;
-            Vecteur nouvelle_v1(p->get_position(), p->get_vitesse().get_norme() * coef_split, p->get_alpha() + delta_split);
-            Vecteur nouvelle_v2(p->get_position(), p->get_vitesse().get_norme() * coef_split, p->get_alpha() - delta_split);
+            Vecteur nouvelle_v1(p->get_position(), 
+                                p->get_vitesse().get_norme() * coef_split, 
+                                p->get_alpha() + delta_split);
+            Vecteur nouvelle_v2(p->get_position(), 
+                                p->get_vitesse().get_norme() * coef_split, 
+                                p->get_alpha() - delta_split);
 
-            Particule* p1 = new Particule(p->get_position(), nouvelle_v1, p->get_alpha() + delta_split);
-            Particule* p2 = new Particule(p->get_position(), nouvelle_v2, p->get_alpha() - delta_split);
+            Particule* p1 = new Particule(p->get_position(), nouvelle_v1, 
+                                          p->get_alpha() + delta_split);
+            Particule* p2 = new Particule(p->get_position(), 
+                                          nouvelle_v2, p->get_alpha() - delta_split);
 
             Particule::ajouter_particule(p1);
             Particule::ajouter_particule(p2);
@@ -149,44 +137,39 @@ void update_particules() {
             Particule::supprimer_particule(p);
             delete p;
         } else {
-            cout << "→ Pas time to split" << endl;
-            cout << "Avant move : " << p->get_positionx() << ", " << p->get_positiony() << endl;
             p->move(arene);
-            cout << "Après move : " << p->get_positionx() << ", " << p->get_positiony() << endl;
         }
     }
-    cout << "Fin update_particules" << endl;
 }
 
 
 void update_faiseurs(){
     auto& faiseurs = Faiseur::get_liste_faiseurs();
-    cout << "Mise à jour faiseur" << endl;
 
     for(size_t i=0; i<faiseurs.size(); i++){
         bool collision = false;
         const auto& f = faiseurs[i];
         auto& elements = f->get_elements();
-        auto& tete= elements[0];//Creation tete faiseur
+        auto& tete= elements[0]; //Creation tete faiseur
         S2d new_position = {tete->get_positionx() + f->get_vitesse().get_x(), tete->get_positiony() + f->get_vitesse().get_y()};
         Cercle c_test(new_position, f->get_rayon());
+
         for(size_t j=0; j<faiseurs.size(); ++j){
             if(i==j) continue;
             const auto& f_autre= faiseurs[j]->get_elements();
+
             for(const auto& k : f_autre){
                 Cercle autre(k->get_position(), faiseurs[j]->get_rayon());
                 if(Cercle::intrusion(c_test, autre)){
-                    cout << "Faiseur: " << i << " collision avec faiseur: " << j << endl;
                     collision = true;
                     break;
                 }
             }
             if(collision){break;}
         }
-      if(!collision){
-        cout << "Pas de collision" << endl;
-        f->move_faiseur(arene);
-      }
+        if(!collision){
+            f->move_faiseur(arene);
+        }
     }
 }
 
@@ -210,18 +193,17 @@ void Faiseur::display() {
 
 
 //==========================MOBILE=====================================================
-Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init)
-    : position(position_init), vitesse(vitesse_init), alpha(alpha_init), rayon(rayon_init) { }
+Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, 
+               double rayon_init)
+    : position(position_init), vitesse(vitesse_init), alpha(alpha_init), 
+      rayon(rayon_init) {}
 
     void Mobile::move(const Cercle arene) {
-        cout << "Mise à jour position" << endl;
-        cout << "Vitesse: " << vitesse.get_x() << " , " << vitesse.get_y() << endl;
     
-        S2d new_position = {position.x + vitesse.get_x(), position.y + vitesse.get_y()};
+        S2d new_position = {position.x + vitesse.get_x(),position.y + vitesse.get_y()};
         Cercle c_test(new_position, rayon);
     
         if (!Cercle::inclusion(arene, c_test)) {
-            cout << "Particule/faiseur hors arène → déclenchement du rebond" << endl;
             Vecteur v_reflechis = vitesse.reflechis(position);
             vitesse = v_reflechis; 
             alpha = v_reflechis.get_angle();
@@ -230,7 +212,6 @@ Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, doubl
             new_position.y = position.y + v_reflechis.get_y();
         }
         position = new_position;
-        cout << "Nouvelle position: " << position.x << " , " << position.y << endl;
     }
     
 //==========================PARTICULE==================================================
@@ -244,7 +225,8 @@ void Particule::display() {
     cout << "-------- Displaying particule --------\n";
     for(size_t i=0; i < liste_particule.size(); ++i) {
         Particule* p = liste_particule[i];
-        cout << "Particule number: " << i << " , point: " << p->get_positionx() << " : " << p->get_positiony() << "\n";
+        cout << "Particule number: " << i << " , point: ";
+        cout << p->get_positionx() << " : " << p->get_positiony() << "\n";
     }
 }
 
@@ -259,7 +241,7 @@ void Particule::supprimer_particule(Particule* p) {
 
 
 void Particule::increase_compteur() {
-    ++compteur;  // ou autre logique selon ton besoin
+    ++compteur;
 }
 
 void Particule::reset() {
@@ -267,10 +249,10 @@ void Particule::reset() {
     nbrs_particules = 0; 
 }
 
-
 //==========================FAISEUR====================================================
 
-Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements)
+Faiseur::Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, 
+                 double rayon_init, int nb_elements)
     : Mobile(position_init, vitesse_init, alpha_init, rayon_init) {
         elements.reserve(nb_elements);
 }
@@ -288,47 +270,48 @@ void Faiseur::ajouter_element(unique_ptr<Mobile> element) {
 }
 
 void Faiseur::move_faiseur(const Cercle arene) {
-    for(size_t i=0; i < elements.size(); ++i) {
-        cout << "Deplacement de l'element: " << i << endl;
-        cout << "Position initiale de l'element: " << elements[i]->get_positionx() << " : " << elements[i]->get_positiony() << endl;
-    }
-    cout << "Deplacement du faiseur" << endl;
     for(const auto& element : elements) {
-    element->move(arene);
+        element->move(arene);
     }
-    for(size_t i=0; i < elements.size(); ++i) {
-        cout << "Deplacement de l'element: " << i << endl;
-        cout << "Position finale de l'element: " << elements[i]->get_positionx() << " : " << elements[i]->get_positiony() << endl;
-    }
-  cout << "Fin du deplacement des elements du faiseur" << endl;
 }
 
 void Faiseur::reset() {
     liste_faiseurs.clear();
 }
 
-namespace {
-        bool verifier_collision_faiseur(const unique_ptr<Faiseur>& f) {
-            const auto& nouveaux_elements = f->get_elements();
-            const auto& faiseurs = Faiseur::get_liste_faiseurs();
+Faiseur::~Faiseur() { 
+    --compteur_faiseurs; 
+    elements.clear(); 
+}
 
-            int index_faiseur = static_cast<int>(faiseurs.size()); // index futur, car pas encore ajouté
-            for (size_t k = 0; k < nouveaux_elements.size(); ++k) {
-                Cercle c1(nouveaux_elements[k]->get_position(), f->get_rayon());
-                for (size_t i = 0; i < faiseurs.size(); ++i) {
-                    const auto& faiseur_i = faiseurs[i];
-                    const auto& elements_i = faiseur_i->get_elements();
-                    for (size_t j = 0; j < elements_i.size(); ++j) {
-                        Cercle c2(elements_i[j]->get_position(), faiseur_i->get_rayon());
-                        if (Cercle::intrusion(c1, c2)) {
-                            cout << message::faiseur_element_collision(index_faiseur, k, i, j);
-                            return false;
-                        }
+namespace {
+    bool verifier_collision_faiseur(const unique_ptr<Faiseur>& f) {
+        const auto& nouveaux_elements = f->get_elements();
+        const auto& faiseurs = Faiseur::get_liste_faiseurs();
+
+        // index futur, car pas encore ajouté
+        int index_faiseur = static_cast<int>(faiseurs.size()); 
+
+        for (size_t k = 0; k < nouveaux_elements.size(); ++k) {
+            Cercle c1(nouveaux_elements[k]->get_position(), f->get_rayon());
+
+            for (size_t i = 0; i < faiseurs.size(); ++i) {
+                const auto& faiseur_i = faiseurs[i];
+                const auto& elements_i = faiseur_i->get_elements();
+
+                for (size_t j = 0; j < elements_i.size(); ++j) {
+                    Cercle c2(elements_i[j]->get_position(), faiseur_i->get_rayon());
+
+                    if (Cercle::intrusion(c1, c2)) {
+                        cout << message::faiseur_element_collision(index_faiseur, 
+                                                                   k, i, j);
+                        return false;
                     }
                 }
             }
-            return true;
         }
+        return true;
     }
+}
     
 

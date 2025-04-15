@@ -5,16 +5,14 @@
 
 using namespace std;
 
-enum Response
-{
+enum Response {
     CANCEL,
     OPEN,
     SAVE
 };
 
 // enum pour noms de boutons
-enum ButtonName
-{
+enum ButtonName {
     B_EXIT,
     B_OPEN,
     B_SAVE,
@@ -41,9 +39,9 @@ My_window::My_window(string file_name)
                  Gtk::Label("articulations:")}),
       previous_file_name(file_name),
       // ici éventuelle initialisation de l'attribut pour l'accès au jeu
-      //===============================================================================
+//=====================================================================================
       jeu(Jeu())
-      //===============================================================================
+//=====================================================================================
 {
     set_title("Linked-Crossing Challenge");
     set_child(main_box);
@@ -59,7 +57,7 @@ My_window::My_window(string file_name)
     set_drawing();
     set_jeu(file_name);
 }
-void My_window::set_commands(){
+void My_window::set_commands() {
     command_frame.set_child(command_box);
     for (auto &button : buttons)
     {
@@ -92,32 +90,31 @@ void My_window::set_commands(){
                                                      &My_window::guide_clicked));
 }
 
-void My_window::exit_clicked(){
+void My_window::exit_clicked() {
     hide();
 }
 
-void My_window::open_clicked(){
+void My_window::open_clicked() {
     auto dialog = new Gtk::FileChooserDialog("Choose a text file",
                                              Gtk::FileChooserDialog::Action::OPEN);
     set_dialog(dialog);
 }
-void My_window::save_clicked(){
+void My_window::save_clicked() {
     auto dialog = new Gtk::FileChooserDialog("Choose a text file",
                                              Gtk::FileChooserDialog::Action::SAVE);
     set_dialog(dialog);
 }
 
-void My_window::restart_clicked(){
-    // ==============================================================================
+void My_window::restart_clicked() {
+//=====================================================================================
     jeu.reset();
-
     // Relire le fichier pour tout réinitialiser
     set_jeu(previous_file_name);
-    //===============================================================================
+//=====================================================================================
     cout << __func__ << endl;
 }
 
-void My_window::start_clicked(){
+void My_window::start_clicked() {
     if (activated) // variable d'état: true si le jeu est en cours
     {
         loop_conn.disconnect();
@@ -144,65 +141,65 @@ void My_window::start_clicked(){
     }
 }
 
-void My_window::step_clicked(){
-    //==================================================================================
-    if(!activated){
+void My_window::step_clicked() {
+//=====================================================================================
+    if(!activated) {
     jeu.update(); 
     update_infos();
     drawing.queue_draw();
     }
-    //==================================================================================
+//=====================================================================================
     cout << __func__ << endl;
 }
 
-void My_window::build_clicked(){
-    //==================================================================================
-    if(checks[0].get_active()){
+void My_window::build_clicked() {
+//=====================================================================================
+    if(checks[0].get_active()) {
         Chaine::set_mode(CONSTRUCTION);
         checks[1].set_sensitive(true);
         checks[0].set_sensitive(false);
     }
-    //==================================================================================
+//=====================================================================================
     cout << __func__ << endl;
 }
-void My_window::guide_clicked(){
-    //==================================================================================
-    if(checks[1].get_active()){
+void My_window::guide_clicked() {
+//=====================================================================================
+    if(checks[1].get_active()) {
         Chaine::set_mode(GUIDAGE);
         checks[1].set_sensitive(false);
         checks[0].set_sensitive(true);
     }
-    //==================================================================================
+//=====================================================================================
     cout << __func__ << endl;
 }
 
-void My_window::set_key_controller(){
+void My_window::set_key_controller() {
     auto contr = Gtk::EventControllerKey::create();
     contr->signal_key_pressed().connect(sigc::mem_fun(*this, &My_window::key_pressed),
                                         false);
     add_controller(contr);
 }
 
-bool My_window::key_pressed(guint keyval, guint keycode, Gdk::ModifierType state){
+bool My_window::key_pressed(guint keyval, guint keycode, Gdk::ModifierType state) {
 
     switch (keyval){
     case '1'://step - 1 mise a jour 
-        //==================================================================================
+//=====================================================================================
         step_clicked();
-        //==================================================================================
+//=====================================================================================
 		cout << keyval <<"  " << __func__ << endl;
         return true;
     case 's'://start - depause 
-        //==================================================================================
+//=====================================================================================
         start_clicked();
-        //==================================================================================
+//=====================================================================================
 		cout << keyval <<"  " << __func__ << endl;
 
         return true;
     case 'r'://restart - reset et relancer 
-        //==================================================================================
+//=====================================================================================
         restart_clicked();
-        //==================================================================================
+//=====================================================================================
 		cout << keyval <<"  " << __func__ << endl;
 
         return true;
@@ -212,8 +209,7 @@ bool My_window::key_pressed(guint keyval, guint keycode, Gdk::ModifierType state
     return false;
 }
 
-void My_window::set_dialog(Gtk::FileChooserDialog *dialog)
-{
+void My_window::set_dialog(Gtk::FileChooserDialog *dialog) {
     dialog->set_modal(true);
     dialog->set_transient_for(*this);
     dialog->set_select_multiple(false);
@@ -263,18 +259,19 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
         break;
     case OPEN:
         if (file_name != ""){
-	        //=========================================================================
+//=====================================================================================
             set_jeu(file_name);
-            //=========================================================================
-			cout << file_name <<"  " << __func__ << endl;
+            previous_file_name = file_name;
+//=====================================================================================
+            cout << file_name <<"  " << __func__ << endl;
             dialog->hide();
         }
         break;
     case SAVE:
         if (file_name != ""){
-	        //=========================================================================
+//=====================================================================================
             jeu.save_file(file_name);
-            //=========================================================================
+//=====================================================================================
 			cout << file_name <<"  " << __func__ << endl;
             dialog->hide();
         }
@@ -284,8 +281,7 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
     }
 }
 
-bool My_window::loop()
-{
+bool My_window::loop(){
     if (activated)
     {
         update();
@@ -295,9 +291,9 @@ bool My_window::loop()
 }
 void My_window::update(){
 	cout <<  __func__ << endl;
-    //=========================================================================
+//=====================================================================================
     jeu.update();
-    //=========================================================================
+//=====================================================================================
     update_infos();
     drawing.queue_draw();
 
@@ -328,7 +324,7 @@ void My_window::set_infos(){
 
 void My_window::update_infos(){
     cout <<  __func__ << endl;
-    //=================================================================================
+//=====================================================================================
  	//  Score
      info_value[0].set_text(std::to_string(jeu.get_score()));
      //Nbrs particules
@@ -337,7 +333,7 @@ void My_window::update_infos(){
      info_value[2].set_text(std::to_string(Faiseur::get_liste_faiseurs().size()));
     //Longeur chaine
      info_value[3].set_text(std::to_string(Chaine::get_chaine().size()));
-    //===================================================================================
+//=====================================================================================
     /*{
         for (auto &value : info_value)
         {
@@ -346,8 +342,7 @@ void My_window::update_infos(){
     }*/
 }
 
-void My_window::set_drawing()
-{
+void My_window::set_drawing(){
     drawing.set_content_width(taille_dessin);
     drawing.set_content_height(taille_dessin);
     drawing.set_expand();
@@ -361,12 +356,12 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     cr->translate(width / 2, height / 2);
     cr->scale(side / (2 * r_max), -side / (2 * r_max));
 
-	//================================remplacer affichage par votre code===============
+//================================remplacer affichage par votre code===================
 	cout <<  __func__ << endl;
     //draw a blank canvas for when lecture fails
     cr->set_source_rgb(1, 1, 1);
     cr->paint();
-    //if lecture succeed:
+    
     if(jeu.get_lecture_success() == true) {
     //draw the arena
     jeu.draw_arene();//ne sont pas dans les includes a modifier leur position 
@@ -375,7 +370,7 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     jeu.draw_faiseurs();
     jeu.draw_chaine();
     }
-    //=======================================FIN DE NOTRE CODE=========================
+//=======================================FIN DE NOTRE CODE=============================
 }
 
 void My_window::set_mouse_controller(){
@@ -408,40 +403,32 @@ S2d My_window::scaled(S2d const &pos) const{
             ratio * (height / 2 - pos.y)};
 }
 
-void My_window::on_drawing_left_click(int n_press, double x, double y)
-{
+void My_window::on_drawing_left_click(int n_press, double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
 }
-void My_window::on_drawing_right_click(int n_press, double x, double y)
-{
+void My_window::on_drawing_right_click(int n_press, double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
 }
-void My_window::on_drawing_move(double x, double y)
-{
+void My_window::on_drawing_move(double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
 }
 
 
 void My_window::set_jeu(string file_name){
-	//================================================================================
+//=====================================================================================
 	cout <<  __func__ << endl;
-
-    cout << "[set_jeu] appelé avec : " << file_name << endl;
 
     Cercle::epsilFalse(); // désactive epsil pour les tests
     bool success = jeu.lecture(file_name);
+
     if(success) jeu.set_lecture_success(true);
     else jeu.set_lecture_success(false);
+
     Cercle::epsilTrue(); // réactive epsil
 
-    if(false) { 
-        Chaine::display();
-        Faiseur::display();
-        Particule::display();
-    }
 //=====================================================================================
     if (!Jeu::get_lecture_success()) {// cas d'erreur de lecture : maxwc
         buttons[2].set_sensitive(false);

@@ -21,8 +21,7 @@ void graphic_set_context(const Cairo::RefPtr<Cairo::Context>& cr)
 // à compléter pour effectuer des dessins élémentaires: trait, cercle, ...
 //=====================================================================================
 void Graphic::draw_vecteur(const double& p1x, const double& p1y,const double& p2x, 
-                           const double& p2y, const double& width, const Color& color)
-{
+                           const double& p2y, const double& width, const Color& color){
     if(color == NO_COLOR) {
         cout << "Graphic::draw_vecteur: color is NO_COLOR -> incorrect" << endl;
     }
@@ -98,6 +97,11 @@ static void set_color(Color color)
         break;
     case CYAN:
         g = b = 1;
+        break;
+    case NO_COLOR:
+        r = g = b = 1; //white so that it doesn't crash
+        cout << "Function set_color(Color c) used badly! Do not set color"; 
+        cout << "to NO_COLOR! (Set the color to white by default)" << endl;
         break;
     }
     (*ptcr)->set_source_rgb(r, g, b);

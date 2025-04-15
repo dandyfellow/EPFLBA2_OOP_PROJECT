@@ -59,6 +59,6 @@ clean:
 #forcer la recompilation complete
 rebuild: clean all 
 
-# pour max (utile pour faire tourner mingw sur le terminal MSYS2)
-# cd /c/Users/maxwc/git/IT_ProjectTest
+# pour maxwc (utile pour faire tourner mingw sur le terminal MSYS2)
+# cd /c/Users/maxwc/git/EPFLBA2_OOP_PROJECT
 # mingw32-make

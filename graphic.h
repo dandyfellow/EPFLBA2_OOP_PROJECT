@@ -1,8 +1,7 @@
 #ifndef GRAPHIC_H
 #define GRAPHIC_H
 
-enum Color
-{
+enum Color {
     WHITE,
     GREY,
     BLACK,
@@ -14,7 +13,7 @@ enum Color
     CYAN,
     NO_COLOR //for no color / empty
 };
-class Graphic{
+class Graphic {
 public:
     static void draw_vecteur(const double& p1x, const double& p1y,const double& p2x, 
         const double& p2y, const double& width, const Color& color);

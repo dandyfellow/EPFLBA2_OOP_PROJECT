@@ -1,7 +1,6 @@
 //tools.cc, Adam Coste et Max Ciriani, version 1
 #define _USE_MATH_DEFINES //pour cmath constantes -> NEEDS TO COME BEFORE CMATH
 
-
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
@@ -11,32 +10,19 @@
 
 using namespace std;
 
-//Vecteur 
+//=====================================Vecteur=========================================
+
 Vecteur::Vecteur(const S2d& p1, const S2d& p2) : p1(p1), p2(p2), x(p2.x - p1.x), 
                                                  y(p2.y - p1.y) {
     angle = atan2(y, x);
     norme = sqrt(x * x + y * y);
 }
 
-/*Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
-    : p1(p), x(p.x), y(p.y), norme(norme), 
-      p2({p.x + norme*cos(angle), p.y + norme*sin(angle)}) {
-    if (norme < 0){
-        cerr << "norme negative : tools.cc " << __LINE__ << endl;
-        exit(EXIT_FAILURE);
-    }
-    double a = angle;
-    if (a < -M_PI or a > M_PI){ //normaliser la norme entre -pi et pi
-        this->angle = fmod(a, M_PI);
-    }
-}*/
 Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
-    : p1(p),
-      x(norme * cos(angle)),
-      y(norme * sin(angle)),
-      norme(norme),
-      p2({p.x + norme * cos(angle), p.y + norme * sin(angle)})
-{
+    : p1(p), p2({p.x + norme * cos(angle), p.y + norme * sin(angle)}),
+      x(norme * cos(angle)), y(norme * sin(angle)),
+      angle(0), norme(norme) {
+
     if (norme < 0){
         cerr << "norme negative : tools.cc " << __LINE__ << endl;
         exit(EXIT_FAILURE);
@@ -48,15 +34,7 @@ Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
         this->angle = a;
     }
 }
-/*Vecteur Vecteur::reflechis(const S2d &point){
-    S2d point_zero_zero; 
-    Vecteur v_centre(point_zero_zero, point);
-    double angle = M_PI + 2 * v_centre.get_angle() - this->get_angle();
-    Vecteur reflechis(point, this->get_norme(), angle);
-    return reflechis;
-    //la fonction reflechis marche pour les cas logiques, CAD pour les cas qui se produiront.
-    //Si le vecteur va dans le sens opposé du point de reflexion, alors les résultats sont bidons.
-}*/
+
 Vecteur Vecteur::reflechis(const S2d& point) {
     Vecteur normale({0, 0}, point);
     double nx = normale.get_x();

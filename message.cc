@@ -10,8 +10,7 @@ using namespace std;
 
 // l'espace de nom non-nommé sert ici à restreindre l'usage de la fonction
 // reorder_for_consistency à ce module ; c'est une fonction utilitaire locale
-namespace  // non-nommé
-{
+namespace { // non-nommé
     void reorder_for_consistency(unsigned &index1, unsigned &id1,
                                  unsigned &index2, unsigned &id2)
     {

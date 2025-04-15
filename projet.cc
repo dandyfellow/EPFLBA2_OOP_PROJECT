@@ -12,14 +12,7 @@
 #include "jeu.h"
 #include "gui.h"
 
-
 using namespace std;
-
-
-/*
-    auto app = Gtk::Application::create();
-    return app->make_window_and_run<My_window>(1, argv, file_name);
-*/
 
 int main(int argc, char * argv[]) {
     if(argc != 2) {
@@ -31,11 +24,6 @@ int main(int argc, char * argv[]) {
     return app->make_window_and_run<My_window>(1, argv, nom_fichier);
 
     exit(EXIT_SUCCESS);
-
-
-//---------------------------------------------------------------------------------------------------------------------
-//          SEPARATION ENTRE LES TESTS ET LE CODE FINAL	
-//---------------------------------------------------------------------------------------------------------------------
-
+    
     return 0;
 }

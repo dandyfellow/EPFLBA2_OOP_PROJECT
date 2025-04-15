@@ -23,8 +23,6 @@ Status Jeu::status = ONGOING;
 
 
 namespace{
-	void reset();
-	void imprimer_data(istringstream &data);
 	bool decodage_score(istringstream &data);
 	bool decodage_ligne(istringstream &data);
 	bool decodage_nb_particule(istringstream &data);
@@ -56,7 +54,7 @@ namespace{
 void Jeu::reset(){
 	Particule::reset();
 	Faiseur::reset();
-	Chaine::clear_chaine();
+	Chaine::reset();
 	Jeu::score = 0;
 	lecture_success = false;
 	nb_particule_init = 0;
@@ -161,21 +159,20 @@ void Jeu::draw_particules(){
 void Jeu::draw_chaine(){
 	vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
 	int chaine_size = chaine.size();
-	cout <<"debut boucle for chaine" << endl;
-	for(unsigned int i = 0; i < chaine_size; ++i) {
-		cout << "i: " << i << endl;
+ 
+	for(int i = 0; i < chaine_size; ++i) {
+
 		Cercle c(chaine[i].second.get_centre(), r_viz);
 		c.draw_cercle(WIDTH_DRAWING, NO_COLOR, RED);
 
 		if(i < (chaine_size - 1)) {
-			Vecteur v(chaine[i].second.get_centre(), chaine[i + 1].second.get_centre());
+			Vecteur v(chaine[i].second.get_centre(),chaine[i + 1].second.get_centre());
 			v.draw_vecteur(WIDTH_DRAWING, RED);
 		}
 	}
-	if(chaine_size >=1){
+	if(chaine_size >=1){ //to not access t[-1] -> segmentation fault
 	Cercle capture(chaine[chaine_size-1].second.get_centre(), r_capture);
 	capture.draw_cercle(WIDTH_DRAWING, NO_COLOR, RED);
-	cout << "fin boucle for chaine" << endl;
 	}
 }
 
@@ -245,16 +242,7 @@ namespace {
 		}
 		return txt;
 	}
-	
-	void imprimer_data(istringstream& data) {//FOR TESTING ONLY, doesn't work tho :)
-		cout << "------------------TESTING----------------------" << endl;
-		string txt = " ";
-		string mot;
-		while(data >> mot) {
-			cout << mot << txt;
-		} 
-		cout << endl;
-	}
+
 
 	bool decodage_score(istringstream& data){
 		unsigned int s;
@@ -386,10 +374,10 @@ namespace {
 				const auto& faiseur = faiseurs[i];
 				const auto& elements = faiseur->get_elements();
 				for (size_t j = 0; j < elements.size(); ++j) {
-					Cercle c_faiseur(elements[j]->get_position(), faiseur->get_rayon());
+					Cercle c_faiseur(elements[j]->get_position(),faiseur->get_rayon());
 					if (Cercle::inclusion(c_faiseur, articulation)) {
 						cout << message::chaine_articulation_collision(
-							index_articulation, static_cast<int>(i), static_cast<int>(j)
+							index_articulation, static_cast<int>(i),static_cast<int>(j)
 						);
 						return false;
 					}
