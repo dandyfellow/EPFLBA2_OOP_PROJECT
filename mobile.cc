@@ -57,7 +57,7 @@ bool lecture_f(istringstream& data) {//nombres lignes a changer
     double x, y, angle, deplacement, rayon, nbe;
     data >> x >> y >> angle >> deplacement >> rayon >> nbe;
     cout << "lecture_f" << endl;
-    Vecteur v({x, y}, deplacement, angle + 3.141592653589793);  // angle + pi pour adapter à l'angle réfléchi
+    Vecteur v({x, y}, deplacement, angle);  // angle + pi pour adapter à l'angle réfléchi
 
     Cercle arene({0, 0}, r_max);
     Cercle c2({x, y}, rayon);

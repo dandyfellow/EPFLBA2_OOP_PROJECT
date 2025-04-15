@@ -40,7 +40,6 @@ My_window::My_window(string file_name)
                  Gtk::Label("faiseurs:"),
                  Gtk::Label("articulations:")}),
       previous_file_name(file_name),
-      initial_file_name(file_name),
       // ici éventuelle initialisation de l'attribut pour l'accès au jeu
       //===============================================================================
       jeu(Jeu())
@@ -113,7 +112,7 @@ void My_window::restart_clicked(){
     jeu.reset();
 
     // Relire le fichier pour tout réinitialiser
-    set_jeu(initial_file_name);
+    set_jeu(previous_file_name);
     //===============================================================================
     cout << __func__ << endl;
 }
@@ -274,7 +273,7 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
     case SAVE:
         if (file_name != ""){
 	        //=========================================================================
-            jeu.save_file();
+            jeu.save_file(file_name);
             //=========================================================================
 			cout << file_name <<"  " << __func__ << endl;
             dialog->hide();
@@ -431,9 +430,8 @@ void My_window::set_jeu(string file_name){
 	cout <<  __func__ << endl;
 
     Cercle::epsilFalse(); //desactive l'epsil pour les tests
-    jeu.lecture(initial_file_name);
-    jeu.success();
-    jeu.set_lecture_success(true);
+    if(jeu.lecture(file_name)) jeu.set_lecture_success(true);
+    else jeu.set_lecture_success(false);
     Cercle::epsilTrue(); //active epsil pour le reste de jeu
 
     if(false) { 

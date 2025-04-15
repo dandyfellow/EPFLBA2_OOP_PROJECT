@@ -40,7 +40,7 @@ public:
     void draw_chaine();
 
     //save_file() writes the current state of the game to a file
-    void save_file();
+    void save_file(string file_name);
 
     Status get_status() const;
     static void set_status(Status s);

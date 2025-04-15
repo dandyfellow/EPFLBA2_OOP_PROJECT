@@ -107,8 +107,8 @@ bool Jeu::lecture(string nom_fichier){
 	return false;
 }
 
-void Jeu::save_file(){
-	ofstream save("sauvegarde.txt");
+void Jeu::save_file(string file_name){
+	ofstream save(file_name);
 	if (!save.is_open()) { // Check if the file opened successfully
 		std::cerr << "Error opening file!" << std::endl;
 		return;
