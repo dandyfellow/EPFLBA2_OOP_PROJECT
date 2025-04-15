@@ -230,11 +230,12 @@ namespace {
 
 	string particule_sauvegarde_ecriture(){
 		string txt = "";
-		const vector<Particule*>& particules = Particule::get_liste_particules();
-		for(const auto& p : particules) {
+		for(const auto& p : Particule::get_liste_particules()) {
+			cout << "particule_sauvegarde_ecriture()" << endl;
 			txt += single_particule_sauvegarde_ecriture(p);
 			txt += "\n";
 		}
+		return txt;
 	}
 	
 	void imprimer_data(istringstream& data) {//FOR TESTING ONLY, doesn't work tho :)
