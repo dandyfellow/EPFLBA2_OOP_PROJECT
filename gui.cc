@@ -429,10 +429,13 @@ void My_window::set_jeu(string file_name){
 	//================================================================================
 	cout <<  __func__ << endl;
 
-    Cercle::epsilFalse(); //desactive l'epsil pour les tests
-    if(jeu.lecture(file_name)) jeu.set_lecture_success(true);
+    cout << "[set_jeu] appelé avec : " << file_name << endl;
+
+    Cercle::epsilFalse(); // désactive epsil pour les tests
+    bool success = jeu.lecture(file_name);
+    if(success) jeu.set_lecture_success(true);
     else jeu.set_lecture_success(false);
-    Cercle::epsilTrue(); //active epsil pour le reste de jeu
+    Cercle::epsilTrue(); // réactive epsil
 
     if(false) { 
         Chaine::display();

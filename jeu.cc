@@ -160,7 +160,7 @@ void Jeu::draw_particules(){
 
 void Jeu::draw_chaine(){
 	vector<pair<int, Cercle>> chaine = Chaine::get_chaine();
-	unsigned int chaine_size = chaine.size();
+	int chaine_size = chaine.size();
 	cout <<"debut boucle for chaine" << endl;
 	for(unsigned int i = 0; i < chaine_size; ++i) {
 		cout << "i: " << i << endl;
@@ -172,9 +172,11 @@ void Jeu::draw_chaine(){
 			v.draw_vecteur(WIDTH_DRAWING, RED);
 		}
 	}
+	if(chaine_size >=1){
 	Cercle capture(chaine[chaine_size-1].second.get_centre(), r_capture);
 	capture.draw_cercle(WIDTH_DRAWING, NO_COLOR, RED);
 	cout << "fin boucle for chaine" << endl;
+	}
 }
 
 
