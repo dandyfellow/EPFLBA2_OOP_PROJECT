@@ -1,0 +1,6 @@
+# fichier de sauvegarde
+# score: 
+7,879
+
+# nombre d’entité particule puis les données d’une entité par ligne
+4

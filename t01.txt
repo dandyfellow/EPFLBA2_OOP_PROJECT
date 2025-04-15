@@ -4,7 +4,7 @@
 
 # nombre d’entité particule puis les données d’une entité par ligne
 1
-    0.	0.	0.	0.	0	
+    0.	0.	0.	1.	20.	
 
 # nombre d’entité faiseur puis les données d’une entité par ligne
 1

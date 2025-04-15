@@ -18,7 +18,7 @@ Vecteur::Vecteur(const S2d& p1, const S2d& p2) : p1(p1), p2(p2), x(p2.x - p1.x),
     norme = sqrt(x * x + y * y);
 }
 
-Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
+/*Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
     : p1(p), x(p.x), y(p.y), norme(norme), 
       p2({p.x + norme*cos(angle), p.y + norme*sin(angle)}) {
     if (norme < 0){
@@ -29,9 +29,26 @@ Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
     if (a < -M_PI or a > M_PI){ //normaliser la norme entre -pi et pi
         this->angle = fmod(a, M_PI);
     }
+}*/
+Vecteur::Vecteur(const S2d& p, const double& norme, const double& angle)
+    : p1(p),
+      x(norme * cos(angle)),
+      y(norme * sin(angle)),
+      norme(norme),
+      p2({p.x + norme * cos(angle), p.y + norme * sin(angle)})
+{
+    if (norme < 0){
+        cerr << "norme negative : tools.cc " << __LINE__ << endl;
+        exit(EXIT_FAILURE);
+    }
+    double a = angle;
+    if (a < -M_PI or a > M_PI){ 
+        this->angle = fmod(a, M_PI);
+    } else {
+        this->angle = a;
+    }
 }
-
-Vecteur Vecteur::reflechis(const S2d &point){
+/*Vecteur Vecteur::reflechis(const S2d &point){
     S2d point_zero_zero; 
     Vecteur v_centre(point_zero_zero, point);
     double angle = M_PI + 2 * v_centre.get_angle() - this->get_angle();
@@ -39,7 +56,26 @@ Vecteur Vecteur::reflechis(const S2d &point){
     return reflechis;
     //la fonction reflechis marche pour les cas logiques, CAD pour les cas qui se produiront.
     //Si le vecteur va dans le sens opposé du point de reflexion, alors les résultats sont bidons.
+}*/
+Vecteur Vecteur::reflechis(const S2d& point) {
+    Vecteur normale({0, 0}, point);
+    double nx = normale.get_x();
+    double ny = normale.get_y();
+
+    double dot = get_x() * nx + get_y() * ny;
+
+    double norme2 = nx * nx + ny * ny;
+
+    double rx = get_x() - 2 * dot / norme2 * nx;
+    double ry = get_y() - 2 * dot / norme2 * ny;
+
+    S2d arrivee;
+    arrivee.x = point.x + rx;
+    arrivee.y = point.y + ry;
+
+    return Vecteur(point, arrivee);
 }
+
 
 void Vecteur::set_x(double new_x) { this->x = new_x; }
 void Vecteur::set_y(double new_y) { this->y = new_y; }

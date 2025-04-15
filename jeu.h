@@ -42,9 +42,13 @@ public:
     //save_file() writes the current state of the game to a file
     void save_file();
 
+    Status get_status() const;
+    void set_status(Status s);
+
 private:
     static unsigned int score;
     static bool lecture_success;
+    Status status=ONGOING;
 };
 
 #endif

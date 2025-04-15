@@ -40,6 +40,7 @@ My_window::My_window(string file_name)
                  Gtk::Label("faiseurs:"),
                  Gtk::Label("articulations:")}),
       previous_file_name(file_name),
+      initial_file_name(file_name),
       // ici éventuelle initialisation de l'attribut pour l'accès au jeu
       //===============================================================================
       jeu(Jeu())
@@ -109,6 +110,10 @@ void My_window::save_clicked(){
 
 void My_window::restart_clicked(){
     // ==============================================================================
+    jeu.reset();
+
+    // Relire le fichier pour tout réinitialiser
+    set_jeu(initial_file_name);
     //===============================================================================
     cout << __func__ << endl;
 }
@@ -125,7 +130,7 @@ void My_window::start_clicked(){
         buttons[B_START].set_label("start");
         buttons[B_STEP].set_sensitive(true);
     }
-    else // if (appel pour obtenir le statut du jeu !== ON_GOING) // voir jeu.h
+    else if (jeu.get_status() == ONGOING) // voir jeu.h
     {
         loop_conn = Glib::signal_timeout().connect(sigc::mem_fun(*this,
                                                                  &My_window::loop),
@@ -143,8 +148,7 @@ void My_window::start_clicked(){
 void My_window::step_clicked(){
     //==================================================================================
     if(!activated){
-    //incrementation d'1 du compteur du jeu(timer)
-    jeu.update(); //changer
+    jeu.update(); 
     update_infos();
     drawing.queue_draw();
     }
@@ -265,6 +269,7 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
     case OPEN:
         if (file_name != ""){
 	        //=========================================================================
+            set_jeu(file_name);
             //=========================================================================
 			cout << file_name <<"  " << __func__ << endl;
             dialog->hide();
@@ -273,6 +278,7 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
     case SAVE:
         if (file_name != ""){
 	        //=========================================================================
+            jeu.save_file();
             //=========================================================================
 			cout << file_name <<"  " << __func__ << endl;
             dialog->hide();
@@ -292,33 +298,30 @@ bool My_window::loop()
     }
     return false;
 }
-void My_window::update()
-{
-	 //=========================================================================
-     //=========================================================================
+void My_window::update(){
 	cout <<  __func__ << endl;
-	
+    //=========================================================================
+    jeu.update();
+    //=========================================================================
     update_infos();
     drawing.queue_draw();
 
-    //~ if (appel pour obtenir le statut du jeu !== ON_GOING) // voir jeu.h 
-    //~ {
+    if (jeu.get_status() != ONGOING){
 		//~ ...
-        //~ buttons[B_SAVE].set_sensitive(false);
-        //~ buttons[B_START].set_sensitive(false);
-        //~ buttons[B_STEP].set_sensitive(false);
-        //~ checks[0].set_active(true);
-        //~ checks[0].set_sensitive(false);
-        //~ checks[1].set_sensitive(false);
-	//~ }   
+        buttons[B_SAVE].set_sensitive(false);
+        buttons[B_START].set_sensitive(false);
+        buttons[B_STEP].set_sensitive(false);
+        checks[0].set_active(true);
+        checks[0].set_sensitive(false);
+        checks[1].set_sensitive(false);
+	}   
 }
 
-void My_window::set_infos()
-{
+void My_window::set_infos(){
     info_frame.set_child(info_grid);
     info_grid.set_column_homogeneous(true);
-    for (size_t i(0); i < info_text.size(); ++i)
-    {
+
+    for (size_t i(0); i < info_text.size(); ++i){
         info_grid.attach(info_text[i], 0, i, 1, 1);
         info_grid.attach(info_value[i], 1, i, 1, 1);
         info_text[i].set_halign(Gtk::Align::START);
@@ -327,17 +330,25 @@ void My_window::set_infos()
         info_value[i].set_margin(3);
     }
 }
-void My_window::update_infos()
-{
- 	// remplacer affichage par votre code
-	cout <<  __func__ << endl;
 
-    {
+void My_window::update_infos(){
+    cout <<  __func__ << endl;
+    //=================================================================================
+ 	//  Score
+     info_value[0].set_text(std::to_string(jeu.get_score()));
+     //Nbrs particules
+     info_value[1].set_text(std::to_string(Particule::get_nbrs_particules()));
+     //Nbrs faiseurs
+     info_value[2].set_text(std::to_string(Faiseur::get_liste_faiseurs().size()));
+    //Longeur chaine
+     info_value[3].set_text(std::to_string(Chaine::get_chaine().size()));
+    //===================================================================================
+    /*{
         for (auto &value : info_value)
         {
             value.set_text("0");
         }
-    }
+    }*/
 }
 
 void My_window::set_drawing()
@@ -367,7 +378,7 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     //draw the rest
     jeu.draw_particules();
     jeu.draw_faiseurs();
-    jeu.draw_chaine();
+    //jeu.draw_chaine();
     }
     //=======================================FIN DE NOTRE CODE=========================
 }
@@ -394,8 +405,7 @@ void My_window::set_mouse_controller(){
 
 // cette fonction convertit l'entrée pos contenant les coordonnées (x,y) de la souris 
 // dans l'espace GTKmm vers l'espace du Modèle => sortie de la fonction.
-S2d My_window::scaled(S2d const &pos) const
-{
+S2d My_window::scaled(S2d const &pos) const{
     int width = drawing.get_width();
     int height = drawing.get_height();
     double ratio((2 * r_max) / min(width, height));
@@ -424,7 +434,20 @@ void My_window::set_jeu(string file_name){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
 
-    if (Jeu::get_lecture_success() == false) {// cas d'erreur de lecture : maxwc
+    Cercle::epsilFalse(); //desactive l'epsil pour les tests
+    jeu.lecture(initial_file_name);
+    jeu.success();
+    jeu.set_lecture_success(true);
+    Cercle::epsilTrue(); //active epsil pour le reste de jeu
+
+    // ----------------------------- SPACE FOR TESTING -----------------------------
+    if(false) { 
+        Chaine::display();
+        Faiseur::display();
+        Particule::display();
+    }
+
+    if (!Jeu::get_lecture_success()) {// cas d'erreur de lecture : maxwc
         buttons[2].set_sensitive(false);
         buttons[4].set_sensitive(false);
         buttons[5].set_sensitive(false);

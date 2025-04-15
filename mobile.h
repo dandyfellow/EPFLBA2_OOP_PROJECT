@@ -49,6 +49,7 @@ public:
     static void supprimer_particule(Particule* p);
     ~Particule() { --nbrs_particules; }
     static void display();
+    static void reset();
 
 private:
     static int nbrs_particules;
@@ -59,12 +60,16 @@ private:
 class Faiseur : public Mobile {
 public:
     Faiseur(S2d position_init, Vecteur vitesse_init, double alpha_init, double rayon_init, int nb_elements);
+    ~Faiseur() { --compteur_faiseurs; 
+    elements.clear(); }
+    
     static void ajouter_faiseur(unique_ptr<Faiseur>&& f);
     static const vector<unique_ptr<Faiseur>>& get_liste_faiseurs();
     void ajouter_element(unique_ptr<Mobile> element);
     const vector<unique_ptr<Mobile>>& get_elements() const { return elements; }
     void move_faiseur(const Cercle arene);
     static void display();
+    static void reset();
 
 private:
     static vector<unique_ptr<Faiseur>> liste_faiseurs;

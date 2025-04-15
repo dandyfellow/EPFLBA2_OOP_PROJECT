@@ -123,7 +123,10 @@
     "compare": "cpp",
     "concepts": "cpp",
     "algorithm": "cpp",
-    "xiosbase": "cpp"
+    "xiosbase": "cpp",
+    "execution": "cpp",
+    "print": "cpp",
+    "queue": "cpp"
   },
   "makefile.configureOnOpen": true
 }

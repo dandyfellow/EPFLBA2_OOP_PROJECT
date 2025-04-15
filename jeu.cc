@@ -18,6 +18,7 @@ using namespace std;
 
 unsigned int Jeu::score = 0;
 bool Jeu::lecture_success = false;
+#define WIDTH_DRAWING 2
 
 
 namespace{
@@ -51,7 +52,18 @@ namespace{
 	Etat etat = SCORE;
 }
 
-
+void Jeu::reset(){
+	Particule::reset();
+	Faiseur::reset();
+	Chaine::clear_chaine();
+	Jeu::score = 0;
+	lecture_success = false;
+	nb_particule_init = 0;
+	nb_faiseur_init = 0;
+	nb_chaine_init = 0;
+	etat = SCORE;
+	counts = 0;
+}
 
 void Jeu::update() {
 	Jeu::score--;
@@ -118,23 +130,24 @@ void Jeu::save_file(){
 }
 void Jeu::draw_arene(){
 	Cercle arene({0, 0}, r_max);
-	arene.draw_cercle(10, NO_COLOR, GREEN);
+	arene.draw_cercle(WIDTH_DRAWING, NO_COLOR, GREEN);
 }
 
 void Jeu::draw_faiseurs(){
 	for(const auto& f : Faiseur::get_liste_faiseurs()) {
 		for(const auto& e : f->get_elements()) {
 			Cercle c(e->get_position(), e->get_rayon());
-			c.draw_cercle(10, NO_COLOR, BLUE);
+			c.draw_cercle(WIDTH_DRAWING, NO_COLOR, BLUE);
 			cout << __func__ << endl;
 		}
 	}
 }
 
+
 void Jeu::draw_particules(){
 	for(const auto& p : Particule::get_liste_particules()) {
 		Cercle c(p->get_position(), r_viz);
-		c.draw_cercle(10, CYAN, GREEN);
+		c.draw_cercle(WIDTH_DRAWING, CYAN, GREEN);
 		cout << __func__ << endl;
 	}
 }
@@ -144,29 +157,28 @@ void Jeu::draw_chaine(){
 	unsigned int chaine_size = chaine.size();
 	cout <<"debut boucle for chaine" << endl;
 	for(unsigned int i = 0; i < chaine_size; ++i) {
-		
+		cout << "i: " << i << endl;
 		Cercle c(chaine[i].second.get_centre(), r_viz);
-		c.draw_cercle(10, NO_COLOR, RED);
+		c.draw_cercle(WIDTH_DRAWING, NO_COLOR, RED);
 
-		if(i != chaine_size - 1) {
+		if(i != (chaine_size - 2)) {
 			Vecteur v(chaine[i].second.get_centre(), chaine[i + 1].second.get_centre());
-			v.draw_vecteur(10, RED);
+			v.draw_vecteur(WIDTH_DRAWING, RED);
 		}
 	}
 	Cercle capture(chaine[chaine_size-1].second.get_centre(), r_capture);
-	capture.draw_cercle(10, NO_COLOR, RED);
+	capture.draw_cercle(WIDTH_DRAWING, NO_COLOR, RED);
+	cout << "fin boucle for chaine" << endl;
 }
 
-void Jeu::reset(){
-	Jeu::score = 0;
-	nb_particule_init = 0;
-	nb_faiseur_init = 0;
-	nb_chaine_init = 0;
-	etat = SCORE;
-	counts = 0;
-	//write functions to clear the lists
+
+void Jeu::set_status(Status s){
+	status = s;
 }
 
+Status Jeu::get_status() const{
+	return status;
+}
 namespace {
 	string single_chaine_sauvegarde_ecriture(pair<int, Cercle> c_pair){
 		string txt = "\t";
