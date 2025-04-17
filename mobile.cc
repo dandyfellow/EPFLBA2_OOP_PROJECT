@@ -74,14 +74,17 @@ bool lecture_f(istringstream& data) {
     auto f = make_unique<Faiseur>(position, v, angle, rayon, nbe);
     f->ajouter_element(make_unique<Mobile>(position, v, angle, rayon)); 
 
+    // Affichage de la position initiale
+    cout << "Élément 0: (" << position.x << ", " << position.y << ")\n";
+
     Vecteur v_tmp = v;
     double angle_tmp = angle;
 
     for (int i = 0; i < nbe; ++i) {
-        double new_x = position.x - deplacement * cos(angle);
-        double new_y = position.y - deplacement * sin(angle);
+        double new_x = position.x - deplacement * cos(angle_tmp);
+        double new_y = position.y - deplacement * sin(angle_tmp);
         Cercle c_test({new_x, new_y}, rayon);
-
+    
         if (!Cercle::inclusion(arene, c_test)) {
             v_tmp = v_tmp.reflechis(position);
             angle_tmp = v_tmp.get_angle();
@@ -89,10 +92,15 @@ bool lecture_f(istringstream& data) {
             new_y = position.y - deplacement * sin(angle_tmp);
         }
 
-        f->ajouter_element(make_unique<Mobile>(S2d{new_x, new_y}, v_tmp, angle_tmp, rayon));
+        f->ajouter_element(make_shared<Mobile>(S2d{new_x, new_y}, v_tmp, angle_tmp, rayon));
+
+        // Affichage de la position à chaque ajout
+        cout << "Élément " << (i + 1) << ": (" << new_x << ", " << new_y << ")\n";
+
         position.x = new_x;
         position.y = new_y;
     }
+
     if (!verifier_collision_faiseur(f)) {
         return false;
     }
@@ -100,6 +108,7 @@ bool lecture_f(istringstream& data) {
     Faiseur::ajouter_faiseur(std::move(f));
     return true;
 }
+
 
 void update_particules() {
     const auto& particules = Particule::get_liste_particules();
@@ -143,35 +152,47 @@ void update_particules() {
 }
 
 
-void update_faiseurs(){
+void update_faiseurs() {
     auto& faiseurs = Faiseur::get_liste_faiseurs();
 
-    for(size_t i=0; i<faiseurs.size(); i++){
+    for (size_t i = 0; i < faiseurs.size(); i++) {
         bool collision = false;
         const auto& f = faiseurs[i];
         auto& elements = f->get_elements();
-        auto& tete= elements[0]; //Creation tete faiseur
-        S2d new_position = {tete->get_positionx() + f->get_vitesse().get_x(), tete->get_positiony() + f->get_vitesse().get_y()};
+        auto& tete = elements[0];  // Création tête faiseur
+        S2d new_position = {
+            tete->get_positionx() + f->get_vitesse().get_x(),
+            tete->get_positiony() + f->get_vitesse().get_y()
+        };
         Cercle c_test(new_position, f->get_rayon());
 
-        for(size_t j=0; j<faiseurs.size(); ++j){
-            if(i==j) continue;
-            const auto& f_autre= faiseurs[j]->get_elements();
+        for (size_t j = 0; j < faiseurs.size(); ++j) {
+            if (i == j) continue;
+            const auto& f_autre = faiseurs[j]->get_elements();
 
-            for(const auto& k : f_autre){
+            for (const auto& k : f_autre) {
                 Cercle autre(k->get_position(), faiseurs[j]->get_rayon());
-                if(Cercle::intrusion(c_test, autre)){
+                if (Cercle::intrusion(c_test, autre)) {
                     collision = true;
                     break;
                 }
             }
-            if(collision){break;}
+            if (collision) break;
         }
-        if(!collision){
+
+        if (!collision) {
             f->move_faiseur(arene);
+            // Affichage des positions après déplacement
+            cout << "Faiseur " << i << " après déplacement:\n";
+            int id = 0;
+            for (const auto& e : f->get_elements()) {
+                const auto& pos = e->get_position();
+                cout << "  Élément " << id++ << ": (" << pos.x << ", " << pos.y << ")\n";
+            }
         }
     }
 }
+
 
 
 void Faiseur::display() {
@@ -265,15 +286,31 @@ const vector<unique_ptr<Faiseur>>& Faiseur::get_liste_faiseurs() {
     return liste_faiseurs;
 }
 
-void Faiseur::ajouter_element(unique_ptr<Mobile> element) {
-    elements.push_back(std::move(element));
+void Faiseur::ajouter_element(shared_ptr<Mobile> element) {
+    elements.push_back(element);
 }
 
-void Faiseur::move_faiseur(const Cercle arene) {
-    for(const auto& element : elements) {
-        element->move(arene);
-    }
+void Faiseur::move_faiseur(Cercle arene) {
+    auto& tete = elements[0];
+    auto copie_tete = std::make_shared<Mobile>(
+        tete->get_position(),
+        tete->get_vitesse(),
+        tete->get_alpha(),
+        tete->get_rayon()
+    );
+
+    copie_tete->move(arene);
+
+    Vecteur nouvelle_vitesse = copie_tete->get_vitesse();
+    double nouvel_angle = nouvelle_vitesse.get_angle();
+    copie_tete->set_vitesse(nouvelle_vitesse);
+    copie_tete->set_alpha(nouvel_angle);
+
+    elements.insert(elements.begin(), copie_tete);
+    elements.pop_back();
+  
 }
+
 
 void Faiseur::reset() {
     liste_faiseurs.clear();

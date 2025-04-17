@@ -325,21 +325,11 @@ void My_window::set_infos(){
 void My_window::update_infos(){
     cout <<  __func__ << endl;
 //=====================================================================================
- 	//  Score
-     info_value[0].set_text(std::to_string(jeu.get_score()));
-     //Nbrs particules
-     info_value[1].set_text(std::to_string(Particule::get_nbrs_particules()));
-     //Nbrs faiseurs
-     info_value[2].set_text(std::to_string(Faiseur::get_liste_faiseurs().size()));
-    //Longeur chaine
-     info_value[3].set_text(std::to_string(Chaine::get_chaine().size()));
+     info_value[0].set_text(to_string(jeu.get_score()));
+     info_value[1].set_text(to_string(Particule::get_nbrs_particules()));
+     info_value[2].set_text(to_string(Faiseur::get_liste_faiseurs().size()));
+     info_value[3].set_text(to_string(Chaine::get_chaine().size()));
 //=====================================================================================
-    /*{
-        for (auto &value : info_value)
-        {
-            value.set_text("0");
-        }
-    }*/
 }
 
 void My_window::set_drawing(){

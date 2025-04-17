@@ -31,6 +31,8 @@ public:
     double get_rayon() const { return rayon; }
     double get_alpha() const { return alpha; }
     Vecteur get_vitesse() const { return vitesse; }
+    void set_vitesse(const Vecteur& v) { vitesse = v; }
+    void set_alpha(double a) { alpha = a; }
 
 protected:
     S2d position;
@@ -68,19 +70,19 @@ public:
     ~Faiseur();
     
     static void ajouter_faiseur(unique_ptr<Faiseur>&& f);
-    void ajouter_element(unique_ptr<Mobile> element);
+    void ajouter_element(shared_ptr<Mobile> element);
     void move_faiseur(const Cercle arene);
     static void display();
     static void reset();
 
     // getters and setters
     static const vector<unique_ptr<Faiseur>>& get_liste_faiseurs();
-    const vector<unique_ptr<Mobile>>& get_elements() const { return elements; }
+    const vector<shared_ptr<Mobile>>& get_elements() const { return elements; }
 
 private:
     static vector<unique_ptr<Faiseur>> liste_faiseurs;
     static int compteur_faiseurs;
-    vector<unique_ptr<Mobile>> elements;
+    vector<shared_ptr<Mobile>> elements;
 };
 
 #endif
