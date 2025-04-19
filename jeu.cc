@@ -128,7 +128,8 @@ void Jeu::save_file(string file_name){
 	save << "#        puis une ligne par articulation" << endl;
 	save << Chaine::get_chaine().size() << endl;
 	save << chaine_sauvegarde_ecriture() << endl;
-	save << to_string(Chaine::get_mode());	
+	if(Chaine::get_mode() == CONSTRUCTION) save << "CONSTRUCTION";
+	else save << "GUIDAGE";
 
 	save.close();
 }
