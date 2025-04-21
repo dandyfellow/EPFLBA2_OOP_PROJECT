@@ -205,14 +205,18 @@ namespace {
 
 	string single_faiseur_sauvegarde_ecriture(Faiseur* f_ptr){
 		string txt = "\t";
+
 		txt += to_string(f_ptr->get_positionx()) + "\t";
 		txt += to_string(f_ptr->get_positiony()) + "\t";
+	
 		txt += to_string(f_ptr->get_alpha()) + "\t";
 		txt += to_string(f_ptr->get_vitesse().get_norme()) + "\t";
 		txt += to_string(f_ptr->get_rayon()) + "\t";
 		txt += to_string(f_ptr->get_elements().size()) + "\t";
+	
 		return txt;
 	}
+	
 
 	string faiseur_sauvegarde_ecriture(){
 		string txt = "";

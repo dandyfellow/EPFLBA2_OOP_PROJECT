@@ -74,13 +74,10 @@ bool lecture_f(istringstream& data) {
     auto f = make_unique<Faiseur>(position, v, angle, rayon, nbe);
     f->ajouter_element(make_unique<Mobile>(position, v, angle, rayon)); 
 
-    // Affichage de la position initiale
-    cout << "Élément 0: (" << position.x << ", " << position.y << ")\n";
-
     Vecteur v_tmp = v;
     double angle_tmp = angle;
 
-    for (int i = 0; i < nbe; ++i) {
+    for (int i = 0; i < nbe - 1; ++i) {
         double new_x = position.x - deplacement * cos(angle_tmp);
         double new_y = position.y - deplacement * sin(angle_tmp);
         Cercle c_test({new_x, new_y}, rayon);
@@ -92,10 +89,8 @@ bool lecture_f(istringstream& data) {
             new_y = position.y - deplacement * sin(angle_tmp);
         }
 
-        f->ajouter_element(make_shared<Mobile>(S2d{new_x, new_y}, v_tmp, angle_tmp, rayon));
-
-        // Affichage de la position à chaque ajout
-        cout << "Élément " << (i + 1) << ": (" << new_x << ", " << new_y << ")\n";
+        f->ajouter_element(make_shared<Mobile>(S2d{new_x, new_y}, v_tmp, angle_tmp,
+                                               rayon));
 
         position.x = new_x;
         position.y = new_y;
@@ -108,7 +103,6 @@ bool lecture_f(istringstream& data) {
     Faiseur::ajouter_faiseur(std::move(f));
     return true;
 }
-
 
 void update_particules() {
     const auto& particules = Particule::get_liste_particules();
@@ -151,7 +145,6 @@ void update_particules() {
     }
 }
 
-
 void update_faiseurs() {
     auto& faiseurs = Faiseur::get_liste_faiseurs();
 
@@ -182,18 +175,9 @@ void update_faiseurs() {
 
         if (!collision) {
             f->move_faiseur(arene);
-            // Affichage des positions après déplacement
-            cout << "Faiseur " << i << " après déplacement:\n";
-            int id = 0;
-            for (const auto& e : f->get_elements()) {
-                const auto& pos = e->get_position();
-                cout << "  Élément " << id++ << ": (" << pos.x << ", " << pos.y << ")\n";
-            }
         }
     }
 }
-
-
 
 void Faiseur::display() {
     std::cout << "-------- Displaying faiseurs --------\n";
@@ -212,25 +196,24 @@ void Faiseur::display() {
     }
 }
 
-
 //==========================MOBILE=====================================================
 Mobile::Mobile(S2d position_init, Vecteur vitesse_init, double alpha_init, 
                double rayon_init)
     : position(position_init), vitesse(vitesse_init), alpha(alpha_init), 
       rayon(rayon_init) {}
 
-    void Mobile::move(const Cercle arene) {
+void Mobile::move(const Cercle arene) {
     
-        S2d new_position = {position.x + vitesse.get_x(),position.y + vitesse.get_y()};
-        Cercle c_test(new_position, rayon);
+    S2d new_position = {position.x + vitesse.get_x(),position.y + vitesse.get_y()};
+    Cercle c_test(new_position, rayon);
     
-        if (!Cercle::inclusion(arene, c_test)) {
-            Vecteur v_reflechis = vitesse.reflechis(position);
-            vitesse = v_reflechis; 
-            alpha = v_reflechis.get_angle();
-    
-            new_position.x = position.x + v_reflechis.get_x();
-            new_position.y = position.y + v_reflechis.get_y();
+    if (!Cercle::inclusion(arene, c_test)) {
+        Vecteur v_reflechis = vitesse.reflechis(position);
+        vitesse = v_reflechis;
+        alpha = v_reflechis.get_angle();
+
+        new_position.x = position.x + v_reflechis.get_x();
+        new_position.y = position.y + v_reflechis.get_y();
         }
         position = new_position;
     }
@@ -298,7 +281,6 @@ void Faiseur::move_faiseur(Cercle arene) {
         tete->get_alpha(),
         tete->get_rayon()
     );
-
     copie_tete->move(arene);
 
     Vecteur nouvelle_vitesse = copie_tete->get_vitesse();
@@ -308,9 +290,10 @@ void Faiseur::move_faiseur(Cercle arene) {
 
     elements.insert(elements.begin(), copie_tete);
     elements.pop_back();
-  
+    alpha = nouvel_angle;
+    vitesse = nouvelle_vitesse;
+    position = copie_tete->get_position();
 }
-
 
 void Faiseur::reset() {
     liste_faiseurs.clear();
