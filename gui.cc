@@ -109,7 +109,6 @@ void My_window::restart_clicked() {
 //=====================================================================================
     jeu.reset();
     set_jeu(previous_file_name);
-    
     if (buttons[B_START].get_label() == "start") {
         buttons[B_EXIT].set_sensitive(true);
         buttons[B_OPEN].set_sensitive(true);
@@ -123,6 +122,7 @@ void My_window::restart_clicked() {
         buttons[B_RESTART].set_sensitive(false);
         buttons[B_STEP].set_sensitive(false);
     }
+    Jeu::set_status(ONGOING);
 //=====================================================================================
     cout << __func__ << endl;
 }
@@ -306,6 +306,7 @@ void My_window::update(){
 	cout <<  __func__ << endl;
 //=====================================================================================
     jeu.update();
+   
 //=====================================================================================
     update_infos();
     drawing.queue_draw();
@@ -323,6 +324,7 @@ void My_window::update(){
         checks[1].set_sensitive(false);
         if (jeu.get_status() == LOST){
            cout << "! Game Over !" << endl;
+           start_clicked();
     }
 }
 }
