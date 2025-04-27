@@ -108,7 +108,6 @@ void My_window::save_clicked() {
 void My_window::restart_clicked() {
 //=====================================================================================
     jeu.reset();
-    // Relire le fichier pour tout réinitialiser
     set_jeu(previous_file_name);
 //=====================================================================================
     cout << __func__ << endl;
@@ -298,14 +297,19 @@ void My_window::update(){
     drawing.queue_draw();
 
     if (jeu.get_status() != ONGOING){
-		//~ ...
+		buttons[B_RESTART].set_sensitive(true);
+        buttons[B_OPEN].set_sensitive(true);
+        buttons[B_EXIT].set_sensitive(true);
         buttons[B_SAVE].set_sensitive(false);
         buttons[B_START].set_sensitive(false);
         buttons[B_STEP].set_sensitive(false);
         checks[0].set_active(true);
         checks[0].set_sensitive(false);
         checks[1].set_sensitive(false);
-	}   
+        if (jeu.get_status() == LOST){
+           cout << "! Game Over !" << endl;
+    }
+}
 }
 
 void My_window::set_infos(){

@@ -217,7 +217,7 @@ namespace {
 		return txt;
 	}
 	
-
+	
 	string faiseur_sauvegarde_ecriture(){
 		string txt = "";
 		const vector<unique_ptr<Faiseur>>& faiseurs = Faiseur::get_liste_faiseurs();
