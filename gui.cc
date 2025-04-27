@@ -109,6 +109,20 @@ void My_window::restart_clicked() {
 //=====================================================================================
     jeu.reset();
     set_jeu(previous_file_name);
+    
+    if (buttons[B_START].get_label() == "start") {
+        buttons[B_EXIT].set_sensitive(true);
+        buttons[B_OPEN].set_sensitive(true);
+        buttons[B_SAVE].set_sensitive(true);
+        buttons[B_RESTART].set_sensitive(true);
+        buttons[B_STEP].set_sensitive(true);
+    } else {
+        buttons[B_EXIT].set_sensitive(false);
+        buttons[B_OPEN].set_sensitive(false);
+        buttons[B_SAVE].set_sensitive(false);
+        buttons[B_RESTART].set_sensitive(false);
+        buttons[B_STEP].set_sensitive(false);
+    }
 //=====================================================================================
     cout << __func__ << endl;
 }
@@ -184,20 +198,20 @@ bool My_window::key_pressed(guint keyval, guint keycode, Gdk::ModifierType state
     switch (keyval){
     case '1'://step - 1 mise a jour 
 //=====================================================================================
-        step_clicked();
+        if(buttons[B_STEP].get_sensitive() == true) step_clicked();
 //=====================================================================================
 		cout << keyval <<"  " << __func__ << endl;
         return true;
     case 's'://start - depause 
 //=====================================================================================
-        start_clicked();
+        if(buttons[B_START].get_sensitive() == true) start_clicked();
 //=====================================================================================
 		cout << keyval <<"  " << __func__ << endl;
 
         return true;
     case 'r'://restart - reset et relancer 
 //=====================================================================================
-        restart_clicked();
+        if(buttons[B_RESTART].get_sensitive() == true) restart_clicked();
 //=====================================================================================
 		cout << keyval <<"  " << __func__ << endl;
 
@@ -300,6 +314,7 @@ void My_window::update(){
 		buttons[B_RESTART].set_sensitive(true);
         buttons[B_OPEN].set_sensitive(true);
         buttons[B_EXIT].set_sensitive(true);
+        //-----^^^ truc rajouté par nous
         buttons[B_SAVE].set_sensitive(false);
         buttons[B_START].set_sensitive(false);
         buttons[B_STEP].set_sensitive(false);
