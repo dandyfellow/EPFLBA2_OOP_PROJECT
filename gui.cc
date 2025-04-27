@@ -59,13 +59,11 @@ My_window::My_window(string file_name)
 }
 void My_window::set_commands() {
     command_frame.set_child(command_box);
-    for (auto &button : buttons)
-    {
+    for (auto &button : buttons) {
         command_box.append(button);
         button.set_margin(1);
     }
-    for (auto &check : checks)
-    {
+    for (auto &check : checks) {
         command_box.append(check);
         check.set_margin(1);
     }
@@ -128,8 +126,8 @@ void My_window::restart_clicked() {
 }
 
 void My_window::start_clicked() {
-    if (activated) // variable d'état: true si le jeu est en cours
-    {
+    if (activated) { // variable d'état: true si le jeu est en cours
+    
         loop_conn.disconnect();
         activated = false;
         buttons[B_EXIT].set_sensitive(true);
@@ -139,8 +137,8 @@ void My_window::start_clicked() {
         buttons[B_START].set_label("start");
         buttons[B_STEP].set_sensitive(true);
     }
-    else if (jeu.get_status() == ONGOING) // voir jeu.h
-    {
+    else if (jeu.get_status() == ONGOING) {// voir jeu.h
+   
         loop_conn = Glib::signal_timeout().connect(sigc::mem_fun(*this,
                                                                  &My_window::loop),
                                                    25);
@@ -257,16 +255,14 @@ void My_window::set_dialog(Gtk::FileChooserDialog *dialog) {
 
 void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
     string file_name = "";
-    if (dialog->get_file())
-    {
+    if (dialog->get_file()) {
         file_name = dialog->get_file()->get_path();
         if (file_name.size() < 4 or file_name.substr(file_name.size() - 4) != ".txt")
         {
             file_name = "";
         }
     }
-    switch (response)
-    {
+    switch (response) {
     case CANCEL:
         dialog->hide();
         break;
@@ -295,8 +291,7 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
 }
 
 bool My_window::loop(){
-    if (activated)
-    {
+    if (activated) {
         update();
         return true;
     }
