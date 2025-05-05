@@ -125,3 +125,48 @@ void creation_but_final(S2d position){
     Cercle but_final = {final.get_p2(), r_viz};
     Chaine::set_but_final(but_final);
 }
+
+
+void Chaine::algo_move_chaine(){  
+    unsigned int longueur_chaine = get_longueur_chaine();
+    if(longueur_chaine == 0 or longueur_chaine == 1) return; 
+    S2d but_inter = mouse_pos; //but intermediaire
+    S2d racine_pos = get_chaine(0).second.get_centre();
+    unsigned int chaine_size = longueur_chaine - 1;
+    std::vector<double> t_lk(longueur_chaine); //dans l'ordre de la racine -> effecteur
+    
+    //to keep the distances good, -> otherwise, rounding mistakes
+    for(unsigned int i = 0; i < chaine_size; i++){
+        Vecteur v_lk(chaine[i].second.get_centre(), chaine[i+1].second.get_centre());
+        t_lk[i] = v_lk.get_norme();
+    }
+    //effecteur vers racine
+    for(unsigned int i = chaine_size; i > 0; i--){
+        Vecteur v_pour_angle(but_inter, chaine[i-1].second.get_centre());
+        Vecteur v_pkprime_pk(but_inter, t_lk[i-1], v_pour_angle.get_angle());
+
+        chaine[i].second = {but_inter, 0};
+        but_inter = v_pkprime_pk.get_p2();
+       
+        if(i == 1){
+            chaine[0].second = {but_inter, 0};
+        }
+    }
+    //racine vers effecteur
+    but_inter = racine_pos;
+    for(unsigned int i(0); i < chaine_size; i++){        
+        Vecteur v_pour_angle(but_inter, chaine[i+1].second.get_centre());
+        Vecteur v_pkprime_pk(but_inter, t_lk[i], v_pour_angle.get_angle());
+        
+        chaine[i].second = {but_inter, 0};
+        but_inter = v_pkprime_pk.get_p2();
+
+        if(i == chaine_size-1){
+            chaine[chaine_size].second = {but_inter, 0};
+        }
+    } 
+}
+
+void Chaine::set_chaine(unsigned int i, Cercle c){
+    chaine[i] = {i, c};
+}

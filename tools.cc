@@ -44,8 +44,8 @@ Vecteur Vecteur::reflechis(const S2d& point) {
 
     double norme2 = nx * nx + ny * ny;
 
-    double rx = get_x() - 2 * dot / norme2 * nx;
-    double ry = get_y() - 2 * dot / norme2 * ny;
+    double rx = get_x() - 2. * dot / norme2 * nx;
+    double ry = get_y() - 2. * dot / norme2 * ny;
 
     S2d arrivee;
     arrivee.x = point.x + rx;

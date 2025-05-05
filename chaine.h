@@ -42,6 +42,9 @@ public:
     static S2d get_mouse_pos() { return mouse_pos; }
     static void set_mouse_pos(double x, double y) {Chaine::mouse_pos = {x,y};}
 
+    static void algo_move_chaine();
+    static void set_chaine(unsigned int i, Cercle c);
+
 private:
     static vector<pair<int, Cercle>> chaine;
     static Mode mode;

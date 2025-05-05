@@ -33,7 +33,7 @@ namespace{
 	bool decodage_nb_chaine(istringstream &data);
 	bool decodage_chaine(istringstream &data);
 	bool decodage_chaine_mode(istringstream &data);
-	bool collisions_intertides();
+	bool collision_chaine_faiseur();
 
 	string single_particule_sauvegarde_ecriture(Particule* p_ptr);
 	string particule_sauvegarde_ecriture();
@@ -128,17 +128,17 @@ void Jeu::update() {
 		if(Chaine::get_longueur_chaine() == 0) {
 			//logique dans gui.cc
 		}
-		/*
+		
 		if (Chaine::get_mode() == GUIDAGE) {
 			Chaine::algo_move_chaine();
-			if(collisions_intertides()){
+			if(collision_chaine_faiseur()){
 				Chaine::reset();
 				Jeu::set_status(LOST);
 			}
 
 			//if(but_dans_rayon()) {jeu:set_status(WON)}}
 		}
-		*/
+		
 
 	}
 	
@@ -432,12 +432,12 @@ namespace {
 		counts = 0;
 		etat = FIN;
 	
-		if(collisions_intertides() == false) return false;
+		if(collision_chaine_faiseur()) return false;
 	
 		return true;
 	}
 	
-	bool collisions_intertides() {
+	bool collision_chaine_faiseur() { // returns true if collisions
 		const vector<pair<int, Cercle>>& chaine = Chaine::get_chaine();
 		const vector<unique_ptr<Faiseur>>& faiseurs = Faiseur::get_liste_faiseurs();
 	
@@ -451,12 +451,12 @@ namespace {
 						cout << message::chaine_articulation_collision(
 							index_articulation, static_cast<int>(i),static_cast<int>(j)
 						);
-						return false;
+						return true;
 					}
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 }
 
