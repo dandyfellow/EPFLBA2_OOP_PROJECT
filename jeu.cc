@@ -62,7 +62,7 @@ void Jeu::draw_but_final(){
 }
 
 void Jeu::draw_start(){
-	cout << "Mouse pos: " << Chaine::get_mouse_pos().x << "," << Chaine::get_mouse_pos().y << endl;
+	//cout << "Mouse pos: " << Chaine::get_mouse_pos().x << "," << Chaine::get_mouse_pos().y << endl;
 	Vecteur v_souris({0,0}, Chaine::get_mouse_pos());
 	Vecteur v_start({0,0}, r_max, v_souris.get_angle());
 	S2d start_pos = v_start.get_p2();
@@ -183,7 +183,7 @@ void Jeu::draw_faiseurs(){
 		for(const auto& e : f->get_elements()) {
 			Cercle c(e->get_position(), e->get_rayon());
 			c.draw_cercle(1, NO_COLOR, BLUE);
-			cout << __func__ << endl;
+			//cout << __func__ << endl;
 		}
 	}
 }
@@ -193,7 +193,7 @@ void Jeu::draw_particules(){
 	for(const auto& p : Particule::get_liste_particules()) {
 		Cercle c(p->get_position(), r_viz);
 		c.draw_cercle(WIDTH_DRAWING, CYAN, GREEN);
-		cout << __func__ << endl;
+		//cout << __func__ << endl;
 	}
 }
 

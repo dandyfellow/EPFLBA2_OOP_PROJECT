@@ -111,7 +111,7 @@ void Chaine::reset(){
 
 unsigned int Chaine::get_longueur_chaine() {
     if(chaine.size() == 0) {
-        cout << "Chaine length is 0, beware of doing get_longueur_chaine() -1 !!!\n";
+        //cout << "Chaine length is 0, beware of doing get_longueur_chaine() -1 !!!\n";
     }
     return chaine.size();
 }

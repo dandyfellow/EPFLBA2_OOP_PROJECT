@@ -2,6 +2,7 @@
 #include <cassert>
 #include "graphic_gui.h"
 #include "gui.h"
+#include "constantes.h"
 
 using namespace std;
 
@@ -126,6 +127,7 @@ void My_window::restart_clicked() {
 }
 
 void My_window::start_clicked() {
+    cout << __func__ << endl;
     if (activated) { // variable d'état: true si le jeu est en cours
     
         loop_conn.disconnect();
@@ -170,6 +172,7 @@ void My_window::build_clicked() {
         checks[1].set_sensitive(true);
         checks[0].set_sensitive(false);
     }
+    if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
 //=====================================================================================
     cout << __func__ << endl;
 }
@@ -180,6 +183,7 @@ void My_window::guide_clicked() {
         checks[1].set_sensitive(false);
         checks[0].set_sensitive(true);
     }
+    if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
 //=====================================================================================
     cout << __func__ << endl;
 }
@@ -298,7 +302,7 @@ bool My_window::loop(){
     return false;
 }
 void My_window::update(){
-	cout <<  __func__ << endl;
+	//cout <<  __func__ << endl;
 //=====================================================================================
     jeu.update();
 //=====================================================================================
@@ -338,7 +342,7 @@ void My_window::set_infos(){
 }
 
 void My_window::update_infos(){
-    cout <<  __func__ << endl;
+    //cout <<  __func__ << endl;
 //=====================================================================================
      info_value[0].set_text(to_string(jeu.get_score()));
      info_value[1].set_text(to_string(Particule::get_nbrs_particules()));
@@ -362,7 +366,7 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     cr->scale(side / (2 * r_max), -side / (2 * r_max));
 
 //================================remplacer affichage par votre code===================
-	cout <<  __func__ << endl;
+	//cout <<  __func__ << endl;
     //draw a blank canvas for when lecture fails
     cr->set_source_rgb(1, 1, 1);
     cr->paint();
@@ -415,34 +419,40 @@ void My_window::on_drawing_left_click(int n_press, double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
      //==============================================================================
+     checks[0].set_active();
      if (Chaine::get_mode() != CONSTRUCTION){
         cout << "mode construction activé" << endl;
          build_clicked();
      } else {
         cout << "ajout chaine" << endl;
-         //ajouter_chaine(Particule::get_liste_particules()); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //ajouter_chaine(Particule::get_liste_particules()); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      }
      drawing.queue_draw();
+
+     if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
      //==============================================================================
 }
 void My_window::on_drawing_right_click(int n_press, double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
-      //==============================================================================
-      S2d pos = scaled({x, y});
+        //==============================================================================
+        checks[1].set_active();
+        S2d pos = scaled({x, y});
 
-      if (Chaine::get_mode() != GUIDAGE){
-          guide_clicked();
-      } 
-      drawing.queue_draw();
-      //==============================================================================
+        if (Chaine::get_mode() != GUIDAGE){
+            guide_clicked();
+        }
+        drawing.queue_draw();
+
+        if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
+        //==============================================================================
 }
 void My_window::on_drawing_move(double x, double y){
 	// remplacer affichage par votre code
-	cout <<  __func__ << endl;
+	//cout <<  __func__ << endl;
     //=============================================================================
     set_drawing();
-    cout << "P(x,y)=(" << x << "," << y << ")" << endl;
+    //cout << "P(x,y)=(" << x << "," << y << ")" << endl;
     S2d mouse_pos = scaled({x,y});
     Chaine::set_mouse_pos(mouse_pos.x, mouse_pos.y);
     
