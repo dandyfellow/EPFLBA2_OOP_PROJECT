@@ -19,6 +19,8 @@ enum Status{
 enum Etat { SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAINE, 
             CHAINE_MODE, FIN};
 
+void ajouter_chaine(const vector<Particule*>& liste_particules);
+            
 class Jeu {
 public:
     /*Jeu(string nom_fichier){
@@ -49,10 +51,14 @@ public:
     static void draw_but_final();
     static void draw_start();
 
+    static Cercle get_start_cercle() {return start_cercle;}
+    static void set_start_cercle(Cercle c) {start_cercle = c;}
+
 private:
     static unsigned int score;
     static bool lecture_success;
     static Status status;
+    static Cercle start_cercle;
 };
 
 #endif

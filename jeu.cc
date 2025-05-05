@@ -20,6 +20,7 @@ unsigned int Jeu::score = 0;
 bool Jeu::lecture_success = false;
 #define WIDTH_DRAWING 2
 Status Jeu::status = ONGOING;
+Cercle Jeu::start_cercle = {{0,0},0};
 
 
 namespace{
@@ -51,7 +52,35 @@ namespace{
 	Etat etat = SCORE;
 }
 
-
+void ajouter_chaine(const vector<Particule*>& liste_particules){
+	cout << __func__ << endl;
+	int n(0);
+	Particule* particule = nullptr;
+	
+	for(auto& p : liste_particules) {
+		Cercle c1(p->get_position(), 0);
+		Cercle c2 = {{0,0},0};
+		if(Chaine::get_longueur_chaine() == 0) {
+			c2 = Cercle(Jeu::get_start_cercle().get_centre(), r_capture);
+		} else {
+			c2 = Cercle(Chaine::get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre(), r_capture);
+		}
+		if (Cercle::inclusion(c2, c1)) {
+			n++;
+			particule = p;
+		}
+		if(n>= 2){return;}
+	}
+	if(n == 1){
+		cout << "1" << endl;
+		Chaine c(particule->get_position());
+		cout << "2" << endl;
+		Particule::supprimer_particule(particule);
+		cout << "3" << endl;
+		delete particule;
+		return;
+	}
+}
 
 
 
@@ -69,8 +98,8 @@ void Jeu::draw_start(){
 	Cercle start_cercle(start_pos, r_capture);
 	creation_but_final(start_pos);
 	start_cercle.draw_cercle(2, NO_COLOR, RED);
+	set_start_cercle(start_cercle);
 }
-
 //====================================================================================
 void Jeu::reset(){
 	Particule::reset();

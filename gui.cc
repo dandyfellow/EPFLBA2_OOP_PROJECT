@@ -425,7 +425,7 @@ void My_window::on_drawing_left_click(int n_press, double x, double y){
          build_clicked();
      } else {
         cout << "ajout chaine" << endl;
-        //ajouter_chaine(Particule::get_liste_particules()); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ajouter_chaine(Particule::get_liste_particules());
      }
      drawing.queue_draw();
 
