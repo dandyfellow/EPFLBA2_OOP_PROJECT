@@ -45,6 +45,10 @@ public:
     Status get_status() const;
     static void set_status(Status s);
 
+
+    static void draw_but_final();
+    static void draw_start();
+
 private:
     static unsigned int score;
     static bool lecture_success;

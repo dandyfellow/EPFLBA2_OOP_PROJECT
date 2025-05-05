@@ -15,6 +15,8 @@ using namespace std;
 
 std::vector<pair<int, Cercle>> Chaine::chaine;
 Mode Chaine::mode;
+Cercle Chaine::but_final= {{0,0}, 0};
+S2d Chaine::mouse_pos = {0,0};
 
 bool lecture_c(istringstream& data){
     double x, y;
@@ -26,7 +28,7 @@ bool lecture_c(istringstream& data){
         return false;
     }
     Chaine c({x,y});
-    if (c.longeur_chaine() == 1) { //first chain
+    if (Chaine::get_longueur_chaine() == 1) { //first chain
         Vecteur v({x, y}, {0, 0});
         if(!(r_max - v.get_norme() <= r_capture)){
             cout << message::chaine_racine(x, y);
@@ -35,11 +37,11 @@ bool lecture_c(istringstream& data){
         return true;
     } 
    
-    Vecteur v(c.get_chaine(c.longeur_chaine()-2).second.get_centre(),
-              c.get_chaine(c.longeur_chaine()-1).second.get_centre());
+    Vecteur v(c.get_chaine(Chaine::get_longueur_chaine()-2).second.get_centre(),
+              c.get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre());
 
     if(!(v.get_norme() <= r_capture)){ 
-        cout << message::chaine_max_distance(c.longeur_chaine()-2);
+        cout << message::chaine_max_distance(Chaine::get_longueur_chaine()-2);
         return false;
     }
     return true;
@@ -61,14 +63,14 @@ bool lecture_c_mode(istringstream& data){
 
 //Chaine
 Chaine::Chaine(S2d p) {
-    int index = longeur_chaine();
+    int index = Chaine::get_longueur_chaine();
     Cercle c(p, 0);
     pair<int, Cercle> pair = {index, c};
 
     chaine.push_back(pair);
 }
 Chaine::Chaine(Cercle c) {
-    int index = longeur_chaine();
+    int index = Chaine::get_longueur_chaine();
     pair<int, Cercle> p = {index, c};
     chaine.push_back(p);
 }
@@ -78,8 +80,6 @@ Chaine::Chaine(Mode m) {mode = m;}
 vector<pair<int, Cercle>> Chaine::get_chaine() {return chaine;} //static
 
 pair<int, Cercle> Chaine::get_chaine(unsigned int i) {return chaine[i];}; //static
-
-unsigned int Chaine::longeur_chaine() const {return chaine.size();}
 
 void Chaine::set_mode(Mode m){
     mode = m;
@@ -96,4 +96,32 @@ void Chaine::display() { //for TESTING purpouses
 void Chaine::reset(){
     chaine.clear();
     mode = CONSTRUCTION;
+}
+
+
+
+
+
+
+
+//================================================================================
+
+
+
+
+unsigned int Chaine::get_longueur_chaine() {
+    if(chaine.size() == 0) {
+        cout << "Chaine length is 0, beware of doing get_longueur_chaine() -1 !!!\n";
+    }
+    return chaine.size();
+}
+
+
+
+
+void creation_but_final(S2d position){
+    Vecteur centre({position.x,position.y}, {0,0});
+    Vecteur final({0,0}, r_max, centre.get_angle());
+    Cercle but_final = {final.get_p2(), r_viz};
+    Chaine::set_but_final(but_final);
 }

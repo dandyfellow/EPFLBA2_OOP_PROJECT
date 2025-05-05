@@ -301,7 +301,6 @@ void My_window::update(){
 	cout <<  __func__ << endl;
 //=====================================================================================
     jeu.update();
-   
 //=====================================================================================
     update_infos();
     drawing.queue_draw();
@@ -375,6 +374,9 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     jeu.draw_particules();
     jeu.draw_faiseurs();
     jeu.draw_chaine();
+
+    jeu.draw_but_final();
+    if(Chaine::get_longueur_chaine()==0) jeu.draw_start();
     }
 //=======================================FIN DE NOTRE CODE=============================
 }
@@ -412,14 +414,39 @@ S2d My_window::scaled(S2d const &pos) const{
 void My_window::on_drawing_left_click(int n_press, double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
+     //==============================================================================
+     if (Chaine::get_mode() != CONSTRUCTION){
+        cout << "mode construction activé" << endl;
+         build_clicked();
+     } else {
+        cout << "ajout chaine" << endl;
+         //ajouter_chaine(Particule::get_liste_particules()); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     }
+     drawing.queue_draw();
+     //==============================================================================
 }
 void My_window::on_drawing_right_click(int n_press, double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
+      //==============================================================================
+      S2d pos = scaled({x, y});
+
+      if (Chaine::get_mode() != GUIDAGE){
+          guide_clicked();
+      } 
+      drawing.queue_draw();
+      //==============================================================================
 }
 void My_window::on_drawing_move(double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
+    //=============================================================================
+    set_drawing();
+    cout << "P(x,y)=(" << x << "," << y << ")" << endl;
+    S2d mouse_pos = scaled({x,y});
+    Chaine::set_mouse_pos(mouse_pos.x, mouse_pos.y);
+    
+    //=============================================================================
 }
 
 

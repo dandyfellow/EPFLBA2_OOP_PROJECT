@@ -51,6 +51,27 @@ namespace{
 	Etat etat = SCORE;
 }
 
+
+
+
+
+
+void Jeu::draw_but_final(){
+	Cercle but_final = Chaine::get_but_final();
+	but_final.draw_cercle(WIDTH_DRAWING, NO_COLOR, BLACK);
+}
+
+void Jeu::draw_start(){
+	cout << "Mouse pos: " << Chaine::get_mouse_pos().x << "," << Chaine::get_mouse_pos().y << endl;
+	Vecteur v_souris({0,0}, Chaine::get_mouse_pos());
+	Vecteur v_start({0,0}, r_max, v_souris.get_angle());
+	S2d start_pos = v_start.get_p2();
+	Cercle start_cercle(start_pos, r_capture);
+	creation_but_final(start_pos);
+	start_cercle.draw_cercle(2, NO_COLOR, RED);
+}
+
+//====================================================================================
 void Jeu::reset(){
 	Particule::reset();
 	Faiseur::reset();
@@ -63,6 +84,10 @@ void Jeu::reset(){
 	etat = SCORE;
 	counts = 0;
 }
+void Jeu::set_status(Status s){
+	status = s;
+	cout << "Status set to: " << s << endl;
+}
 
 void Jeu::update() {
 	if(score == 0) {Jeu::set_status(LOST);}
@@ -71,6 +96,21 @@ void Jeu::update() {
 		update_particules();
 		update_faiseurs();
 		//a completer chaine pour le rendu 3 
+		if(Chaine::get_longueur_chaine() == 0) {
+			//logique dans gui.cc
+		}
+		/*
+		if (Chaine::get_mode() == GUIDAGE) {
+			Chaine::algo_move_chaine();
+			if(collisions_intertides()){
+				Chaine::reset();
+				Jeu::set_status(LOST);
+			}
+
+			//if(but_dans_rayon()) {jeu:set_status(WON)}}
+		}
+		*/
+
 	}
 	
 	
@@ -178,9 +218,7 @@ void Jeu::draw_chaine(){
 }
 
 
-void Jeu::set_status(Status s){
-	status = s;
-}
+
 
 Status Jeu::get_status() const{
 	return status;
