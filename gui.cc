@@ -441,7 +441,9 @@ void My_window::on_drawing_right_click(int n_press, double x, double y){
 
         if (Chaine::get_mode() != GUIDAGE){
             guide_clicked();
-        }
+        }/*else if(Chaine::get_mode() == GUIDAGE){// A VERIFIER 
+            step_clicked();
+        }*/
         drawing.queue_draw();
 
         if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}

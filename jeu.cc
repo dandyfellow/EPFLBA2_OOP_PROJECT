@@ -34,6 +34,7 @@ namespace{
 	bool decodage_chaine(istringstream &data);
 	bool decodage_chaine_mode(istringstream &data);
 	bool collision_chaine_faiseur();
+	bool victoire();
 
 	string single_particule_sauvegarde_ecriture(Particule* p_ptr);
 	string particule_sauvegarde_ecriture();
@@ -124,7 +125,6 @@ void Jeu::update() {
 		Jeu::score--;
 		update_particules();
 		update_faiseurs();
-		//a completer chaine pour le rendu 3 
 		if(Chaine::get_longueur_chaine() == 0) {
 			//logique dans gui.cc
 		}
@@ -133,16 +133,13 @@ void Jeu::update() {
 			Chaine::algo_move_chaine();
 			if(collision_chaine_faiseur()){
 				Chaine::reset();
-				Jeu::set_status(LOST);
 			}
-
-			//if(but_dans_rayon()) {jeu:set_status(WON)}}
+			//if (victoire()){
+				//Jeu::set_status(WON);
+			//};
 		}
-		
 
 	}
-	
-	
 }
 
 void Jeu::success(){
@@ -246,12 +243,10 @@ void Jeu::draw_chaine(){
 	}
 }
 
-
-
-
 Status Jeu::get_status() const{
 	return status;
 }
+
 namespace {
 	string single_chaine_sauvegarde_ecriture(pair<int, Cercle> c_pair){
 		string txt = "\t";
@@ -455,6 +450,16 @@ namespace {
 					}
 				}
 			}
+		}
+		return false;
+	}
+
+	bool victoire(){
+		Cercle c1(Chaine::get_but_final().get_centre(), 0);
+		Cercle c2(Chaine::get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre(), r_capture);
+		if(Cercle::inclusion(c2,c1)){
+			cout << "TIA GAGNEWW MON GATéAU" << endl;
+			return true;
 		}
 		return false;
 	}

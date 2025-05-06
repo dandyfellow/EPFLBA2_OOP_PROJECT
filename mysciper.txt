@@ -1,2 +1,14 @@
 399770
 393159
+
+
+
+A FAIRE: 
+    victoire quand le but est dans r capture
+    clique fais un step 
+    on peut guider la chaine par des cliques 
+    la chaine ne doit pas sortir de l'arène 
+    la racine ne subit pas les collisions avce les faiseurs 
+    que faire quand on gagne, on perd ? 
+    recheck save, open 
+
