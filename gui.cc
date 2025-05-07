@@ -304,7 +304,9 @@ bool My_window::loop(){
 void My_window::update(){
 	//cout <<  __func__ << endl;
 //=====================================================================================
+if (jeu.get_status() == ONGOING) {
     jeu.update();
+}
 //=====================================================================================
     update_infos();
     drawing.queue_draw();
@@ -323,9 +325,18 @@ void My_window::update(){
         if (jeu.get_status() == LOST){
            cout << "! Game Over !" << endl;
            start_clicked();
+           buttons[B_STEP].set_sensitive(false);
+           
+        }
+        if (jeu.get_status() == WON){
+           cout << "! You win !" << endl;
+           start_clicked();
+           buttons[B_SAVE].set_sensitive(true);
+           buttons[B_STEP].set_sensitive(false);
+        }
     }
 }
-}
+
 
 void My_window::set_infos(){
     info_frame.set_child(info_grid);

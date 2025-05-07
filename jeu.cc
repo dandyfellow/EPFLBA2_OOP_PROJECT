@@ -134,9 +134,9 @@ void Jeu::update() {
 			if(collision_chaine_faiseur()){
 				Chaine::reset();
 			}
-			//if (victoire()){
-				//Jeu::set_status(WON);
-			//};
+			if (victoire()){
+				Jeu::set_status(WON);
+			};
 		}
 
 	}
@@ -455,10 +455,10 @@ namespace {
 	}
 
 	bool victoire(){
+		if (Chaine::get_longueur_chaine() == 0) return false; //évite une bus error 
 		Cercle c1(Chaine::get_but_final().get_centre(), 0);
 		Cercle c2(Chaine::get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre(), r_capture);
 		if(Cercle::inclusion(c2,c1)){
-			cout << "TIA GAGNEWW MON GATéAU" << endl;
 			return true;
 		}
 		return false;
