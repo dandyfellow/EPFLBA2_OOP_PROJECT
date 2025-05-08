@@ -24,6 +24,8 @@ private:
     std::string previous_file_name;
 //======ajouter un attribut pour accéder au jeu (instance ou pointeur)=================
 	Jeu jeu;
+    void on_victory_dialog_response(int response_id, Gtk::Dialog* dialog);
+    void show_victory_dialog();
 //=====================================================================================
     void set_commands();
 

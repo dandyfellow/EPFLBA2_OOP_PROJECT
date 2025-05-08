@@ -333,10 +333,67 @@ if (jeu.get_status() == ONGOING) {
            start_clicked();
            buttons[B_SAVE].set_sensitive(true);
            buttons[B_STEP].set_sensitive(false);
+           show_victory_dialog();
         }
+
     }
 }
 
+    void My_window::on_victory_dialog_response(int response_id, Gtk::Dialog* dialog) {
+        dialog->hide(); // ferme la boîte
+    
+        switch (response_id) {
+            case Gtk::ResponseType::CANCEL:
+                hide(); // quitte l'application
+                break;
+            case 1:
+                restart_clicked();
+                break;
+            case 2:
+                open_clicked();
+                break;
+            case 3:
+            default:
+                break;
+        }
+    
+        delete dialog; // nettoyage mémoire
+    }
+
+    void My_window::show_victory_dialog() {
+        auto dialog = new Gtk::Dialog("🎉Victory🎉", *this);
+        dialog->set_modal(true);
+        dialog->set_transient_for(*this);
+        dialog->set_default_size(400, 220);
+    
+        
+        auto* label_main = Gtk::make_managed<Gtk::Label>("<span size='xx-large' weight='bold'>🎉 YOU WON!</span>");
+        label_main->set_use_markup(true);
+        label_main->set_margin_top(15);
+        label_main->set_margin_bottom(10);
+        label_main->set_halign(Gtk::Align::CENTER);
+   
+        auto* label_secondary = Gtk::make_managed<Gtk::Label>("What would you like to do next?");
+        label_secondary->set_margin_bottom(15);
+        label_secondary->set_halign(Gtk::Align::CENTER); 
+    
+        auto* content_area = dialog->get_content_area();
+        content_area->append(*label_main);
+        content_area->append(*label_secondary);
+        content_area->set_halign (Gtk::Align::CENTER);
+    
+        dialog->add_button("❌ Quit", Gtk::ResponseType::CANCEL);
+        dialog->add_button("🔁 Restart", 1);
+        dialog->add_button("📂 Open File", 2);
+        dialog->add_button("💾 Save", 3);
+    
+        // Connexion du signal
+        dialog->signal_response().connect(sigc::bind(
+            sigc::mem_fun(*this, &My_window::on_victory_dialog_response), dialog));
+    
+        dialog->show();
+    }
+    
 
 void My_window::set_infos(){
     info_frame.set_child(info_grid);
