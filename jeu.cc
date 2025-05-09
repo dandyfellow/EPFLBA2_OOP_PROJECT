@@ -118,26 +118,29 @@ void Jeu::set_status(Status s){
 
 void Jeu::update() {
 	//displaying info
+
 	//Chaine::display();
 	//Faiseur::display();
 	//Particule::display();
-
 	
-	if(score == 0) {Jeu::set_status(LOST);}
-	else {
+	if(score == 0) {
+		Jeu::set_status(LOST);
+	} else {
 		Jeu::score--;
 		update_particules();
 		update_faiseurs();
-		if(Chaine::get_longueur_chaine() == 0)//logique dans gui.cc
+
 		if(collision_chaine_faiseur()){
 			Chaine::reset();
 		}
+		if(Chaine::get_longueur_chaine() == 0) {}//logique dans gui.cc
+		
 		if (Chaine::get_mode() == GUIDAGE) {
 			Chaine::algo_move_chaine();
 			
 			if (victoire()){
 				Jeu::set_status(WON);
-			};
+			}
 		}
 
 	}
@@ -438,7 +441,7 @@ namespace {
 		const vector<unique_ptr<Faiseur>>& faiseurs = Faiseur::get_liste_faiseurs();
 		
 		for (const auto& [index_articulation, articulation] : chaine) {
-			cout << "Chaine racine: " << chaine[0].second.get_centre().x << " " <<  chaine[0].second.get_centre().y << endl;
+			//cout << "Chaine racine: " << chaine[0].second.get_centre().x << " " <<  chaine[0].second.get_centre().y << endl;
 			for (size_t i = 0; i < faiseurs.size(); ++i) {
 				const auto& faiseur = faiseurs[i];
 				const auto& elements = faiseur->get_elements();

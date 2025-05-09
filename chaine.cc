@@ -23,6 +23,14 @@ bool lecture_c(istringstream& data){
     data >> x >> y;
     Cercle arene({0,0}, r_max);
     Cercle cercle({x,y}, 0);
+
+    static bool first = true;
+    if(first){
+        //cout << "first chain" << endl;
+        creation_but_final({x,y});
+        first = false;
+    }
+
     if(!Cercle::intrusion(arene, cercle)){ //condition verified if no intrusion
         cout << message::articulation_outside(x, y);
         return false;
@@ -132,6 +140,7 @@ void creation_but_final(S2d position){
 
 
 void Chaine::algo_move_chaine(){
+    cout << __func__ << endl;
     vector<pair<int, Cercle>> chaine_copy = chaine;
 
     unsigned int longueur_chaine = get_longueur_chaine();

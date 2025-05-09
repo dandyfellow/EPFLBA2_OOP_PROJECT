@@ -157,9 +157,7 @@ void My_window::start_clicked() {
 void My_window::step_clicked() {
 //=====================================================================================
     if(!activated) {
-    jeu.update(); 
-    update_infos();
-    drawing.queue_draw();
+        update(); 
     }
 //=====================================================================================
     cout << __func__ << endl;

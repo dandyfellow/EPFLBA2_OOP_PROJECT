@@ -1,10 +1,10 @@
 
-** (process:6784): WARNING **: 15:22:07.822: Can't set the global locale to the user's preferred locale.
+** (process:19448): WARNING **: 15:28:58.095: Can't set the global locale to the user's preferred locale.
    locale::facet::_S_create_c_locale name not valid
    The environment variable LANG may be wrong.
 
 
-** (process:6784): WARNING **: 15:22:08.204: Can't make the global C++ locale equal to the C locale.
+** (process:19448): WARNING **: 15:28:58.442: Can't make the global C++ locale equal to the C locale.
    locale::facet::_S_create_c_locale name not valid
    C locale = LC_COLLATE=C;LC_CTYPE=English_United Kingdom.1252;LC_MONETARY=C;LC_NUMERIC=C;LC_TIME=C
 
@@ -12,19 +12,1494 @@ set_jeu
 on_drawing_left_click
 step_clicked
 ajouter_chaine
+start_clicked
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+Chaine racine: -96.2224 0.916549
+articulation (0) collides with faiseur (0) element (0)
 on_drawing_left_click
 step_clicked
 ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 on_drawing_left_click
 step_clicked
 ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 on_drawing_left_click
 step_clicked
 ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 on_drawing_left_click
 step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+start_clicked
+on_drawing_right_click
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+step_clicked
+on_drawing_right_click
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+step_clicked
+on_drawing_right_click
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+step_clicked
+on_drawing_left_click
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
 ajouter_chaine
 on_drawing_left_click
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 step_clicked
 ajouter_chaine
 on_drawing_right_click
@@ -32,162 +1507,68 @@ CONSTRUCTION
 build_clicked
 GUIDAGE
 guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 step_clicked
 start_clicked
-ARTICULATION NOT IN ARENE
-ARTICULATION NOT IN ARENE
-ARTICULATION NOT IN ARENE
-ARTICULATION NOT IN ARENE
-ARTICULATION NOT IN ARENE
-ARTICULATION NOT IN ARENE
-ARTICULATION NOT IN ARENE
-ARTICULATION NOT IN ARENE
-ARTICULATION NOT IN ARENE
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 on_drawing_left_click
 step_clicked
 GUIDAGE
@@ -195,21 +1576,60 @@ guide_clicked
 CONSTRUCTION
 build_clicked
 ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
-on_drawing_left_click
-step_clicked
-ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 on_drawing_right_click
 CONSTRUCTION
 build_clicked
 GUIDAGE
 guide_clicked
 step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 on_drawing_left_click
 step_clicked
 GUIDAGE
@@ -217,12 +1637,208 @@ guide_clicked
 CONSTRUCTION
 build_clicked
 ajouter_chaine
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 on_drawing_right_click
 CONSTRUCTION
 build_clicked
 GUIDAGE
 guide_clicked
 step_clicked
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 on_drawing_left_click
 step_clicked
 GUIDAGE
@@ -230,588 +1846,534 @@ guide_clicked
 CONSTRUCTION
 build_clicked
 ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-on_drawing_left_click
-step_clicked
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-ajouter_chaine
-on_drawing_right_click
-CONSTRUCTION
-build_clicked
-GUIDAGE
-guide_clicked
-step_clicked
-Status set to: 1
-GUIDAGE
-guide_clicked
-CONSTRUCTION
-build_clicked
-! You win !
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
+Chaine racine: -93.0885 11.5706
 start_clicked
+set_jeu
+Status set to: 0
+restart_clicked
+on_drawing_left_click
+step_clicked
+ajouter_chaine
+on_drawing_left_click
+Chaine racine: -88.8263 21.8127
+step_clicked
+ajouter_chaine
+start_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+on_drawing_right_click
+step_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+start_clicked
+on_drawing_left_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+ajouter_chaine
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_left_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+start_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+articulation (2) collides with faiseur (0) element (21)
+on_drawing_left_click
+step_clicked
+ajouter_chaine
+on_drawing_left_click
+step_clicked
+ajouter_chaine
+on_drawing_left_click
+step_clicked
+ajouter_chaine
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+on_drawing_left_click
+step_clicked
+GUIDAGE
+guide_clicked
+CONSTRUCTION
+build_clicked
+ajouter_chaine
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+step_clicked
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+start_clicked
+start_clicked
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+Chaine racine: -87.3672 27.2442
+start_clicked
+set_jeu
+CONSTRUCTION
+guide_clicked
+CONSTRUCTION
+build_clicked
+Status set to: 0
+restart_clicked
+on_drawing_left_click
+step_clicked
+ajouter_chaine
+on_drawing_left_click
+Chaine racine: -88.8263 21.8127
+step_clicked
+ajouter_chaine
+on_drawing_right_click
+CONSTRUCTION
+build_clicked
+GUIDAGE
+guide_clicked
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
+on_drawing_right_click
+Chaine racine: -88.8263 21.8127
+Chaine racine: -88.8263 21.8127
+step_clicked
