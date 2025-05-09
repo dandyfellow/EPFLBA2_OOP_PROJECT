@@ -487,6 +487,7 @@ void My_window::on_drawing_left_click(int n_press, double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
      //==============================================================================
+     step_clicked();
      checks[0].set_active();
      if (Chaine::get_mode() != CONSTRUCTION){
         cout << "mode construction activé" << endl;
@@ -509,9 +510,8 @@ void My_window::on_drawing_right_click(int n_press, double x, double y){
 
         if (Chaine::get_mode() != GUIDAGE){
             guide_clicked();
-        }/*else if(Chaine::get_mode() == GUIDAGE){// A VERIFIER 
-            step_clicked();
-        }*/
+        }
+        step_clicked();
         drawing.queue_draw();
 
         if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
