@@ -128,6 +128,12 @@ void My_window::restart_clicked() {
 
 void My_window::start_clicked() {
     cout << __func__ << endl;
+    static bool first_time(true);
+    if (first_time) {
+        first_time = false;
+       update();
+    }
+    
     if (activated) { // variable d'état: true si le jeu est en cours
     
         loop_conn.disconnect();
@@ -333,7 +339,6 @@ if (jeu.get_status() == ONGOING) {
            buttons[B_STEP].set_sensitive(false);
            show_victory_dialog();
         }
-
     }
 }
 
@@ -498,12 +503,11 @@ void My_window::on_drawing_right_click(int n_press, double x, double y){
 	cout <<  __func__ << endl;
         //==============================================================================
         checks[1].set_active();
-        S2d pos = scaled({x, y});
+        step_clicked();
 
         if (Chaine::get_mode() != GUIDAGE){
             guide_clicked();
         }
-        step_clicked();
         drawing.queue_draw();
 
         //==============================================================================

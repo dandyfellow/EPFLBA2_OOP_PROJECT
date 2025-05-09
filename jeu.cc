@@ -420,14 +420,20 @@ namespace {
 
 	bool decodage_chaine(istringstream& data) {
 		counts++;
-		if(counts == nb_chaine_init) etat = CHAINE_MODE;
+		if(counts == nb_chaine_init){
+			etat = CHAINE_MODE;
+
+		}
 		if(lecture_c(data) == false) {return false;}
 		return true;
 	}
 
 	bool decodage_chaine_mode(istringstream& data) {
 		if(lecture_c_mode(data) == false) {return false;}
-	
+		if(victoire()){
+			cout << "tia gagner" << endl;
+			Jeu::set_status(WON);
+		}
 		counts = 0;
 		etat = FIN;
 	
