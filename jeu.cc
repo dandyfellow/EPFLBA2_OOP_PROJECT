@@ -120,6 +120,12 @@ void Jeu::set_status(Status s){
 }
 
 void Jeu::update() {
+	//displaying info
+	//Chaine::display();
+	//Faiseur::display();
+	//Particule::display();
+
+	
 	if(score == 0) {Jeu::set_status(LOST);}
 	else {
 		Jeu::score--;

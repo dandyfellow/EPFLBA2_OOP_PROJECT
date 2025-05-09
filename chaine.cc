@@ -86,11 +86,15 @@ void Chaine::set_mode(Mode m){
 };
 
 void Chaine::display() { //for TESTING purpouses
-    cout << "-------- Displaying chaine --------\n";
+    cout <<  "INFO CHAINE:";
     for(const auto& a : chaine){
-        cout << "index: " << a.first << " x: " << a.second.get_centre().x << " y: " 
-             << a.second.get_centre().y << endl;
+        cout << "(" << a.first << ", {" << a.second.get_centre().x << "," 
+             << a.second.get_centre().y << "}) ";
     }
+    cout << " MODE: ";
+    if(mode == CONSTRUCTION) cout << "CONSTRUCTION";
+    if(mode == GUIDAGE) cout << "GUIDAGE";
+    cout << endl;
 }
 
 void Chaine::reset(){
@@ -170,11 +174,10 @@ void Chaine::algo_move_chaine(){
     Cercle arene({0,0}, r_max);
     for(auto& art : chaine_copy){
         if(!Cercle::inclusion(arene, art.second)) {
-            cout << "Articulation not in arene" << endl;
+            cout << "ARTICULATION NOT IN ARENE" << endl;
             return;
         }
     }
-    cout << "Chaine copied" << endl;
     chaine = chaine_copy;
 }
 void Chaine::set_chaine(unsigned int i, Cercle c){

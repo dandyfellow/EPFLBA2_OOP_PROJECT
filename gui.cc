@@ -331,7 +331,7 @@ if (jeu.get_status() == ONGOING) {
         if (jeu.get_status() == WON){
            cout << "! You win !" << endl;
            start_clicked();
-           buttons[B_SAVE].set_sensitive(true);
+           buttons[B_SAVE].set_sensitive(false);
            buttons[B_STEP].set_sensitive(false);
            show_victory_dialog();
         }
@@ -340,11 +340,11 @@ if (jeu.get_status() == ONGOING) {
 }
 
     void My_window::on_victory_dialog_response(int response_id, Gtk::Dialog* dialog) {
-        dialog->hide(); // ferme la boîte
+        dialog->hide(); 
     
         switch (response_id) {
             case Gtk::ResponseType::CANCEL:
-                hide(); // quitte l'application
+                hide(); 
                 break;
             case 1:
                 restart_clicked();
@@ -352,12 +352,11 @@ if (jeu.get_status() == ONGOING) {
             case 2:
                 open_clicked();
                 break;
-            case 3:
             default:
                 break;
         }
     
-        delete dialog; // nettoyage mémoire
+        delete dialog; 
     }
 
     void My_window::show_victory_dialog() {
@@ -385,7 +384,6 @@ if (jeu.get_status() == ONGOING) {
         dialog->add_button("❌ Quit", Gtk::ResponseType::CANCEL);
         dialog->add_button("🔁 Restart", 1);
         dialog->add_button("📂 Open File", 2);
-        dialog->add_button("💾 Save", 3);
     
         // Connexion du signal
         dialog->signal_response().connect(sigc::bind(
@@ -440,15 +438,15 @@ void My_window::on_draw(const Cairo::RefPtr<Cairo::Context> &cr,
     cr->paint();
     
     if(jeu.get_lecture_success() == true) {
-    //draw the arena
-    jeu.draw_arene();//ne sont pas dans les includes a modifier leur position 
-    //draw the rest
-    jeu.draw_particules();
-    jeu.draw_faiseurs();
-    jeu.draw_chaine();
+        //draw the arena
+        jeu.draw_arene();//ne sont pas dans les includes a modifier leur position 
+        //draw the rest
+        jeu.draw_particules();
+        jeu.draw_faiseurs();
+        jeu.draw_chaine();
 
-    jeu.draw_but_final();
-    if(Chaine::get_longueur_chaine()==0) jeu.draw_start();
+        jeu.draw_but_final();
+        if(Chaine::get_longueur_chaine()==0) jeu.draw_start();
     }
 //=======================================FIN DE NOTRE CODE=============================
 }
@@ -490,15 +488,9 @@ void My_window::on_drawing_left_click(int n_press, double x, double y){
      step_clicked();
      checks[0].set_active();
      if (Chaine::get_mode() != CONSTRUCTION){
-        cout << "mode construction activé" << endl;
          build_clicked();
-     } else {
-        cout << "ajout chaine" << endl;
-        ajouter_chaine(Particule::get_liste_particules());
      }
      drawing.queue_draw();
-
-     if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
      //==============================================================================
 }
 void My_window::on_drawing_right_click(int n_press, double x, double y){
@@ -514,7 +506,6 @@ void My_window::on_drawing_right_click(int n_press, double x, double y){
         step_clicked();
         drawing.queue_draw();
 
-        if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
         //==============================================================================
 }
 void My_window::on_drawing_move(double x, double y){

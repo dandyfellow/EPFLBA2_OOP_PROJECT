@@ -180,19 +180,20 @@ void update_faiseurs() {
 }
 
 void Faiseur::display() {
-    std::cout << "-------- Displaying faiseurs --------\n";
+    std::cout << "DISPLAYING FAISEUR (element, {x,y})\n";
     const auto& faiseurs = Faiseur::get_liste_faiseurs();
 
     for (size_t i = 0; i < faiseurs.size(); ++i) {
         const auto& f = faiseurs[i];
-        std::cout << "Faiseur " << i << " :\n";
+        std::cout << "n°" << i << " : ";
         const auto& elements = f->get_elements();
         for (size_t j = 0; j < elements.size(); ++j) {
             const auto& e = elements[j];
-            std::cout << "  Élément " << j << " → "
-                      << "x = " << e->get_positionx()
-                      << ", y = " << e->get_positiony() << "\n";
+            std::cout << "(" << j << ","
+                      << "{" << e->get_positionx()
+                      << "," << e->get_positiony() << "})";
         }
+        cout << endl;
     }
 }
 
@@ -226,12 +227,13 @@ Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init)
 }
 
 void Particule::display() {
-    cout << "-------- Displaying particule --------\n";
+    cout << "DISPLAY PARTICULE (num, {x,y})\n";
     for(size_t i=0; i < liste_particule.size(); ++i) {
         Particule* p = liste_particule[i];
-        cout << "Particule number: " << i << " , point: ";
-        cout << p->get_positionx() << " : " << p->get_positiony() << "\n";
+        cout << "(" << i << ",{";
+        cout << p->get_positionx() << "," << p->get_positiony() << "})";
     }
+    cout << endl;
 }
 
 void Particule::ajouter_particule(Particule* p) {
