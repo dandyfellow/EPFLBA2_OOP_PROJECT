@@ -273,6 +273,7 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
         dialog->hide();
         break;
     case OPEN:
+        Jeu::set_status(ONGOING);
         if (file_name != ""){
 //=====================================================================================
             set_jeu(file_name);
