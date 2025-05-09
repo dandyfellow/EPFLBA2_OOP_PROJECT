@@ -73,11 +73,8 @@ void ajouter_chaine(const vector<Particule*>& liste_particules){
 		if(n>= 2){return;}
 	}
 	if(n == 1){
-		cout << "1" << endl;
 		Chaine c(particule->get_position());
-		cout << "2" << endl;
 		Particule::supprimer_particule(particule);
-		cout << "3" << endl;
 		delete particule;
 		return;
 	}

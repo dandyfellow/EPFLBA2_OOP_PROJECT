@@ -489,6 +489,8 @@ void My_window::on_drawing_left_click(int n_press, double x, double y){
      checks[0].set_active();
      if (Chaine::get_mode() != CONSTRUCTION){
          build_clicked();
+     } else {
+        ajouter_chaine(Particule::get_liste_particules());
      }
      drawing.queue_draw();
      //==============================================================================

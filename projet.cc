@@ -23,7 +23,15 @@ int main(int argc, char * argv[]) {
     auto app = Gtk::Application::create();
     return app->make_window_and_run<My_window>(1, argv, nom_fichier);
 
+    //Write the terminal log
+    //just ./projet t23.txt > log.txt 2>&1
+    // 2>&1 = Redirect standard error to the same place as standard output. 
+    // (std error = 2)
+
+
+
+
+
     exit(EXIT_SUCCESS);
-    
     return 0;
 }
