@@ -125,15 +125,13 @@ void Jeu::update() {
 		Jeu::score--;
 		update_particules();
 		update_faiseurs();
-		if(Chaine::get_longueur_chaine() == 0) {
-			//logique dans gui.cc
+		if(Chaine::get_longueur_chaine() == 0)//logique dans gui.cc
+		if(collision_chaine_faiseur()){
+			Chaine::reset();
 		}
-		
 		if (Chaine::get_mode() == GUIDAGE) {
 			Chaine::algo_move_chaine();
-			if(collision_chaine_faiseur()){
-				Chaine::reset();
-			}
+			
 			if (victoire()){
 				Jeu::set_status(WON);
 			};
@@ -435,14 +433,15 @@ namespace {
 	bool collision_chaine_faiseur() { // returns true if collisions
 		const vector<pair<int, Cercle>>& chaine = Chaine::get_chaine();
 		const vector<unique_ptr<Faiseur>>& faiseurs = Faiseur::get_liste_faiseurs();
-	
+		
 		for (const auto& [index_articulation, articulation] : chaine) {
+			cout << "Chaine racine: " << chaine[0].second.get_centre().x << " " <<  chaine[0].second.get_centre().y << endl;
 			for (size_t i = 0; i < faiseurs.size(); ++i) {
 				const auto& faiseur = faiseurs[i];
 				const auto& elements = faiseur->get_elements();
 				for (size_t j = 0; j < elements.size(); ++j) {
 					Cercle c_faiseur(elements[j]->get_position(),faiseur->get_rayon());
-					if (Cercle::inclusion(c_faiseur, articulation)) {
+					if (Cercle::intrusion(c_faiseur, articulation)) {
 						cout << message::chaine_articulation_collision(
 							index_articulation, static_cast<int>(i),static_cast<int>(j)
 						);
