@@ -20,6 +20,7 @@ enum Etat { SCORE, NB_PARTICULE, PARTICULE, NB_FAISEUR, FAISEUR, NB_CHAINE, CHAI
             CHAINE_MODE, FIN};
 
 void ajouter_chaine(const vector<Particule*>& liste_particules);
+bool victoire();
             
 class Jeu {
 public:

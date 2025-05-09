@@ -128,12 +128,10 @@ void My_window::restart_clicked() {
 
 void My_window::start_clicked() {
     cout << __func__ << endl;
-    static bool first_time(true);
-    if (first_time) {
-        first_time = false;
-       update();
+   if(victoire()){
+        Jeu::set_status(WON);
     }
-    
+
     if (activated) { // variable d'état: true si le jeu est en cours
     
         loop_conn.disconnect();
