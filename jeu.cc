@@ -34,7 +34,6 @@ namespace{
 	bool decodage_chaine(istringstream &data);
 	bool decodage_chaine_mode(istringstream &data);
 	bool collision_chaine_faiseur();
-	bool victoire();
 
 	string single_particule_sauvegarde_ecriture(Particule* p_ptr);
 	string particule_sauvegarde_ecriture();
@@ -51,6 +50,16 @@ namespace{
 	static int unsigned nb_chaine_init = 0;
 
 	Etat etat = SCORE;
+}
+
+bool victoire(){
+	if (Chaine::get_longueur_chaine() == 0) return false; //évite une bus error 
+	Cercle c1(Chaine::get_but_final().get_centre(), 0);
+	Cercle c2(Chaine::get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre(), r_capture);
+	if(Cercle::inclusion(c2,c1)){
+		return true;
+	}
+	return false;
 }
 
 void ajouter_chaine(const vector<Particule*>& liste_particules){
@@ -461,16 +470,6 @@ namespace {
 					}
 				}
 			}
-		}
-		return false;
-	}
-
-	bool victoire(){
-		if (Chaine::get_longueur_chaine() == 0) return false; //évite une bus error 
-		Cercle c1(Chaine::get_but_final().get_centre(), 0);
-		Cercle c2(Chaine::get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre(), r_capture);
-		if(Cercle::inclusion(c2,c1)){
-			return true;
 		}
 		return false;
 	}
