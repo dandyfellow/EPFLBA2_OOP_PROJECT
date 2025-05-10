@@ -111,25 +111,12 @@ void Chaine::reset(){
 }
 
 
-
-
-
-
-
-//================================================================================
-
-
-
-
 unsigned int Chaine::get_longueur_chaine() {
     if(chaine.size() == 0) {
         //cout << "Chaine length is 0, beware of doing get_longueur_chaine() -1 !!!\n";
     }
     return chaine.size();
 }
-
-
-
 
 void creation_but_final(S2d position){
     Vecteur centre({position.x,position.y}, {0,0});
@@ -139,56 +126,50 @@ void creation_but_final(S2d position){
 }
 
 
+
 void Chaine::algo_move_chaine(){
     cout << __func__ << endl;
     vector<pair<int, Cercle>> chaine_copy = chaine;
-
     unsigned int longueur_chaine = get_longueur_chaine();
     if(longueur_chaine == 0 or longueur_chaine == 1) return; 
     S2d but_inter = mouse_pos; //but intermediaire
     S2d racine_pos = get_chaine(0).second.get_centre();
     unsigned int chaine_size = longueur_chaine - 1;
     std::vector<double> t_lk(longueur_chaine); //dans l'ordre de la racine -> effecteur
-    
     //to keep the distances good, -> otherwise, rounding mistakes
     for(unsigned int i = 0; i < chaine_size; i++){
-        Vecteur v_lk(chaine_copy[i].second.get_centre(), chaine_copy[i+1].second.get_centre());
+        Vecteur v_lk(chaine_copy[i].second.get_centre(), 
+            chaine_copy[i+1].second.get_centre());
         t_lk[i] = v_lk.get_norme();
     }
     //effecteur vers racine
     for(unsigned int i = chaine_size; i > 0; i--){
         Vecteur v_pour_angle(but_inter, chaine_copy[i-1].second.get_centre());
         Vecteur v_pkprime_pk(but_inter, t_lk[i-1], v_pour_angle.get_angle());
-
         chaine_copy[i].second = {but_inter, 0};
         but_inter = v_pkprime_pk.get_p2();
        
-        if(i == 1){
-            chaine_copy[0].second = {but_inter, 0};
-        }
+        if(i == 1) chaine_copy[0].second = {but_inter, 0};
     }
-    //racine vers effecteur
-    but_inter = racine_pos;
+    but_inter = racine_pos;  //racine vers effecteur
     for(unsigned int i(0); i < chaine_size; i++){        
         Vecteur v_pour_angle(but_inter, chaine_copy[i+1].second.get_centre());
         Vecteur v_pkprime_pk(but_inter, t_lk[i], v_pour_angle.get_angle());
-        
         chaine_copy[i].second = {but_inter, 0};
         but_inter = v_pkprime_pk.get_p2();
-
-        if(i == chaine_size-1){
-            chaine_copy[chaine_size].second = {but_inter, 0};
-        }
+        if(i == chaine_size-1) chaine_copy[chaine_size].second = {but_inter, 0};
     }
-    Cercle arene({0,0}, r_max);
     for(auto& art : chaine_copy){
-        if(!Cercle::inclusion(arene, art.second)) {
+        if(!Cercle::inclusion(Cercle({0,0}, r_max), art.second)) {
             cout << "ARTICULATION NOT IN ARENE" << endl;
             return;
         }
     }
     chaine = chaine_copy;
 }
+
+
+
 void Chaine::set_chaine(unsigned int i, Cercle c){
     chaine[i] = {i, c};
 }

@@ -15,10 +15,9 @@ using namespace std;
 //needed because all of these are statics 
 // -> cannot initialize statics with default values in the header file
 
-
+#define WIDTH_DRAWING 2
 unsigned int Jeu::score = 0;
 bool Jeu::lecture_success = false;
-#define WIDTH_DRAWING 2
 Status Jeu::status = ONGOING;
 Cercle Jeu::start_cercle = {{0,0},0};
 
@@ -55,7 +54,8 @@ namespace{
 bool victoire(){
 	if (Chaine::get_longueur_chaine() == 0) return false; //évite une bus error 
 	Cercle c1(Chaine::get_but_final().get_centre(), 0);
-	Cercle c2(Chaine::get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre(), r_capture);
+	Cercle c2(Chaine::get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre(),
+		r_capture);
 	if(Cercle::inclusion(c2,c1)){
 		return true;
 	}
@@ -73,7 +73,8 @@ void ajouter_chaine(const vector<Particule*>& liste_particules){
 		if(Chaine::get_longueur_chaine() == 0) {
 			c2 = Cercle(Jeu::get_start_cercle().get_centre(), r_capture);
 		} else {
-			c2 = Cercle(Chaine::get_chaine(Chaine::get_longueur_chaine()-1).second.get_centre(), r_capture);
+			c2 = Cercle(Chaine::get_chaine(
+				Chaine::get_longueur_chaine()-1).second.get_centre(), r_capture);
 		}
 		if (Cercle::inclusion(c2, c1)) {
 			n++;
@@ -87,9 +88,11 @@ void ajouter_chaine(const vector<Particule*>& liste_particules){
 		delete particule;
 		return;
 	}
+
+	if(collision_chaine_faiseur()){
+		Chaine::reset();
+	}
 }
-
-
 
 
 void Jeu::draw_but_final(){
@@ -98,7 +101,6 @@ void Jeu::draw_but_final(){
 }
 
 void Jeu::draw_start(){
-	//cout << "Mouse pos: " << Chaine::get_mouse_pos().x << "," << Chaine::get_mouse_pos().y << endl;
 	Vecteur v_souris({0,0}, Chaine::get_mouse_pos());
 	Vecteur v_start({0,0}, r_max, v_souris.get_angle());
 	S2d start_pos = v_start.get_p2();
@@ -128,9 +130,9 @@ void Jeu::set_status(Status s){
 void Jeu::update() {
 	//displaying info
 
-	//Chaine::display();
-	//Faiseur::display();
-	//Particule::display();
+	Chaine::display();
+	Faiseur::display();
+	Particule::display();
 	
 	if(score == 0) {
 		Jeu::set_status(LOST);
@@ -456,7 +458,6 @@ namespace {
 		const vector<unique_ptr<Faiseur>>& faiseurs = Faiseur::get_liste_faiseurs();
 		
 		for (const auto& [index_articulation, articulation] : chaine) {
-			//cout << "Chaine racine: " << chaine[0].second.get_centre().x << " " <<  chaine[0].second.get_centre().y << endl;
 			for (size_t i = 0; i < faiseurs.size(); ++i) {
 				const auto& faiseur = faiseurs[i];
 				const auto& elements = faiseur->get_elements();

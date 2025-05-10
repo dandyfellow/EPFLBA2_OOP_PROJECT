@@ -28,10 +28,6 @@ int main(int argc, char * argv[]) {
     // 2>&1 = Redirect standard error to the same place as standard output. 
     // (std error = 2)
 
-
-
-
-
     exit(EXIT_SUCCESS);
     return 0;
 }

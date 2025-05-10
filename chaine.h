@@ -18,8 +18,7 @@ using namespace std;
 bool lecture_c(istringstream& data);
 bool lecture_c_mode(istringstream& data);
 
-void creation_but_final(S2d but_final); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+void creation_but_final(S2d but_final);
 
 class Chaine{
 public:
@@ -34,9 +33,6 @@ public:
     static void reset(); //clears chain and sets guidage to CONSTRUCTION
     static void set_mode(Mode m);
 
-
-    
-
     static Cercle get_but_final() { return but_final; }
     static void set_but_final(Cercle but) { but_final = but; }
     static S2d get_mouse_pos() { return mouse_pos; }
@@ -48,8 +44,6 @@ public:
 private:
     static vector<pair<int, Cercle>> chaine;
     static Mode mode;
-
-
     static Cercle but_final;
     static S2d mouse_pos;
 };

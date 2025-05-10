@@ -174,7 +174,6 @@ void My_window::build_clicked() {
         checks[1].set_sensitive(true);
         checks[0].set_sensitive(false);
     }
-    if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
 //=====================================================================================
     cout << __func__ << endl;
 }
@@ -185,7 +184,6 @@ void My_window::guide_clicked() {
         checks[1].set_sensitive(false);
         checks[0].set_sensitive(true);
     }
-    if(Chaine::get_mode() == CONSTRUCTION) {cout << "CONSTRUCTION\n";} else {cout << "GUIDAGE\n";}
 //=====================================================================================
     cout << __func__ << endl;
 }
@@ -369,13 +367,15 @@ if (jeu.get_status() == ONGOING) {
         dialog->set_default_size(400, 220);
     
         
-        auto* label_main = Gtk::make_managed<Gtk::Label>("<span size='xx-large' weight='bold'>🎉 YOU WON!</span>");
+        auto* label_main = Gtk::make_managed<Gtk::Label>("<span size='xx-large' "
+            "weight='bold'>🎉 YOU WON!</span>");
         label_main->set_use_markup(true);
         label_main->set_margin_top(15);
         label_main->set_margin_bottom(10);
         label_main->set_halign(Gtk::Align::CENTER);
    
-        auto* label_secondary = Gtk::make_managed<Gtk::Label>("What would you like to do next?");
+        auto* label_secondary = Gtk::make_managed<Gtk::Label>("What would you"
+            "like to do next?");
         label_secondary->set_margin_bottom(15);
         label_secondary->set_halign(Gtk::Align::CENTER); 
     
@@ -495,13 +495,14 @@ void My_window::on_drawing_left_click(int n_press, double x, double y){
      } else {
         ajouter_chaine(Particule::get_liste_particules());
      }
+     
      drawing.queue_draw();
      //==============================================================================
 }
 void My_window::on_drawing_right_click(int n_press, double x, double y){
 	// remplacer affichage par votre code
 	cout <<  __func__ << endl;
-        //==============================================================================
+        //=============================================================================
         checks[1].set_active();
         step_clicked();
 
@@ -510,7 +511,7 @@ void My_window::on_drawing_right_click(int n_press, double x, double y){
         }
         drawing.queue_draw();
 
-        //==============================================================================
+        //=============================================================================
 }
 void My_window::on_drawing_move(double x, double y){
 	// remplacer affichage par votre code

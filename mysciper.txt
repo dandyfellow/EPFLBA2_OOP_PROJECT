@@ -1,13 +1,3 @@
 399770
 393159
 
-
-
-A FAIRE: 
-    clique fais un step ✅
-    on peut guider la chaine par des cliques ✅
-    la chaine ne doit pas sortir de l'arène ✅
-    la racine ne subit pas les collisions avce les faiseurs ?✅
-    commnet descativer les touches du clavier ? (step et start quand on perd et on gagne)
-    recheck save, open ✅
-
