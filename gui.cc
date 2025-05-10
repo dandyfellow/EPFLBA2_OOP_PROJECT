@@ -277,6 +277,7 @@ void My_window::dialog_response(int response, Gtk::FileChooserDialog *dialog){
     case OPEN:
         if (file_name != ""){
 //=====================================================================================
+            jeu.set_status(ONGOING);
             set_jeu(file_name);
             previous_file_name = file_name;
 //=====================================================================================
