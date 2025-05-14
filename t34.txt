@@ -1,10 +1,11 @@
-# t25: Correct file; 1 particule et 1 faiseur immobiles au centre
-#
-8000
+# t34: Correct file; 1 particule mobile et 1 faiseur immobiles au centre
+#      test de fin de jeu
+1
 
 # nombre d’entité particule puis les données d’une entité par ligne
-1
-    0.	0.	0.	0.	499	
+2
+    0.	0.	0.	0.	0	
+    0.	0.	0.	2.	0
 
 # nombre d’entité faiseur puis les données d’une entité par ligne
 1

@@ -40,7 +40,7 @@ bool lecture_p(istringstream& data) {
         return false;
     }
 
-    Particule* p = new Particule({x, y}, v, angle);
+    Particule* p = new Particule({x, y}, v, angle, compteur);
     Particule::ajouter_particule(p);
     return true;
 }
@@ -127,9 +127,9 @@ void update_particules() {
                                 p->get_alpha() - delta_split);
 
             Particule* p1 = new Particule(p->get_position(), nouvelle_v1, 
-                                          p->get_alpha() + delta_split);
+                                          p->get_alpha() + delta_split, 0);
             Particule* p2 = new Particule(p->get_position(), 
-                                          nouvelle_v2, p->get_alpha() - delta_split);
+                                          nouvelle_v2, p->get_alpha() - delta_split, 0);
 
             Particule::ajouter_particule(p1);
             Particule::ajouter_particule(p2);
@@ -221,9 +221,11 @@ void Mobile::move(const Cercle arene) {
     
 //==========================PARTICULE==================================================
 
-Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init)
-    : Mobile(position_init, vitesse_init, alpha_init, 0.){
+Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init,
+                     int compteur_init)
+    : Mobile(position_init, vitesse_init, alpha_init, 0.), compteur(compteur_init) {
     ++nbrs_particules;
+    liste_particule.push_back(this);
 }
 
 void Particule::display() {

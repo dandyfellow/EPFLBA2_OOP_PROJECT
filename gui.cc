@@ -108,7 +108,7 @@ void My_window::restart_clicked() {
 //=====================================================================================
     jeu.reset();
     set_jeu(previous_file_name);
-    if (buttons[B_START].get_label() == "start") {
+   /* if (buttons[B_START].get_label() == "start") {
         buttons[B_EXIT].set_sensitive(true);
         buttons[B_OPEN].set_sensitive(true);
         buttons[B_SAVE].set_sensitive(true);
@@ -120,7 +120,7 @@ void My_window::restart_clicked() {
         buttons[B_SAVE].set_sensitive(false);
         buttons[B_RESTART].set_sensitive(false);
         buttons[B_STEP].set_sensitive(false);
-    }
+    }*/
     Jeu::set_status(ONGOING);
 //=====================================================================================
     cout << __func__ << endl;

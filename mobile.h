@@ -43,7 +43,8 @@ protected:
 
 class Particule : public Mobile {
 public:
-    Particule(S2d position_init, Vecteur vitesse_init, double alpha_init);
+    Particule(S2d position_init, Vecteur vitesse_init, double alpha_init,
+              int compteur_init);
     ~Particule() { --nbrs_particules; }
 
     void increase_compteur();

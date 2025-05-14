@@ -1,10 +1,12 @@
-# t25: Correct file; 1 particule et 1 faiseur immobiles au centre
+# t31: Correct file; 3 particule et 1 faiseur immobiles au centre
 #
 8000
 
 # nombre d’entité particule puis les données d’une entité par ligne
-1
-    0.	0.	0.	0.	499	
+3
+    0.	0.	0.	0.	0	
+    0.	98.	0.	0.	0	
+    0.	98.	2.3561944902	2.5	0
 
 # nombre d’entité faiseur puis les données d’une entité par ligne
 1

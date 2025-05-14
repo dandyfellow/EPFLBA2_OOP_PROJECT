@@ -1,5 +1,5 @@
 # this file is correct and is a special case : order from chaos
-# 7543 = bonus time
+# 7543 = bonus time to get EPFL
 # 
 8000
 
@@ -41,7 +41,7 @@
     81.336 15.568 2.66554 1. 0
 
 1
-    12.7864 -65.9737 1.124682 1 2.1 25
+    12.7864 -65.9737 1.124682 2.1 2.1 25
 
 0
 
