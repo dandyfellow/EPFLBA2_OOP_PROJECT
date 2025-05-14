@@ -225,7 +225,6 @@ Particule::Particule(S2d position_init, Vecteur vitesse_init, double alpha_init,
                      int compteur_init)
     : Mobile(position_init, vitesse_init, alpha_init, 0.), compteur(compteur_init) {
     ++nbrs_particules;
-    liste_particule.push_back(this);
 }
 
 void Particule::display() {
