@@ -108,24 +108,10 @@ void My_window::restart_clicked() {
 //=====================================================================================
     jeu.reset();
     set_jeu(previous_file_name);
-   /* if (buttons[B_START].get_label() == "start") {
-        buttons[B_EXIT].set_sensitive(true);
-        buttons[B_OPEN].set_sensitive(true);
-        buttons[B_SAVE].set_sensitive(true);
-        buttons[B_RESTART].set_sensitive(true);
-        buttons[B_STEP].set_sensitive(true);
-    } else {
-        buttons[B_EXIT].set_sensitive(false);
-        buttons[B_OPEN].set_sensitive(false);
-        buttons[B_SAVE].set_sensitive(false);
-        buttons[B_RESTART].set_sensitive(false);
-        buttons[B_STEP].set_sensitive(false);
-    }*/
     Jeu::set_status(ONGOING);
 //=====================================================================================
     cout << __func__ << endl;
 }
-
 void My_window::start_clicked() {
     cout << __func__ << endl;
    if(victoire()){
@@ -314,27 +300,31 @@ if (jeu.get_status() == ONGOING) {
     drawing.queue_draw();
 
     if (jeu.get_status() != ONGOING){
+        //=============================================================================
 		buttons[B_RESTART].set_sensitive(true);
         buttons[B_OPEN].set_sensitive(true);
         buttons[B_EXIT].set_sensitive(true);
-        //-----^^^ truc rajouté par nous
+        //-----^^^ truc rajouté par nous===============================================
         buttons[B_SAVE].set_sensitive(false);
         buttons[B_START].set_sensitive(false);
         buttons[B_STEP].set_sensitive(false);
         checks[0].set_active(true);
         checks[0].set_sensitive(false);
         checks[1].set_sensitive(false);
+        //=============================================================================
         if (jeu.get_status() == LOST){
            cout << "! Game Over !" << endl;
            buttons[B_STEP].set_sensitive(false);
-           
+            activated = false;
         }
         if (jeu.get_status() == WON){
            cout << "! You win !" << endl;
            buttons[B_SAVE].set_sensitive(false);
            buttons[B_STEP].set_sensitive(false);
            show_victory_dialog();
+           //activated = false;
         }
+        //-----^^^ truc rajouté par nous===============================================
     }
 }
 
@@ -537,6 +527,7 @@ void My_window::set_jeu(string file_name){
     Cercle::epsilTrue(); // réactive epsil
 
 //=====================================================================================
+    buttons[B_START].set_label("start");
     if (!Jeu::get_lecture_success()) {// cas d'erreur de lecture : maxwc
         buttons[2].set_sensitive(false);
         buttons[4].set_sensitive(false);

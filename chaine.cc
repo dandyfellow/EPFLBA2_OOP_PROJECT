@@ -128,20 +128,18 @@ void creation_but_final(S2d position){
 
 
 void Chaine::algo_move_chaine(){
-    cout << __func__ << endl;
     vector<pair<int, Cercle>> chaine_copy = chaine;
-    unsigned int longueur_chaine = get_longueur_chaine();
-    if(longueur_chaine == 0 or longueur_chaine == 1) return; 
-    Vecteur v_mouse_pos(chaine[longueur_chaine-1].second.get_centre(), mouse_pos);
+    int chaine_size = get_longueur_chaine()-1;
+    if(chaine_size == -1 or chaine_size == 0) return; 
+    Vecteur v_mouse_pos(chaine[chaine_size].second.get_centre(), mouse_pos);
     S2d but_inter = mouse_pos; //but intermediaire
     if(v_mouse_pos.get_norme() > r_capture){
-        Vecteur v_but_inter(chaine[longueur_chaine-1].second.get_centre(),r_capture, 
+        Vecteur v_but_inter(chaine[chaine_size].second.get_centre(),r_capture, 
         v_mouse_pos.get_angle());
         but_inter = v_but_inter.get_p2();
     } 
     S2d racine_pos = get_chaine(0).second.get_centre();
-    unsigned int chaine_size = longueur_chaine - 1;
-    std::vector<double> t_lk(longueur_chaine); //dans l'ordre de la racine -> effecteur
+    std::vector<double> t_lk(chaine_size+1); //dans l'ordre de la racine -> effecteur
     for(unsigned int i = 0; i < chaine_size; i++){
         Vecteur v_lk(chaine_copy[i].second.get_centre(), 
         chaine_copy[i+1].second.get_centre());
@@ -163,11 +161,12 @@ void Chaine::algo_move_chaine(){
         if(i == chaine_size-1) chaine_copy[chaine_size].second = {but_inter, 0};
     }
     for(auto& art : chaine_copy){
-        if(Cercle::inclusion(Cercle({0,0}, r_max), art.second)) { 
-            chaine = chaine_copy; 
+        if(!Cercle::inclusion(Cercle({0,0}, r_max), art.second)) { 
             cout << "ARTICULATION NOT IN ARENE" << endl;
-        }
+            return;
+        }  
     }
+    chaine = chaine_copy;
 }
 
 

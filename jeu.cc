@@ -129,7 +129,6 @@ void Jeu::set_status(Status s){
 
 void Jeu::update() {
 	//displaying info
-
 	Chaine::display();
 	Faiseur::display();
 	Particule::display();
@@ -442,7 +441,6 @@ namespace {
 	bool decodage_chaine_mode(istringstream& data) {
 		if(lecture_c_mode(data) == false) {return false;}
 		if(victoire()){
-			cout << "tia gagner" << endl;
 			Jeu::set_status(WON);
 		}
 		counts = 0;
