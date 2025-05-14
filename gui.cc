@@ -315,6 +315,7 @@ if (jeu.get_status() == ONGOING) {
         if (jeu.get_status() == LOST){
            cout << "! Game Over !" << endl;
            buttons[B_STEP].set_sensitive(false);
+           loop_conn.disconnect();
             activated = false;
         }
         if (jeu.get_status() == WON){
@@ -322,7 +323,8 @@ if (jeu.get_status() == ONGOING) {
            buttons[B_SAVE].set_sensitive(false);
            buttons[B_STEP].set_sensitive(false);
            show_victory_dialog();
-           //activated = false;
+           loop_conn.disconnect();
+           activated = false;
         }
         //-----^^^ truc rajouté par nous===============================================
     }
