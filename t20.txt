@@ -1,5 +1,5 @@
 # this file is a simulation save: correct file
-4987
+100
 
 50
     -2.14903 48.153 -3.82398 0.0687195 30
@@ -74,4 +74,4 @@
     3.11783 74.9432
     19.4332 73.3372
 
-GUIDAGE
+CONSTRUCTION

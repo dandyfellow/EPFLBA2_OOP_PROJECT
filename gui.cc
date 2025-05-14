@@ -326,13 +326,11 @@ if (jeu.get_status() == ONGOING) {
         checks[1].set_sensitive(false);
         if (jeu.get_status() == LOST){
            cout << "! Game Over !" << endl;
-           start_clicked();
            buttons[B_STEP].set_sensitive(false);
            
         }
         if (jeu.get_status() == WON){
            cout << "! You win !" << endl;
-           start_clicked();
            buttons[B_SAVE].set_sensitive(false);
            buttons[B_STEP].set_sensitive(false);
            show_victory_dialog();
