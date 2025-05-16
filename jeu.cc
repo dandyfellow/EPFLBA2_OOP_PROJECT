@@ -129,9 +129,9 @@ void Jeu::set_status(Status s){
 
 void Jeu::update() {
 	//displaying info
-	Chaine::display();
-	Faiseur::display();
-	Particule::display();
+	//Chaine::display();
+	//Faiseur::display();
+	//Particule::display();
 	
 	if(score == 0) {
 		Jeu::set_status(LOST);
@@ -440,9 +440,9 @@ namespace {
 
 	bool decodage_chaine_mode(istringstream& data) {
 		if(lecture_c_mode(data) == false) {return false;}
-		if(victoire()){
+		/*if(victoire()){
 			Jeu::set_status(WON);
-		}
+		}*/
 		counts = 0;
 		etat = FIN;
 	

@@ -378,7 +378,6 @@ if (jeu.get_status() == ONGOING) {
         dialog->add_button("🔁 Restart", 1);
         dialog->add_button("📂 Open File", 2);
     
-        // Connexion du signal
         dialog->signal_response().connect(sigc::bind(
             sigc::mem_fun(*this, &My_window::on_victory_dialog_response), dialog));
     

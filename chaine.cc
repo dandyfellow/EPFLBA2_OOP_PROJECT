@@ -26,7 +26,6 @@ bool lecture_c(istringstream& data){
 
     static bool first = true;
     if(first){
-        //cout << "first chain" << endl;
         creation_but_final({x,y});
         first = false;
     }
@@ -125,8 +124,6 @@ void creation_but_final(S2d position){
     Chaine::set_but_final(but_final);
 }
 
-
-
 void Chaine::algo_move_chaine(){
     vector<pair<int, Cercle>> chaine_copy = chaine;
     int chaine_size = get_longueur_chaine()-1;
@@ -168,8 +165,6 @@ void Chaine::algo_move_chaine(){
     }
     chaine = chaine_copy;
 }
-
-
 
 void Chaine::set_chaine(unsigned int i, Cercle c){
     chaine[i] = {i, c};
