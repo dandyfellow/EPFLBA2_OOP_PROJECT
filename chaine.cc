@@ -76,6 +76,7 @@ Chaine::Chaine(S2d p) {
 
     chaine.push_back(pair);
 }
+
 Chaine::Chaine(Cercle c) {
     int index = Chaine::get_longueur_chaine();
     pair<int, Cercle> p = {index, c};
@@ -124,6 +125,8 @@ void creation_but_final(S2d position){
     Chaine::set_but_final(but_final);
 }
 
+
+
 void Chaine::algo_move_chaine(){
     vector<pair<int, Cercle>> chaine_copy = chaine;
     int chaine_size = get_longueur_chaine()-1;
@@ -136,12 +139,12 @@ void Chaine::algo_move_chaine(){
         but_inter = v_but_inter.get_p2();
     } 
     S2d racine_pos = get_chaine(0).second.get_centre();
-    std::vector<double> t_lk(chaine_size+1); //dans l'ordre de la racine -> effecteur
-    for(unsigned int i = 0; i < chaine_size; i++){
+    std::vector<double> t_lk(chaine_size+1);
+    for(unsigned int i = 0; i < chaine_size; i++){ //calcul des longueur l_k
         Vecteur v_lk(chaine_copy[i].second.get_centre(), 
         chaine_copy[i+1].second.get_centre());
         t_lk[i] = v_lk.get_norme();
-    }
+    }  //dans l'ordre de la racine -> effecteur
     for(unsigned int i = chaine_size; i > 0; i--){
         Vecteur v_pour_angle(but_inter, chaine_copy[i-1].second.get_centre());
         Vecteur v_pkprime_pk(but_inter, t_lk[i-1], v_pour_angle.get_angle());

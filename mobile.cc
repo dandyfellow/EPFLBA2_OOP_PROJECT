@@ -129,7 +129,7 @@ void update_particules() {
             Particule* p1 = new Particule(p->get_position(), nouvelle_v1, 
                                           p->get_alpha() + delta_split, 0);
             Particule* p2 = new Particule(p->get_position(), 
-                                          nouvelle_v2, p->get_alpha() - delta_split, 0);
+                                          nouvelle_v2, p->get_alpha() -delta_split, 0);
 
             Particule::ajouter_particule(p1);
             Particule::ajouter_particule(p2);
