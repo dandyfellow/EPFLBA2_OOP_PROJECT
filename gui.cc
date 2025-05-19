@@ -374,9 +374,9 @@ void My_window::show_victory_dialog() {
     auto* restart = Gtk::make_managed<Gtk::Button>("🔁 Restart");
     auto* open = Gtk::make_managed<Gtk::Button>("📂 Open File");
 
-    quit->signal_clicked().connect([dialog, this]() { dialog->response(Gtk::ResponseType::CANCEL); });
-    restart->signal_clicked().connect([dialog, this]() { dialog->response(1); });
-    open->signal_clicked().connect([dialog, this]() { dialog->response(2); });
+    quit->signal_clicked().connect([dialog]() { dialog->response(Gtk::ResponseType::CANCEL); });
+    restart->signal_clicked().connect([dialog]() { dialog->response(1); });
+    open->signal_clicked().connect([dialog]() { dialog->response(2); });
 
     buttons->append(*quit);
     buttons->append(*restart);
