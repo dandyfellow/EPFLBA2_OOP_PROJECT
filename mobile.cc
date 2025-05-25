@@ -1,4 +1,4 @@
-// mobile.cc, Adam Coste et Max Ciriani, version 1
+// mobile.cc, Adam Coste et Max Ciriani, version 1, 5% Max/95% Adam
 #include <iostream>
 #include <memory>
 #include <cmath>  // Pour cos, sin

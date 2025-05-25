@@ -1,4 +1,4 @@
-//projet.cc, Adam Coste et Max Ciriani, version 1
+//projet.cc, Adam Coste et Max Ciriani, version 1, 50% Max/ 50% Adam
 #define _USE_MATH_DEFINES
 
 //#include <gtkmm/application.h>

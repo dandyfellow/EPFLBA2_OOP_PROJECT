@@ -1,3 +1,4 @@
+//gui.cc, Adam Coste et Max Ciriani, version 1, 40% Max/60% Adam
 #include <iostream>
 #include <cassert>
 #include "graphic_gui.h"

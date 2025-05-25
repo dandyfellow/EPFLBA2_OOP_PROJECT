@@ -1,4 +1,4 @@
-//jeu.cc, Adam Coste et Max Ciriani, version 1
+//jeu.cc, Adam Coste et Max Ciriani, version 1, 75% Max/25% Adam
 #include <iostream>
 #include <fstream>
 #include <sstream> //for istringstream

@@ -1,4 +1,4 @@
-//chaine.cc, Adam Coste et Max Ciriani, version 1
+//chaine.cc, Adam Coste et Max Ciriani, version 1, 95% Max/5% Adam
 #include <fstream>
 #include <sstream> 
 #include <vector>

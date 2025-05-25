@@ -1,3 +1,4 @@
+//graphic.cc, Adam Coste et Max Ciriani, version 1, 95% Max/5% Adam
 #define _USE_MATH_DEFINES //pour cmath constantes -> NEEDS TO COME BEFORE CMATH
 
 #include <cmath>
